@@ -1,5 +1,6 @@
 let deck = [];
 let playerPoints = 0;
+let croupierPoints = 0;
 
 let shuffle_deck = () => {
   for (let i = 2; i < 11; i++) {
@@ -35,6 +36,7 @@ let take_card = () => {
     playerPoints += parseInt(card.substring(0, card.length - 1));
   }
   console.log(playerPoints);
+  if (playerPoints > 21) {
+    console.log("Has perdido, pasaste los 21");
+  }
 };
-
-take_card();

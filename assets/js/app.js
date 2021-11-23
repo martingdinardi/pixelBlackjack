@@ -1,5 +1,7 @@
-let shuffledDeck = [];
+let playerCash = 500;
+let playerBet = 100;
 let playerPoints = 0;
+let shuffledDeck = [];
 let croupierPoints = 0;
 
 let shuffle_deck = () => {
@@ -25,9 +27,9 @@ let shuffle_deck = () => {
 
 shuffle_deck();
 
+console.log(`Empezó con ${playerCash}`);
+console.log(`Apostó ${playerBet}`);
 console.log(shuffledDeck);
-console.log(playerPoints);
-console.log(croupierPoints);
 
 let take_card = () => {
   let card = shuffledDeck.pop();
@@ -44,7 +46,16 @@ let take_card = () => {
     playerPoints += parseInt(card.substring(0, card.length - 1));
   }
   console.log(playerPoints);
-  if (playerPoints > 21) {
+  if (playerPoints === 21) {
+    console.log("Felicidades! Has sacado 21!");
+    playerCash += playerBet * 2;
+    console.log(playerCash);
+  } else if (playerPoints > 21) {
     console.log("Has perdido, pasaste los 21");
+    console.log(playerCash);
   }
+  console.log(`El jugador tiene ${playerPoints} puntos`);
 };
+
+playerCash -= playerBet;
+take_card();

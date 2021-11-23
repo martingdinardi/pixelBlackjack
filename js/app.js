@@ -1,8 +1,10 @@
-let deck = [];
+let shuffledDeck = [];
 let playerPoints = 0;
 let croupierPoints = 0;
 
 let shuffle_deck = () => {
+  let deck = [];
+
   for (let i = 2; i < 11; i++) {
     for (let s = 0; s < 4; s++) {
       let suit = ["C", "D", "P", "T"];
@@ -17,12 +19,18 @@ let shuffle_deck = () => {
       deck.push(`${letter[i]}${suit[s]}`);
     }
   }
+
+  shuffledDeck = _.shuffle(deck);
 };
 
 shuffle_deck();
 
+console.log(shuffledDeck);
+console.log(playerPoints);
+console.log(croupierPoints);
+
 let take_card = () => {
-  let card = deck.pop();
+  let card = shuffledDeck.pop();
   if (
     card[0] === "A" ||
     card[0] === "K" ||

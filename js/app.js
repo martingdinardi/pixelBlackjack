@@ -1,4 +1,5 @@
 let deck = [];
+let playerPoints = 0;
 
 let shuffle_deck = () => {
   for (let i = 2; i < 11; i++) {
@@ -19,4 +20,21 @@ let shuffle_deck = () => {
 
 shuffle_deck();
 
-console.log(deck);
+let take_card = () => {
+  let card = deck.pop();
+  if (
+    card[0] === "A" ||
+    card[0] === "K" ||
+    card[0] === "Q" ||
+    card[0] === "J"
+  ) {
+    console.log(card);
+    playerPoints += 11;
+  } else {
+    console.log(card);
+    playerPoints += parseInt(card.substring(0, card.length - 1));
+  }
+  console.log(playerPoints);
+};
+
+take_card();

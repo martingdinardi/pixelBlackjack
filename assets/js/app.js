@@ -1,9 +1,12 @@
 const player_cards_front = document.querySelector(".player-cards");
+const dealer_cards_front = document.querySelector(".dealer-cards");
 
 let playerCash = 500;
 let playerBet = 100;
 let playerCards = [];
 let playerPoints = 0;
+let dealerCards = [];
+let dealerPoints = 0;
 let shuffledDeck = [];
 let croupierPoints = 0;
 

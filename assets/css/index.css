@@ -8,13 +8,17 @@ body {
   background-color: #461d25;
 }
 
-.first-card {
-  height: 120px;
-  width: auto;
+.row {
+  margin: 0;
 }
 
 .one-card {
-  height: 120px;
-  margin-left: -40px;
+  height: 90px;
+  margin-left: -50px;
   width: auto;
+}
+
+.player-cards,
+.dealer-cards {
+  text-align: center;
 }

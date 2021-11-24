@@ -25,6 +25,7 @@ p {
 .one-card {
   height: 5.625rem;
   margin-left: -3.125rem;
+  margin-top: 1rem;
   width: auto;
 }
 

@@ -1,8 +1,10 @@
 const player_cards_front = document.querySelector(".player-cards");
 const dealer_cards_front = document.querySelector(".dealer-cards");
-const user_money = document.querySelector(".user-money");
+const user_money_front = document.querySelector(".user-money");
 
-user_money.innerHTML += `<img src="assets/items/money.png" class="user-money-ico" />`;
+const hit_button_front = document.querySelector(".hit-button");
+
+user_money_front.innerHTML += `<img src="assets/items/money.png" class="user-money-ico" />`;
 
 let playerCash = 500;
 let playerBet = 100;
@@ -13,7 +15,7 @@ let dealerPoints = 0;
 let shuffledDeck = [];
 let croupierPoints = 0;
 
-user_money.innerHTML += `<p>$${playerCash}</p>`;
+user_money_front.innerHTML += `<p>$${playerCash}</p>`;
 
 let shuffle_deck = () => {
   let deck = [];
@@ -76,3 +78,7 @@ let take_card = () => {
 
 playerCash -= playerBet;
 take_card();
+
+hit_button_front.addEventListener("click", () => {
+  take_card();
+});

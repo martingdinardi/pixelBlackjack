@@ -1,3 +1,5 @@
+const player_cards_front = document.querySelector(".player-cards");
+
 let playerCash = 500;
 let playerBet = 100;
 let playerCards = [];
@@ -42,9 +44,15 @@ let take_card = () => {
   ) {
     playerPoints += 11;
     playerCards.push(card);
+    player_cards_front.innerHTML += `<img src="assets/cards/${
+      playerCards[playerCards.length - 1]
+    }.png" class="one-card" />`;
   } else {
     playerPoints += parseInt(card.substring(0, card.length - 1));
     playerCards.push(card);
+    player_cards_front.innerHTML += `<img src="assets/cards/${
+      playerCards[playerCards.length - 1]
+    }.png" class="one-card" />`;
   }
   if (playerPoints === 21) {
     console.log("Felicidades! Has sacado 21!");

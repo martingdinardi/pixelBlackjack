@@ -1,5 +1,8 @@
 const player_cards_front = document.querySelector(".player-cards");
 const dealer_cards_front = document.querySelector(".dealer-cards");
+const user_money = document.querySelector(".user-money");
+
+user_money.innerHTML += `<img src="assets/items/money.png" class="user-money-ico" />`;
 
 let playerCash = 500;
 let playerBet = 100;
@@ -9,6 +12,8 @@ let dealerCards = [];
 let dealerPoints = 0;
 let shuffledDeck = [];
 let croupierPoints = 0;
+
+user_money.innerHTML += `<p>$${playerCash}</p>`;
 
 let shuffle_deck = () => {
   let deck = [];

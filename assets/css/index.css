@@ -6,19 +6,40 @@
 
 body {
   background-color: #461d25;
+  font-family: "VT323", monospace;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 .row {
   margin: 0;
 }
 
+.navbar {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
 .one-card {
-  height: 90px;
-  margin-left: -50px;
+  height: 5.625rem;
+  margin-left: -3.125rem;
   width: auto;
 }
 
 .player-cards,
 .dealer-cards {
   text-align: center;
+}
+
+.user-money {
+  color: antiquewhite;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.user-money-ico {
+  height: 2.2rem;
+  margin-right: 0.5rem;
 }

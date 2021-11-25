@@ -1,4 +1,5 @@
 const player_cards_front = document.querySelector(".player-cards");
+const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
 const user_money_front = document.querySelector(".user-money");
 
@@ -78,8 +79,8 @@ let take_card = () => {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
   }
+  player_points_front.innerHTML = `${playerPoints}`;
   console.log(playerCards);
-  console.log(`El jugador tiene ${playerPoints} puntos`);
 };
 
 take_card();

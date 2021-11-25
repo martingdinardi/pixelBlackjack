@@ -30,9 +30,13 @@ p {
   width: auto;
 }
 
-.player-cards,
+.player-section,
 .dealer-cards {
   text-align: center;
+}
+
+.player-points {
+  margin-left: -3.125rem;
 }
 
 .user-money {

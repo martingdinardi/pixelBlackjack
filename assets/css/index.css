@@ -31,11 +31,12 @@ p {
 }
 
 .player-section,
-.dealer-cards {
+.dealer-section {
   text-align: center;
 }
 
-.player-points {
+.player-points,
+.dealer-points {
   margin-left: -3.125rem;
 }
 

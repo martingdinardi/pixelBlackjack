@@ -46,13 +46,14 @@ console.log(shuffledDeck);
 
 let take_card = () => {
   let card = shuffledDeck.pop();
-  if (
-    card[0] === "A" ||
-    card[0] === "K" ||
-    card[0] === "Q" ||
-    card[0] === "J"
-  ) {
+  if (card[0] === "A") {
     playerPoints += 11;
+    playerCards.push(card);
+    player_cards_front.innerHTML += `<img src="assets/cards/${
+      playerCards[playerCards.length - 1]
+    }.png" class="one-card" />`;
+  } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
+    playerPoints += 10;
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
@@ -64,20 +65,27 @@ let take_card = () => {
       playerCards[playerCards.length - 1]
     }.png" class="one-card" />`;
   }
-  if (playerPoints === 21) {
-    console.log("Felicidades! Has sacado 21!");
+
+  if (playerCards.length === 2 && playerPoints === 21) {
+    player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
     playerCash += playerBet * 2;
-    console.log(playerCash);
+    hit_button_front.setAttribute("disabled", "");
+  } else if (playerPoints === 21) {
+    player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
+    playerCash += playerBet * 2;
+    hit_button_front.setAttribute("disabled", "");
   } else if (playerPoints > 21) {
-    console.log("Has perdido, pasaste los 21");
-    console.log(playerCash);
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+    hit_button_front.setAttribute("disabled", "");
   }
   console.log(playerCards);
   console.log(`El jugador tiene ${playerPoints} puntos`);
 };
 
-playerCash -= playerBet;
 take_card();
+take_card();
+
+playerCash -= playerBet;
 
 hit_button_front.addEventListener("click", () => {
   take_card();

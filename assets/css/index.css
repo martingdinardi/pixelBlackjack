@@ -7,6 +7,7 @@
 body {
   background-color: #461d25;
   font-family: "VT323", monospace;
+  color: antiquewhite;
 }
 
 p {
@@ -35,7 +36,6 @@ p {
 }
 
 .user-money {
-  color: antiquewhite;
   display: flex;
   font-size: 1.5rem;
 }

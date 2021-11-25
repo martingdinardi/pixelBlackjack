@@ -73,13 +73,16 @@ let take_card = () => {
     player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
     playerCash += playerBet * 2;
     hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", "");
   } else if (playerPoints === 21) {
     player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
     playerCash += playerBet * 2;
     hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", "");
   } else if (playerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", "");
   }
   player_points_front.innerHTML = `${playerPoints}`;
   console.log(`player points ${playerPoints}`);
@@ -122,4 +125,17 @@ hit_button_front.addEventListener("click", () => {
 stand_button_front.addEventListener("click", () => {
   hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", "");
+  dealer_cards_front.removeChild(dealer_cards_front.lastElementChild);
+
+  do {
+    initial_croupier_cards();
+  } while (dealerPoints < playerPoints);
+
+  if (dealerPoints > 21) {
+    player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
+  } else if (dealerCards === playerPoints) {
+    player_cards_front.innerHTML += `<p>Has perdido! El dealer también formó ${playerPoints} puntos</p>`;
+  } else {
+    player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
+  }
 });

@@ -1,8 +1,11 @@
 const player_cards_front = document.querySelector(".player-cards");
+const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
+const dealer_points_front = document.querySelector(".dealer-points");
 const user_money_front = document.querySelector(".user-money");
 
 const hit_button_front = document.querySelector(".hit-button");
+const stand_button_front = document.querySelector(".stand-button");
 
 user_money_front.innerHTML += `<img src="assets/items/money.png" class="user-money-ico" />`;
 
@@ -78,15 +81,45 @@ let take_card = () => {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
   }
-  console.log(playerCards);
-  console.log(`El jugador tiene ${playerPoints} puntos`);
+  player_points_front.innerHTML = `${playerPoints}`;
+  console.log(`player points ${playerPoints}`);
+};
+
+const initial_croupier_cards = () => {
+  let card = shuffledDeck.pop();
+  if (card[0] === "A") {
+    dealerPoints += 11;
+    dealerCards.push(card);
+    dealer_cards_front.innerHTML += `<img src="assets/cards/${
+      dealerCards[dealerCards.length - 1]
+    }.png" class="one-card" />`;
+  } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
+    dealerPoints += 10;
+    dealerCards.push(card);
+    dealer_cards_front.innerHTML += `<img src="assets/cards/${
+      dealerCards[dealerCards.length - 1]
+    }.png" class="one-card" />`;
+  } else {
+    dealerPoints += parseInt(card.substring(0, card.length - 1));
+    dealerCards.push(card);
+    dealer_cards_front.innerHTML += `<img src="assets/cards/${
+      dealerCards[dealerCards.length - 1]
+    }.png" class="one-card" />`;
+  }
+  dealer_points_front.innerHTML = `${dealerPoints}`;
+  console.log(`dealer points ${dealerPoints}`);
 };
 
 take_card();
 take_card();
-
-playerCash -= playerBet;
+initial_croupier_cards();
+dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
 
 hit_button_front.addEventListener("click", () => {
   take_card();
+});
+
+stand_button_front.addEventListener("click", () => {
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
 });

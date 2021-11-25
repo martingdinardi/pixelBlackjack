@@ -133,7 +133,7 @@ stand_button_front.addEventListener("click", () => {
 
   if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
-  } else if (dealerCards === playerPoints) {
+  } else if (dealerPoints === playerPoints) {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer también formó ${playerPoints} puntos</p>`;
   } else {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;

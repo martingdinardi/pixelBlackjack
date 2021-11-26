@@ -6,6 +6,7 @@ const user_money_front = document.querySelector(".user-money");
 
 const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
+const newgame_button_front = document.querySelector(".newgame-button");
 
 user_money_front.innerHTML += `<img src="assets/items/money.png" class="user-money-ico" />`;
 
@@ -43,10 +44,6 @@ let shuffle_deck = () => {
 
 shuffle_deck();
 
-console.log(`Empezó con ${playerCash}`);
-console.log(`Apostó ${playerBet}`);
-console.log(shuffledDeck);
-
 let take_card = () => {
   let card = shuffledDeck.pop();
   if (card[0] === "A") {
@@ -74,21 +71,24 @@ let take_card = () => {
     playerCash += playerBet * 2;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
+    newgame_button_front.removeAttribute("disabled");
   } else if (playerPoints === 21) {
     player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
     playerCash += playerBet * 2;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
+    newgame_button_front.removeAttribute("disabled");
   } else if (playerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
+    newgame_button_front.removeAttribute("disabled");
   }
   player_points_front.innerHTML = `${playerPoints}`;
   console.log(`player points ${playerPoints}`);
 };
 
-const initial_croupier_cards = () => {
+const dealer_cards = () => {
   let card = shuffledDeck.pop();
   if (card[0] === "A") {
     dealerPoints += 11;
@@ -115,7 +115,7 @@ const initial_croupier_cards = () => {
 
 take_card();
 take_card();
-initial_croupier_cards();
+dealer_cards();
 dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
 
 hit_button_front.addEventListener("click", () => {
@@ -128,14 +128,37 @@ stand_button_front.addEventListener("click", () => {
   dealer_cards_front.removeChild(dealer_cards_front.lastElementChild);
 
   do {
-    initial_croupier_cards();
+    dealer_cards();
   } while (dealerPoints < playerPoints);
 
   if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
+    newgame_button_front.removeAttribute("disabled");
   } else if (dealerPoints === playerPoints) {
-    player_cards_front.innerHTML += `<p>Has perdido! El dealer también formó ${playerPoints} puntos</p>`;
+    player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
+    newgame_button_front.removeAttribute("disabled");
   } else {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
+    newgame_button_front.removeAttribute("disabled");
   }
+});
+
+newgame_button_front.addEventListener("click", () => {
+  shuffle_deck();
+  playerPoints -= playerPoints;
+  dealerPoints -= dealerPoints;
+  playerCards.splice(0, playerCards.length);
+  dealerCards.splice(0, dealerCards.length);
+  player_points_front.innerHTML = `${playerPoints}`;
+  dealer_points_front.innerHTML = `${dealerPoints}`;
+  player_cards_front.innerHTML = ``;
+  dealer_cards_front.innerHTML = ``;
+  console.log(playerCards);
+  console.log(dealerCards);
+  take_card();
+  take_card();
+  dealer_cards();
+  dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
+  hit_button_front.removeAttribute("disabled");
+  stand_button_front.removeAttribute("disabled");
 });

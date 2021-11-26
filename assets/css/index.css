@@ -35,6 +35,10 @@ p {
   text-align: center;
 }
 
+.dealer-section {
+  margin-bottom: 2rem;
+}
+
 .player-points,
 .dealer-points {
   margin-left: -3.125rem;

@@ -45,12 +45,16 @@ p {
   margin-left: -3.125rem;
 }
 
-.user-money {
+.money-amount {
   display: flex;
   font-size: 1.5rem;
 }
 
-.user-money-ico {
+.money-ico {
   height: 2.2rem;
   margin-right: 0.5rem;
+}
+
+.user-money {
+  display: flex;
 }

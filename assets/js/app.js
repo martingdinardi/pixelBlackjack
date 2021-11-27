@@ -167,4 +167,5 @@ newgame_button_front.addEventListener("click", () => {
   dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");
+  newgame_button_front.setAttribute("disabled", "");
 });

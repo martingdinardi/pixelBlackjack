@@ -22,6 +22,7 @@ user_money_front.innerHTML += `<p>$${playerCash}</p>`;
 
 startgame_button_front.addEventListener("click", () => {
   startgame_button_front.setAttribute("disabled", "");
+
   let shuffle_deck = () => {
     let deck = [];
 
@@ -40,8 +41,61 @@ startgame_button_front.addEventListener("click", () => {
       }
     }
 
-    shuffledDeck = _.shuffle(deck);
-    //shuffledDeck = deck;
+    //shuffledDeck = _.shuffle(deck);
+    shuffledDeck = [
+      "2C",
+      "2D",
+      "2P",
+      "2T",
+      "3C",
+      "3D",
+      "3P",
+      "3T",
+      "4C",
+      "4D",
+      "4P",
+      "4T",
+      "5C",
+      "5D",
+      "5P",
+      "5T",
+      "6C",
+      "6D",
+      "6P",
+      "6T",
+      "7C",
+      "7D",
+      "7P",
+      "7T",
+      "8C",
+      "8D",
+      "8P",
+      "8T",
+      "9C",
+      "9D",
+      "9P",
+      "9T",
+      "10C",
+      "10D",
+      "10P",
+      "10T",
+      "JC",
+      "JD",
+      "JP",
+      "JT",
+      "QC",
+      "QD",
+      "QP",
+      "QT",
+      "KC",
+      "KD",
+      "KP",
+      "KT",
+      "AC",
+      "AD",
+      "AP",
+      "JD",
+    ];
   };
 
   shuffle_deck();
@@ -111,6 +165,16 @@ startgame_button_front.addEventListener("click", () => {
   dealer_cards();
   dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
 
+  if (playerCards.length === 2 && playerPoints === 21) {
+    player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+    playerCash += playerBet;
+    playerCash += playerBet / 2;
+    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", "");
+    newgame_button_front.removeAttribute("disabled");
+  }
+
   hit_button_front.addEventListener("click", () => {
     take_card();
   });
@@ -162,6 +226,7 @@ startgame_button_front.addEventListener("click", () => {
     if (playerCards.length === 2 && playerPoints === 21) {
       player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
       playerCash += playerBet;
+      playerCash += playerBet / 2;
       user_money_front.innerHTML = `<p>$${playerCash}</p>`;
       hit_button_front.setAttribute("disabled", "");
       stand_button_front.setAttribute("disabled", "");

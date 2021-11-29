@@ -41,61 +41,7 @@ startgame_button_front.addEventListener("click", () => {
       }
     }
 
-    //shuffledDeck = _.shuffle(deck);
-    shuffledDeck = [
-      "2C",
-      "2D",
-      "2P",
-      "2T",
-      "3C",
-      "3D",
-      "3P",
-      "3T",
-      "4C",
-      "4D",
-      "4P",
-      "4T",
-      "5C",
-      "5D",
-      "5P",
-      "5T",
-      "6C",
-      "6D",
-      "6P",
-      "6T",
-      "7C",
-      "7D",
-      "7P",
-      "7T",
-      "8C",
-      "8D",
-      "8P",
-      "8T",
-      "9C",
-      "9D",
-      "9P",
-      "9T",
-      "10C",
-      "10D",
-      "10P",
-      "10T",
-      "JC",
-      "JD",
-      "JP",
-      "JT",
-      "QC",
-      "QD",
-      "QP",
-      "QT",
-      "KC",
-      "KD",
-      "KP",
-      "KT",
-      "AC",
-      "AD",
-      "AP",
-      "JD",
-    ];
+    shuffledDeck = _.shuffle(deck);
   };
 
   shuffle_deck();
@@ -186,17 +132,20 @@ startgame_button_front.addEventListener("click", () => {
 
     do {
       dealer_cards();
-    } while (dealerPoints < playerPoints);
+    } while (dealerPoints <= 16);
 
     if (dealerPoints > 21) {
       player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
       newgame_button_front.removeAttribute("disabled");
       playerCash += playerBet;
       user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    } else if (dealerPoints < playerPoints) {
+      player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
+      newgame_button_front.removeAttribute("disabled");
     } else if (dealerPoints === playerPoints) {
       player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
       newgame_button_front.removeAttribute("disabled");
-    } else {
+    } else if (dealerPoints > playerPoints) {
       player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
       newgame_button_front.removeAttribute("disabled");
       playerCash -= playerBet;

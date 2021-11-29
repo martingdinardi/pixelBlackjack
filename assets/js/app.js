@@ -119,6 +119,13 @@ startgame_button_front.addEventListener("click", () => {
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
+  } else if (playerPoints > 21) {
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+    hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", "");
+    newgame_button_front.removeAttribute("disabled");
+    playerCash -= playerBet;
+    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
   }
 
   hit_button_front.addEventListener("click", () => {

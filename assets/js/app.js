@@ -142,6 +142,8 @@ startgame_button_front.addEventListener("click", () => {
     } else if (dealerPoints < playerPoints) {
       player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
       newgame_button_front.removeAttribute("disabled");
+      playerCash += playerBet;
+      user_money_front.innerHTML = `<p>$${playerCash}</p>`;
     } else if (dealerPoints === playerPoints) {
       player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
       newgame_button_front.removeAttribute("disabled");

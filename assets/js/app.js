@@ -1,3 +1,5 @@
+const presentation_front = document.querySelector(".presentation");
+
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
@@ -21,7 +23,8 @@ let croupierPoints = 0;
 user_money_front.innerHTML += `<p>$${playerCash}</p>`;
 
 startgame_button_front.addEventListener("click", () => {
-  startgame_button_front.setAttribute("disabled", "");
+  startgame_button_front.setAttribute("hidden", "");
+  presentation_front.setAttribute("hidden", "");
 
   let shuffle_deck = () => {
     let deck = [];

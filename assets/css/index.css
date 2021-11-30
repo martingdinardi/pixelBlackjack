@@ -10,6 +10,14 @@ body {
   color: antiquewhite;
 }
 
+.presentation {
+  width: 100vw;
+  height: 100vh;
+  background-color: royalblue;
+  position: absolute;
+  z-index: 100;
+}
+
 .window {
   /* background-color: steelblue; */
   height: 100vh;
@@ -33,6 +41,15 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 0.2rem;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons div {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 p {

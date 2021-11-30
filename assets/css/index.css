@@ -20,7 +20,7 @@ body {
 
 .window {
   /* background-color: steelblue; */
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   max-width: 50rem;
   display: flex;
@@ -30,7 +30,6 @@ body {
 
 .game-section {
   /* background-color: tomato; */
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

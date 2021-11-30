@@ -20,7 +20,7 @@ body {
 
 .window {
   /* background-color: steelblue; */
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   max-width: 50rem;
   display: flex;

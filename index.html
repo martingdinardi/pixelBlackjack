@@ -23,51 +23,51 @@
     <title>Pixel Blackjack 21 - lets play !</title>
   </head>
   <body>
-    <button type="button" class="btn btn-warning startgame-button">
-      START GAME
-    </button>
-    <div class="row">
-      <nav class="navbar navbar-light">
-        <div class="container">
-          <div class="user-money">
-            <img src="assets/items/money.png" class="money-ico" />
-            <div class="money-amount"></div>
-          </div>
-        </div>
-      </nav>
+    <div class="presentation">
+      <button type="button" class="btn btn-warning startgame-button">
+        START GAME
+      </button>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 dealer-section">
-          <div class="dealer-points"></div>
-          <div class="col-12 dealer-cards"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 player-section">
-          <div class="col-12 player-cards"></div>
-          <div class="player-points"></div>
-        </div>
-      </div>
-      <div class="row">
-        <nav class="navbar fixed-bottom">
-          <div class="container-fluid">
-            <button type="button" class="btn btn-primary stand-button">
-              STAND
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning newgame-button"
-              disabled
-            >
-              NEW GAME
-            </button>
-            <button type="button" class="btn btn-success hit-button">
-              + HIT
-            </button>
+    <div class="navbar outside-navbar"></div>
+    <div class="window">
+      <navbar class="row">
+        <nav class="navbar navbar-light">
+          <div class="container">
+            <div class="user-money">
+              <img src="assets/items/money.png" class="money-ico" />
+              <div class="money-amount"></div>
+            </div>
+            <img src="assets/items/money.png" class="money-ico" />
           </div>
         </nav>
-      </div>
+      </navbar>
+      <section class="container game-section">
+        <div class="row">
+          <div class="col-12 dealer-section">
+            <div class="dealer-points"></div>
+            <div class="col-12 dealer-cards"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 player-section">
+            <div class="col-12 player-cards"></div>
+            <div class="player-points"></div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="buttons">
+          <button type="button" class="btn stand-button">
+            <img src="assets/items/stand.png" alt="" />
+          </button>
+          <button type="button" class="btn btn-warning newgame-button" disabled>
+            NEW GAME
+          </button>
+          <button type="button" class="btn hit-button">
+            <img src="assets/items/hit.png" alt="" />
+          </button>
+        </div>
+      </footer>
     </div>
     <script src="assets/js/underscore.js"></script>
     <script src="assets/js/app.js"></script>

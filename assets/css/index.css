@@ -42,6 +42,10 @@ footer {
   margin-bottom: 0.2rem;
 }
 
+.chips button {
+  width: 5rem;
+}
+
 .buttons {
   display: flex;
 }

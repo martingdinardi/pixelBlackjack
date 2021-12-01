@@ -18,7 +18,7 @@ body {
   z-index: 100;
 }
 
-.window {
+.game-table {
   /* background-color: steelblue; */
   height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto;
@@ -40,6 +40,10 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 0.2rem;
+}
+
+.chips button {
+  width: 5rem;
 }
 
 .buttons {

@@ -2,6 +2,8 @@ let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty("--vh", `${vh}px`);
 
+// variables
+
 const presentation_front = document.querySelector(".presentation");
 
 const player_cards_front = document.querySelector(".player-cards");
@@ -35,6 +37,17 @@ startgame_button_front.addEventListener("click", () => {
   presentation_front.setAttribute("hidden", "");
 });
 
+// functions
+
+const newgameButtonEnabled = () => {
+  newgame_button_front.removeAttribute("disabled");
+};
+
+const removeBets = () => {
+  playerBet = 0;
+  player_bet_front.innerHTML = `<p>${playerBet}</p>`;
+};
+
 let shuffle_deck = () => {
   let deck = [];
 
@@ -57,10 +70,6 @@ let shuffle_deck = () => {
 };
 
 shuffle_deck();
-
-const newgameButtonEnabled = () => {
-  newgame_button_front.removeAttribute("disabled");
-};
 
 fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 ? ((playerBet += 50), (playerCash -= 50)) : (playerBet += 0);
@@ -119,6 +128,7 @@ let take_card = () => {
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
     player_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    removeBets();
   }
   player_points_front.innerHTML = `${playerPoints}`;
   console.log(`player points ${playerPoints}`);
@@ -188,18 +198,20 @@ stand_button_front.addEventListener("click", () => {
     newgame_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
     player_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    removeBets();
   } else if (dealerPoints < playerPoints) {
     player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
     newgame_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
     player_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    removeBets();
   } else if (dealerPoints === playerPoints) {
     player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
     newgame_button_front.removeAttribute("disabled");
   } else if (dealerPoints > playerPoints) {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
     newgame_button_front.removeAttribute("disabled");
-    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    removeBets();
   }
 });
 

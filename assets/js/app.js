@@ -8,7 +8,7 @@ const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
 const dealer_points_front = document.querySelector(".dealer-points");
-const user_money_front = document.querySelector(".money-amount");
+const player_money_front = document.querySelector(".money-amount");
 
 const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
@@ -24,7 +24,7 @@ let dealerPoints = 0;
 let shuffledDeck = [];
 let croupierPoints = 0;
 
-user_money_front.innerHTML += `<p>$${playerCash}</p>`;
+player_money_front.innerHTML += `<p>$${playerCash}</p>`;
 
 startgame_button_front.addEventListener("click", () => {
   startgame_button_front.setAttribute("hidden", "");
@@ -82,7 +82,7 @@ let take_card = () => {
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
     playerCash -= playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   }
   player_points_front.innerHTML = `${playerPoints}`;
   console.log(`player points ${playerPoints}`);
@@ -122,7 +122,7 @@ if (playerCards.length === 2 && playerPoints === 21) {
   player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
   playerCash += playerBet;
   playerCash += playerBet / 2;
-  user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+  player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", "");
   newgame_button_front.removeAttribute("disabled");
@@ -132,7 +132,7 @@ if (playerCards.length === 2 && playerPoints === 21) {
   stand_button_front.setAttribute("disabled", "");
   newgame_button_front.removeAttribute("disabled");
   playerCash -= playerBet;
-  user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+  player_money_front.innerHTML = `<p>$${playerCash}</p>`;
 }
 
 hit_button_front.addEventListener("click", () => {
@@ -152,12 +152,12 @@ stand_button_front.addEventListener("click", () => {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
     newgame_button_front.removeAttribute("disabled");
     playerCash += playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   } else if (dealerPoints < playerPoints) {
     player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
     newgame_button_front.removeAttribute("disabled");
     playerCash += playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   } else if (dealerPoints === playerPoints) {
     player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
     newgame_button_front.removeAttribute("disabled");
@@ -165,7 +165,7 @@ stand_button_front.addEventListener("click", () => {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
     newgame_button_front.removeAttribute("disabled");
     playerCash -= playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   }
 });
 
@@ -192,14 +192,14 @@ newgame_button_front.addEventListener("click", () => {
     player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
     playerCash += playerBet;
     playerCash += playerBet / 2;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
   } else if (playerPoints === 21) {
     player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
     playerCash += playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
@@ -209,6 +209,6 @@ newgame_button_front.addEventListener("click", () => {
     stand_button_front.setAttribute("disabled", "");
     newgame_button_front.removeAttribute("disabled");
     playerCash -= playerBet;
-    user_money_front.innerHTML = `<p>$${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   }
 });

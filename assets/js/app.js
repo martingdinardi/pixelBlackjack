@@ -41,7 +41,7 @@ startgame_button_front.addEventListener("click", () => {
 
 // functions
 
-const newgameButtonEnabled = () => {
+const betButtonEnabled = () => {
   bet_button_front.removeAttribute("disabled");
 };
 
@@ -54,6 +54,25 @@ const removeBets = () => {
 hideCards = () => {
   player_cards_front.innerHTML = `<p></p>`;
   dealer_cards_front.innerHTML = `<p></p>`;
+};
+
+hideBetButtons = () => {
+  fiftybet_button_front.setAttribute("hidden", "");
+  onehundred_bet_button_front.setAttribute("hidden", "");
+  twohundred_bet_button_front.setAttribute("hidden", "");
+  bet_button_front.setAttribute("hidden", "");
+};
+
+showMatchButtons = () => {
+  hit_button_front.removeAttribute("hidden");
+  stand_button_front.removeAttribute("hidden");
+};
+
+showBetButtons = () => {
+  fiftybet_button_front.removeAttribute("hidden");
+  onehundred_bet_button_front.removeAttribute("hidden");
+  twohundred_bet_button_front.removeAttribute("hidden");
+  bet_button_front.removeAttribute("hidden");
 };
 
 let shuffle_deck = () => {
@@ -79,34 +98,38 @@ let shuffle_deck = () => {
 
 shuffle_deck();
 
+// addEventListener
+
 fiftybet_button_front.addEventListener("click", () => {
-  playerCash >= 50 ? ((playerBet += 50), (playerCash -= 50)) : (playerBet += 0);
+  playerCash >= 50 && playerBet < 500
+    ? ((playerBet += 50), (playerCash -= 50))
+    : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
-  newgameButtonEnabled();
+  betButtonEnabled();
   hideCards();
 });
 
 onehundred_bet_button_front.addEventListener("click", () => {
-  playerCash >= 100
+  playerCash >= 100 && playerBet < 500
     ? ((playerBet += 100), (playerCash -= 100))
     : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
-  newgameButtonEnabled();
+  betButtonEnabled();
   hideCards();
 });
 
 twohundred_bet_button_front.addEventListener("click", () => {
-  playerCash >= 200
+  playerCash >= 200 && playerBet < 400
     ? ((playerBet += 200), (playerCash -= 200))
     : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
-  newgameButtonEnabled();
+  betButtonEnabled();
   hideCards();
 });
 
@@ -230,6 +253,7 @@ stand_button_front.addEventListener("click", () => {
 });
 
 bet_button_front.addEventListener("click", () => {
+  hideBetButtons();
   shuffle_deck();
   playerPoints -= playerPoints;
   dealerPoints -= dealerPoints;
@@ -245,6 +269,7 @@ bet_button_front.addEventListener("click", () => {
   take_card();
   dealer_cards();
   dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
+  showMatchButtons();
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");
   bet_button_front.setAttribute("disabled", "");

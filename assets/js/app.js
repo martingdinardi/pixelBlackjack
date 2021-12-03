@@ -105,10 +105,8 @@ fiftybet_button_front.addEventListener("click", () => {
     ? ((playerBet += 50), (playerCash -= 50))
     : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
-  player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
   betButtonEnabled();
-  hideCards();
 });
 
 onehundred_bet_button_front.addEventListener("click", () => {
@@ -116,10 +114,8 @@ onehundred_bet_button_front.addEventListener("click", () => {
     ? ((playerBet += 100), (playerCash -= 100))
     : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
-  player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
   betButtonEnabled();
-  hideCards();
 });
 
 twohundred_bet_button_front.addEventListener("click", () => {
@@ -127,10 +123,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
     ? ((playerBet += 200), (playerCash -= 200))
     : (playerBet += 0);
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
-  player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
   betButtonEnabled();
-  hideCards();
 });
 
 let take_card = () => {
@@ -254,6 +248,7 @@ stand_button_front.addEventListener("click", () => {
 
 bet_button_front.addEventListener("click", () => {
   hideBetButtons();
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
   shuffle_deck();
   playerPoints -= playerPoints;
   dealerPoints -= dealerPoints;

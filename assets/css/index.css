@@ -43,7 +43,7 @@ footer {
 }
 
 .chips button {
-  width: 5rem;
+  padding: 0;
 }
 
 .buttons {

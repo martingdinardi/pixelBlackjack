@@ -230,8 +230,7 @@ const dealer_cards = () => {
 
 if (playerCards.length === 2 && playerPoints === 21) {
   player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
-  playerCash += playerBet * 2;
-  playerCash += playerBet / 2;
+  playerCash += playerBet * 2.5;
   player_money_front.innerHTML = `<p>$${playerCash}</p>`;
   hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", "");
@@ -288,8 +287,7 @@ bet_button_front.addEventListener("click", () => {
   newMatch();
   if (playerCards.length === 2 && playerPoints === 21) {
     player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
-    playerCash += playerBet;
-    playerCash += playerBet / 2;
+    playerCash += playerBet * 2.5;
     player_money_front.innerHTML = `<p>$${playerCash}</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");

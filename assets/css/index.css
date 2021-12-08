@@ -103,9 +103,14 @@ p {
   font-size: 1.5rem;
 }
 
-.money-ico {
+.money-ico,
+.chips-ico {
   height: 2.2rem;
   margin-right: 0.5rem;
+}
+
+.chip img {
+  height: 1.9rem;
 }
 
 .user-money {

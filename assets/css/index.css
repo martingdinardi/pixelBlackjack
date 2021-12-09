@@ -5,8 +5,7 @@
 }
 
 body {
-  /* background-color: #461d25; */
-  background-image: url("../items/background.png");
+  background-color: #1e563e;
   font-family: "VT323", monospace;
   color: antiquewhite;
 }
@@ -112,6 +111,10 @@ p {
 
 .chip img {
   height: 1.9rem;
+}
+
+.bet img {
+  height: 3rem;
 }
 
 .user-money {

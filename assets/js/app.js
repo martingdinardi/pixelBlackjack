@@ -14,6 +14,7 @@ const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 
 const startgame_button_front = document.querySelector(".startgame-button");
+const bet_section_front = document.querySelector(".bet-section");
 const bet_button_front = document.querySelector(".bet-button");
 const fiftybet_button_front = document.querySelector(".fifty");
 const onehundred_bet_button_front = document.querySelector(".one-hundred");
@@ -98,16 +99,15 @@ const hideCards = () => {
 };
 
 const hideBetButtons = () => {
-  fiftybet_button_front.setAttribute("hidden", "");
-  onehundred_bet_button_front.setAttribute("hidden", "");
-  twohundred_bet_button_front.setAttribute("hidden", "");
+  bet_section_front.setAttribute("hidden", "");
   bet_button_front.setAttribute("hidden", "");
 };
 
 const showBetButtons = () => {
-  fiftybet_button_front.removeAttribute("hidden");
+  bet_section_front.removeAttribute("hidden");
+  /* fiftybet_button_front.removeAttribute("hidden");
   onehundred_bet_button_front.removeAttribute("hidden");
-  twohundred_bet_button_front.removeAttribute("hidden");
+  twohundred_bet_button_front.removeAttribute("hidden"); */
   bet_button_front.removeAttribute("hidden");
 };
 

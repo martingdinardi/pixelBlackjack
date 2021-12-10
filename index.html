@@ -52,12 +52,12 @@
           <div class="col-12 player-section">
             <div class="col-12 player-cards"></div>
             <div class="player-points"></div>
-            <div class="player-bet"></div>
+            <!-- <div class="player-bet"></div> -->
           </div>
         </div>
       </section>
       <footer>
-        <div class="buttons">
+        <div class="match-buttons">
           <button type="button" class="btn stand-button" disabled>
             <img src="assets/items/stand.png" alt="" />
           </button>
@@ -65,22 +65,27 @@
             <img src="assets/items/hit.png" alt="" />
           </button>
         </div>
-        <div class="chips">
-          <button type="button" class="btn chip fifty">
-            <img src="assets/items/fifty.png" />
-          </button>
-          <button type="button" class="btn chip one-hundred">
-            <img src="assets/items/onehundred.png" />
-          </button>
-          <button type="button" class="btn chip two-hundred">
-            <img src="assets/items/twohundred.png" />
-          </button>
-          <button type="button" class="btn btn-warning bet-button" disabled>
-            BET
-          </button>
+        <div class="bet-section">
+          <h1>MAKE YOUR BET!</h1>
+          <h1 class="player-bet">0</h1>
+          <div class="bet-buttons">
+            <button type="button" class="btn chip fifty">
+              <img src="assets/items/fifty.png" />
+            </button>
+            <button type="button" class="btn chip one-hundred">
+              <img src="assets/items/onehundred.png" />
+            </button>
+            <button type="button" class="btn chip two-hundred">
+              <img src="assets/items/twohundred.png" />
+            </button>
+          </div>
         </div>
+        <button type="button" class="btn bet bet-button" disabled>
+          <img src="assets/items/bet.png" />
+        </button>
       </footer>
     </div>
+    <div class="loader"></div>
     <script src="assets/js/underscore.js"></script>
     <script src="assets/js/app.js"></script>
   </body>

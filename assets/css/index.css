@@ -5,8 +5,7 @@
 }
 
 body {
-  /* background-color: #461d25; */
-  background-image: url("../items/background.png");
+  background-color: #1e563e;
   font-family: "VT323", monospace;
   color: antiquewhite;
 }
@@ -21,7 +20,8 @@ body {
 
 .game-table {
   /* background-color: steelblue; */
-  height: calc(var(--vh, 1vh) * 100);
+  /* height: calc(var(--vh, 1vh) * 100); */
+  height: 40rem;
   margin: 0 auto;
   max-width: 50rem;
   display: flex;
@@ -43,15 +43,26 @@ footer {
   margin-bottom: 0.2rem;
 }
 
-.chips button {
-  padding: 0;
+.bet-section {
+  /* background-color: tomato; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 0;
+  height: 14rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  top: 30%;
+  text-align: center;
 }
 
-.buttons {
+.match-buttons {
   display: flex;
 }
 
-.buttons div {
+.match-buttons div {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
@@ -114,6 +125,18 @@ p {
   height: 1.9rem;
 }
 
+.bet img {
+  height: 2.5rem;
+}
+
 .user-money {
   display: flex;
+}
+
+.loader {
+  height: 0.8rem;
+  background-color: yellow;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

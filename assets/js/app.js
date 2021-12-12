@@ -14,6 +14,7 @@ const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 
 const startgame_button_front = document.querySelector(".startgame-button");
+const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section");
 const bet_button_front = document.querySelector(".bet-button");
 const fiftybet_button_front = document.querySelector(".fifty");

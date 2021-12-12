@@ -18,10 +18,23 @@ body {
   z-index: 100;
 }
 
+.match-messages {
+  height: 5rem;
+  width: 100vw;
+  /* background-color: indianred; */
+  position: absolute;
+  top: 50%;
+  text-align: center;
+}
+
+.match-messages img {
+  height: 5rem;
+}
+
 .game-table {
   /* background-color: steelblue; */
-  /* height: calc(var(--vh, 1vh) * 100); */
-  height: 40rem;
+  height: calc(var(--vh, 1vh) * 100);
+  /* height: 30rem; */
   margin: 0 auto;
   max-width: 50rem;
   display: flex;
@@ -56,6 +69,10 @@ footer {
   right: 0;
   top: 30%;
   text-align: center;
+}
+
+.bet-section img {
+  height: 1.7rem;
 }
 
 .match-buttons {

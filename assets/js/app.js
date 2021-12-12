@@ -14,6 +14,7 @@ const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 
 const startgame_button_front = document.querySelector(".startgame-button");
+const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section");
 const bet_button_front = document.querySelector(".bet-button");
 const fiftybet_button_front = document.querySelector(".fifty");
@@ -32,13 +33,6 @@ let shuffledDeck = [];
 let croupierPoints = 0;
 
 player_money_front.innerHTML += `<p>${playerCash}</p>`;
-
-startgame_button_front.addEventListener("click", () => {
-  startgame_button_front.setAttribute("hidden", "");
-  presentation_front.setAttribute("hidden", "");
-  hit_button_front.setAttribute("hidden", "");
-  stand_button_front.setAttribute("hidden", "");
-});
 
 // functions
 
@@ -81,6 +75,19 @@ const newMatch = () => {
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");
   bet_button_front.setAttribute("disabled", "");
+};
+
+const goodLuckmessage = () => {
+  setTimeout(() => {
+    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" />`;
+  }, 500);
+  setTimeout(() => {
+    match_messages_front.innerHTML = ``;
+  }, 2500);
+};
+
+const showBetSection = () => {
+  bet_section_front.removeAttribute("hidden");
 };
 
 const betButtonEnabled = () => {
@@ -144,10 +151,22 @@ const endMatch = () => {
 
 // addEventListener
 
+startgame_button_front.addEventListener("click", () => {
+  goodLuckmessage();
+  startgame_button_front.setAttribute("hidden", "");
+  presentation_front.setAttribute("hidden", "");
+  setTimeout(() => {
+    bet_section_front.removeAttribute("hidden");
+  }, 2800);
+});
+
 fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500
     ? ((playerBet += 50), (playerCash -= 50))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();
@@ -157,6 +176,9 @@ onehundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 100 && playerBet < 500
     ? ((playerBet += 100), (playerCash -= 100))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();
@@ -166,6 +188,9 @@ twohundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 200 && playerBet < 400
     ? ((playerBet += 200), (playerCash -= 200))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();

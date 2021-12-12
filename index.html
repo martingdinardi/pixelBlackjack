@@ -28,9 +28,7 @@
         START GAME
       </button>
     </div>
-    <div class="match-messages">
-      <img src="./assets/items/goodluck.png" />
-    </div>
+    <div class="match-messages"></div>
     <div class="navbar outside-navbar"></div>
     <div class="game-table">
       <navbar class="row">
@@ -61,15 +59,15 @@
       </section>
       <footer>
         <div class="match-buttons">
-          <button type="button" class="btn stand-button" disabled>
+          <button type="button" class="btn stand-button" disabled hidden>
             <img src="assets/items/stand.png" alt="" />
           </button>
-          <button type="button" class="btn hit-button" disabled>
+          <button type="button" class="btn hit-button" disabled hidden>
             <img src="assets/items/hit.png" alt="" />
           </button>
         </div>
-        <div class="bet-section">
-          <h1>MAKE YOUR BET!</h1>
+        <div class="bet-section" hidden>
+          <img src="./assets/items/makeyourbet.png" alt="" />
           <h1 class="player-bet">0</h1>
           <div class="bet-buttons">
             <button type="button" class="btn chip fifty">
@@ -83,7 +81,7 @@
             </button>
           </div>
         </div>
-        <button type="button" class="btn bet bet-button" disabled>
+        <button type="button" class="btn bet bet-button" hidden>
           <img src="assets/items/bet.png" />
         </button>
       </footer>

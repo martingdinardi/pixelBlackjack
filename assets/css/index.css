@@ -71,6 +71,10 @@ footer {
   text-align: center;
 }
 
+.bet-section img {
+  height: 1.7rem;
+}
+
 .match-buttons {
   display: flex;
 }

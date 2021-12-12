@@ -34,13 +34,6 @@ let croupierPoints = 0;
 
 player_money_front.innerHTML += `<p>${playerCash}</p>`;
 
-startgame_button_front.addEventListener("click", () => {
-  startgame_button_front.setAttribute("hidden", "");
-  presentation_front.setAttribute("hidden", "");
-  hit_button_front.setAttribute("hidden", "");
-  stand_button_front.setAttribute("hidden", "");
-});
-
 // functions
 
 let shuffle_deck = () => {
@@ -82,6 +75,19 @@ const newMatch = () => {
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");
   bet_button_front.setAttribute("disabled", "");
+};
+
+const goodLuckmessage = () => {
+  setTimeout(() => {
+    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" />`;
+  }, 500);
+  setTimeout(() => {
+    match_messages_front.innerHTML = ``;
+  }, 2500);
+};
+
+const showBetSection = () => {
+  bet_section_front.removeAttribute("hidden");
 };
 
 const betButtonEnabled = () => {
@@ -144,6 +150,12 @@ const endMatch = () => {
 };
 
 // addEventListener
+
+startgame_button_front.addEventListener("click", () => {
+  goodLuckmessage();
+  startgame_button_front.setAttribute("hidden", "");
+  presentation_front.setAttribute("hidden", "");
+});
 
 fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500

@@ -164,6 +164,9 @@ fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500
     ? ((playerBet += 50), (playerCash -= 50))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();
@@ -173,6 +176,9 @@ onehundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 100 && playerBet < 500
     ? ((playerBet += 100), (playerCash -= 100))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();
@@ -182,6 +188,9 @@ twohundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 200 && playerBet < 400
     ? ((playerBet += 200), (playerCash -= 200))
     : (playerBet += 0);
+  if (playerCash !== 0) {
+    bet_button_front.removeAttribute("hidden");
+  }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();

@@ -155,6 +155,9 @@ startgame_button_front.addEventListener("click", () => {
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
   presentation_front.setAttribute("hidden", "");
+  setTimeout(() => {
+    bet_section_front.removeAttribute("hidden");
+  }, 2800);
 });
 
 fiftybet_button_front.addEventListener("click", () => {

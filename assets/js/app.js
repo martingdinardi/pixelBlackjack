@@ -13,6 +13,7 @@ const dealer_points_front = document.querySelector(".dealer-points");
 const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 
+const initial_elements_front = document.querySelector(".initial-elements");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section");
@@ -150,6 +151,12 @@ const endMatch = () => {
 };
 
 // addEventListener
+
+document.addEventListener("keyup", (e) => {
+  if (e.key == "Enter") {
+    initial_elements_front.setAttribute("hidden", "");
+  }
+});
 
 startgame_button_front.addEventListener("click", () => {
   goodLuckmessage();

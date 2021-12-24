@@ -183,3 +183,13 @@ p {
   max-width: 20rem;
   /* background-color: brown; */
 }
+
+.press-start {
+  animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

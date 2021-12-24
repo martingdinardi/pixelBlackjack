@@ -14,6 +14,7 @@ const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 
 const initial_elements_front = document.querySelector(".initial-elements");
+const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section");
@@ -150,12 +151,20 @@ const endMatch = () => {
   }, 3000);
 };
 
+const hideInitialsElements = () => {
+  initial_elements_front.setAttribute("hidden", "");
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
   if (e.key == "Enter") {
-    initial_elements_front.setAttribute("hidden", "");
+    hideInitialsElements();
   }
+});
+
+press_start_text_front.addEventListener("click", () => {
+  hideInitialsElements();
 });
 
 startgame_button_front.addEventListener("click", () => {

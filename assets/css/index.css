@@ -11,7 +11,7 @@ body {
   color: antiquewhite;
 }
 
-.first-window {
+.initial-window-container {
   width: 100vw;
   height: 100%;
   background-color: black;
@@ -203,4 +203,14 @@ p {
   50% {
     opacity: 0;
   }
+}
+
+.welcome {
+  /* background-color: chocolate; */
+  height: 60%;
+  margin: 0 auto;
+  max-width: 50rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }

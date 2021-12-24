@@ -4,7 +4,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // variables
 
-const presentation_front = document.querySelector(".presentation");
+const presentation_front = document.querySelector(".first-window");
 
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");

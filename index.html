@@ -23,10 +23,25 @@
     <title>Pixel Blackjack 21 - lets play !</title>
   </head>
   <body>
-    <div class="presentation">
-      <button type="button" class="btn btn-warning startgame-button">
-        START GAME
-      </button>
+    <div class="first-window">
+      <div class="welcome-window">
+        <div class="row">
+          <div class="col-12 gamelogo">
+            <img
+              src="./assets/items/gamelogo.png"
+              class="img-fluid gamelogoimg"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="h1">PRESS START</p>
+          </div>
+        </div>
+        <!-- <button type="button" class="btn btn-warning startgame-button">
+          START GAME
+        </button> -->
+      </div>
     </div>
     <div class="match-messages"></div>
     <div class="navbar outside-navbar"></div>
@@ -67,7 +82,7 @@
           </button>
         </div>
         <div class="bet-section" hidden>
-          <img src="./assets/items/makeyourbet.png" alt="" />
+          <div><img src="./assets/items/makeyourbet.png" /></div>
           <h1 class="player-bet">0</h1>
           <div class="bet-buttons">
             <button type="button" class="btn chip fifty">

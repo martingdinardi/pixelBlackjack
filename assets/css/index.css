@@ -179,13 +179,18 @@ p {
   bottom: 0;
 }
 
-.gamelogo {
+.game-logo {
   max-width: 20rem;
   /* background-color: brown; */
 }
 
 .press-start {
-  animation: blink 1.5s linear infinite;
+  /* background-color: chocolate; */
+  height: 8rem;
+}
+
+.press-start-text {
+  animation: blink 1.7s linear infinite;
 }
 
 @keyframes blink {

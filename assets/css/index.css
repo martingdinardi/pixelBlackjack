@@ -14,7 +14,7 @@ body {
 .first-window {
   width: 100vw;
   height: 100%;
-  background-color: royalblue;
+  background-color: black;
   position: absolute;
   z-index: 100;
 }
@@ -48,6 +48,21 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.welcome-window {
+  /* background-color: tomato; */
+  background-image: url("../items/blackjack_title.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 footer {
@@ -162,4 +177,9 @@ p {
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.gamelogo {
+  max-width: 20rem;
+  /* background-color: brown; */
 }

@@ -4,15 +4,19 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // variables
 
-const presentation_front = document.querySelector(".first-window");
-
+const initial_window_container_front = document.querySelector(
+  ".initial-window-container"
+);
+const player_name = "";
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
 const dealer_points_front = document.querySelector(".dealer-points");
 const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
-
+const inital_window_front = document.querySelector(".initial-window");
+const initial_elements_front = document.querySelector(".initial-elements");
+const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section");
@@ -149,12 +153,43 @@ const endMatch = () => {
   }, 3000);
 };
 
+const hideInitialsElements = () => {
+  initial_elements_front.setAttribute("hidden", "");
+};
+
+const welcomeToPlayer = () => {
+  inital_window_front.innerHTML += `<div class="welcome-container">
+      <div class="row welcome-window">
+      <div class="col-12">
+      <div class="welcome-elements">
+      <p class="h1">¡Hello and welcome to BlackJack Casino!<br> ¡The place to test your luck and multiply your wins!</p><br />
+      <p class="h1">Who do we have the pleasure of talking to?</p>
+      <input type="text" class="playerName" autofocus>
+      </div>
+      <h1>CONTINUE ></h1>
+      </div>
+    </div>
+  </div>`;
+};
+
 // addEventListener
+
+document.addEventListener("keyup", (e) => {
+  if (e.key == "Enter") {
+    hideInitialsElements();
+    welcomeToPlayer();
+  }
+});
+
+press_start_text_front.addEventListener("click", () => {
+  hideInitialsElements();
+  welcomeToPlayer();
+});
 
 startgame_button_front.addEventListener("click", () => {
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
-  presentation_front.setAttribute("hidden", "");
+  initial_window_container_front.setAttribute("hidden", "");
   setTimeout(() => {
     bet_section_front.removeAttribute("hidden");
   }, 2800);

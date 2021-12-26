@@ -11,7 +11,7 @@ body {
   color: antiquewhite;
 }
 
-.first-window {
+.initial-window-container {
   width: 100vw;
   height: 100%;
   background-color: black;
@@ -50,7 +50,7 @@ body {
   justify-content: center;
 }
 
-.welcome-window {
+.initial-window {
   /* background-color: tomato; */
   background-image: url("../items/blackjack_title.png");
   background-position: center;
@@ -59,10 +59,16 @@ body {
   height: 100%;
   margin: 0 auto;
   max-width: 50rem;
+}
+
+.initial-elements {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
 }
 
 footer {
@@ -179,7 +185,66 @@ p {
   bottom: 0;
 }
 
-.gamelogo {
+.game-logo {
   max-width: 20rem;
   /* background-color: brown; */
+}
+
+.press-start {
+  /* background-color: chocolate; */
+  height: 8rem;
+}
+
+.press-start-text {
+  animation: blink 1.7s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.welcome-container {
+  background-image: url("../items/hall.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: chocolate; */
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.playerName {
+  background-color: transparent;
+  /* background-color: tomato; */
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: antiquewhite;
+  border-width: 0.25rem;
+  max-width: 70%;
+  font-size: calc(1.375rem + 1.5vw);
+  color: antiquewhite;
+}
+
+.playerName:focus {
+  outline: none;
+}
+
+.welcome-elements {
+  /* background-color: seagreen; */
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* text-align: center; */
+  align-items: center;
+  max-width: 30rem;
 }

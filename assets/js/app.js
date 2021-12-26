@@ -158,11 +158,15 @@ const hideInitialsElements = () => {
 };
 
 const welcomeToPlayer = () => {
-  inital_window_front.innerHTML += `<div class="welcome">
-    <div class="row">
+  inital_window_front.innerHTML += `<div class="welcome-container">
+      <div class="row welcome-window">
       <div class="col-12">
-      <p class="h1">¡Hello and welcome to BlackJack Casino! ¡The place to test your luck and multiply your wins!</p><br />
+      <div class="welcome-elements">
+      <p class="h1">¡Hello and welcome to BlackJack Casino!<br> ¡The place to test your luck and multiply your wins!</p><br />
       <p class="h1">Who do we have the pleasure of talking to?</p>
+      <input type="text" class="playerName" autofocus>
+      </div>
+      <h1>CONTINUE ></h1>
       </div>
     </div>
   </div>`;

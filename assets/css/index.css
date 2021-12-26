@@ -205,12 +205,46 @@ p {
   }
 }
 
-.welcome {
+.welcome-container {
+  background-image: url("../items/hall.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* background-color: chocolate; */
-  height: 60%;
+  height: 100%;
   margin: 0 auto;
   max-width: 50rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: center;
+}
+
+.playerName {
+  background-color: transparent;
+  /* background-color: tomato; */
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: antiquewhite;
+  border-width: 0.25rem;
+  max-width: 70%;
+  font-size: calc(1.375rem + 1.5vw);
+  color: antiquewhite;
+}
+
+.playerName:focus {
+  outline: none;
+}
+
+.welcome-elements {
+  /* background-color: seagreen; */
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* text-align: center; */
+  align-items: center;
+  max-width: 30rem;
 }

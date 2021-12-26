@@ -248,3 +248,13 @@ p {
   align-items: center;
   max-width: 30rem;
 }
+
+.continue-button {
+  background-color: transparent;
+  border: none;
+  color: antiquewhite;
+}
+
+.continue-button:disabled {
+  color: rgba(250, 235, 215, 0.5);
+}

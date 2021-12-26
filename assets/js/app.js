@@ -7,7 +7,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 const initial_window_container_front = document.querySelector(
   ".initial-window-container"
 );
-const player_name = "";
+let player_name;
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
@@ -16,6 +16,7 @@ const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 const inital_window_front = document.querySelector(".initial-window");
 const initial_elements_front = document.querySelector(".initial-elements");
+let continue_button_front;
 const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
@@ -157,6 +158,11 @@ const hideInitialsElements = () => {
   initial_elements_front.setAttribute("hidden", "");
 };
 
+/* const verifyPlayerName = () => {
+  player_name = player_name_input;
+  console.log(player_name);
+}; */
+
 const welcomeToPlayer = () => {
   inital_window_front.innerHTML += `<div class="welcome-container">
       <div class="row welcome-window">
@@ -164,14 +170,34 @@ const welcomeToPlayer = () => {
       <div class="welcome-elements">
       <p class="h1">¡Hello and welcome to BlackJack Casino!<br> ¡The place to test your luck and multiply your wins!</p><br />
       <p class="h1">Who do we have the pleasure of talking to?</p>
-      <input type="text" class="playerName" autofocus>
+      <input type="text" class="playerName" onkeyup="verifyPlayerName()" autofocus> 
       </div>
-      <h1>CONTINUE ></h1>
+      <button class="continue-button" disabled><h1>CONTINUE ></h1></button>
       </div>
     </div>
-  </div>`;
+  </div>`; /* onkeyup="verifyPlayerName()" */
+
+  let welcome_elements_front = document.querySelector(".welcome-elements");
+  /* let player_name_input = document.querySelector(".playerName").value; */
+
+  if (continue_button_front == undefined) {
+    continue_button_front = document.querySelector(".continue-button");
+  }
+  continue_button_front.addEventListener("click", () => {
+    console.log(welcome_elements_front);
+    welcome_elements_front.innerHTML = `
+        <p class="h1">¡Nice to meet you ${player_name}!</p>
+        `;
+  });
 };
 
+const verifyPlayerName = () => {
+  player_name = document.querySelector(".playerName").value;
+  if (player_name.length >= 1) {
+    continue_button_front.removeAttribute("disabled");
+  }
+  console.log(player_name);
+};
 // addEventListener
 
 document.addEventListener("keyup", (e) => {

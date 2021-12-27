@@ -4,10 +4,11 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // variables
 
-const initial_window_container_front = document.querySelector(
-  ".initial-window-container"
-);
-const player_name = "";
+let player_name_window_switch = false;
+
+let player_name;
+const player_name_front = document.querySelector(".player-name");
+const player_name_input_front = document.querySelector(".playerName");
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
@@ -15,7 +16,13 @@ const dealer_points_front = document.querySelector(".dealer-points");
 const player_money_front = document.querySelector(".money-amount");
 const player_bet_front = document.querySelector(".player-bet");
 const inital_window_front = document.querySelector(".initial-window");
+const initial_window_container_front = document.querySelector(
+  ".initial-window-container"
+);
+const welcome_container = document.querySelector(".welcome-container");
 const initial_elements_front = document.querySelector(".initial-elements");
+const continue_button_front = document.querySelector(".continue-button");
+const start_game_container = document.querySelector(".start-game-container");
 const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
@@ -157,42 +164,60 @@ const hideInitialsElements = () => {
   initial_elements_front.setAttribute("hidden", "");
 };
 
-const welcomeToPlayer = () => {
-  inital_window_front.innerHTML += `<div class="welcome-container">
-      <div class="row welcome-window">
-      <div class="col-12">
-      <div class="welcome-elements">
-      <p class="h1">¡Hello and welcome to BlackJack Casino!<br> ¡The place to test your luck and multiply your wins!</p><br />
-      <p class="h1">Who do we have the pleasure of talking to?</p>
-      <input type="text" class="playerName" autofocus>
-      </div>
-      <h1>CONTINUE ></h1>
-      </div>
-    </div>
-  </div>`;
+const showWelcomeElements = () => {
+  welcome_container.removeAttribute("hidden");
 };
 
+const hideWelcomeElements = () => {
+  welcome_container.setAttribute("hidden", "");
+};
+
+const showStartgameContainer = () => {
+  start_game_container.removeAttribute("hidden");
+};
+
+startgame_button_front.addEventListener("click", () => {
+  initial_window_container_front.setAttribute("hidden", "");
+  goodLuckmessage();
+  startgame_button_front.setAttribute("hidden", "");
+  setTimeout(() => {
+    bet_section_front.removeAttribute("hidden");
+  }, 2800);
+});
+
+const verifyPlayerName = () => {
+  player_name = document.querySelector(".playerName").value;
+  if (player_name.length >= 1) {
+    continue_button_front.removeAttribute("disabled");
+  }
+  console.log(player_name);
+};
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
-  if (e.key == "Enter") {
+  if (e.key == "Enter" && player_name_window_switch === false) {
     hideInitialsElements();
-    welcomeToPlayer();
+    showWelcomeElements();
+    player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", "");
+  } else if (e.key == "Enter" && player_name_window_switch === true) {
+    hideWelcomeElements();
+    showStartgameContainer();
+    player_name_front.innerHTML = `${player_name}`;
   }
 });
 
 press_start_text_front.addEventListener("click", () => {
   hideInitialsElements();
-  welcomeToPlayer();
+  showWelcomeElements();
+  player_name_window_switch = true;
+  player_name_input_front.setAttribute("autofocus", "");
 });
 
-startgame_button_front.addEventListener("click", () => {
-  goodLuckmessage();
-  startgame_button_front.setAttribute("hidden", "");
-  initial_window_container_front.setAttribute("hidden", "");
-  setTimeout(() => {
-    bet_section_front.removeAttribute("hidden");
-  }, 2800);
+continue_button_front.addEventListener("click", () => {
+  hideWelcomeElements();
+  showStartgameContainer();
+  player_name_front.innerHTML = `${player_name}`;
 });
 
 fiftybet_button_front.addEventListener("click", () => {

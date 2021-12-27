@@ -40,10 +40,57 @@
             </div>
           </div>
         </div>
-
-        <button type="button" class="btn btn-warning startgame-button" hidden>
-          START GAME
-        </button>
+        <div class="welcome-container">
+          <div class="row welcome-window">
+            <div class="col-12">
+              <div class="welcome-elements">
+                <p class="h1">
+                  ¡Hello and welcome to BlackJack Casino!<br />
+                  ¡The place to test your luck and multiply your wins!
+                </p>
+                <br />
+                <p class="h1">Who do we have the pleasure of talking to?</p>
+                <input
+                  type="text"
+                  class="playerName"
+                  onkeyup="verifyPlayerName()"
+                  autofocus
+                />
+              </div>
+              <button class="continue-button" disabled>
+                <h1>CONTINUE ></h1>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="welcome-container">
+          <div class="row welcome-window">
+            <div class="col-12">
+              <div class="welcome-elements">
+                <p class="h1">
+                  ¡Nice to meet you ${player_name} and CONGRATULATIONS!
+                </p>
+                <br />
+                <div class="d-flex">
+                  <p class="h1">
+                    We give you a bonus for 500 free chips
+                    <img src="assets/items/chips.png" class="chips-ico" />
+                  </p>
+                </div>
+                <p class="h1">¡Press start to charge them and start playing!</p>
+                <br />
+                <p class="h1">ah.. First drink on the house</p>
+                <p class="h1">Good Luck!</p>
+                <button type="button" class="btn btn-warning startgame-button">
+                  START GAME
+                </button>
+              </div>
+              <button class="continue-button" disabled>
+                <h1>CONTINUE ></h1>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="match-messages"></div>

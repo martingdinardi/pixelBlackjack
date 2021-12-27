@@ -7,6 +7,8 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 let player_name_window_switch = false;
 
 let player_name;
+const player_name_front = document.querySelector(".player-name");
+const player_name_input_front = document.querySelector(".playerName");
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
@@ -17,8 +19,10 @@ const inital_window_front = document.querySelector(".initial-window");
 const initial_window_container_front = document.querySelector(
   ".initial-window-container"
 );
+const welcome_container = document.querySelector(".welcome-container");
 const initial_elements_front = document.querySelector(".initial-elements");
 const continue_button_front = document.querySelector(".continue-button");
+const start_game_container = document.querySelector(".start-game-container");
 const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
@@ -160,6 +164,18 @@ const hideInitialsElements = () => {
   initial_elements_front.setAttribute("hidden", "");
 };
 
+const showWelcomeElements = () => {
+  welcome_container.removeAttribute("hidden");
+};
+
+const hideWelcomeElements = () => {
+  welcome_container.setAttribute("hidden", "");
+};
+
+const showStartgameContainer = () => {
+  start_game_container.removeAttribute("hidden");
+};
+
 startgame_button_front.addEventListener("click", () => {
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
@@ -181,12 +197,27 @@ const verifyPlayerName = () => {
 document.addEventListener("keyup", (e) => {
   if (e.key == "Enter" && player_name_window_switch === false) {
     hideInitialsElements();
+    showWelcomeElements();
     player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", "");
+  } else if (e.key == "Enter" && player_name_window_switch === true) {
+    hideWelcomeElements();
+    showStartgameContainer();
+    player_name_front.innerHTML = `${player_name}`;
   }
 });
 
 press_start_text_front.addEventListener("click", () => {
   hideInitialsElements();
+  showWelcomeElements();
+  player_name_window_switch = true;
+  player_name_input_front.setAttribute("autofocus", "");
+});
+
+continue_button_front.addEventListener("click", () => {
+  hideWelcomeElements();
+  showStartgameContainer();
+  player_name_front.innerHTML = `${player_name}`;
 });
 
 fiftybet_button_front.addEventListener("click", () => {

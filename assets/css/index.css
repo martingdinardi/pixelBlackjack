@@ -52,16 +52,20 @@ body {
 
 .initial-window {
   /* background-color: tomato; */
-  background-image: url("../items/blackjack_title.png");
+  /* background-image: url("../items/blackjack_title.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   height: 100%;
   margin: 0 auto;
   max-width: 50rem;
 }
 
 .initial-elements {
+  background-image: url("../items/blackjack_title.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,7 +209,8 @@ p {
   }
 }
 
-.welcome-container {
+.welcome-container,
+.start-game-container {
   background-image: url("../items/hall.png");
   background-position: center;
   background-repeat: no-repeat;

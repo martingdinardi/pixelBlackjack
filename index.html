@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="welcome-container">
+        <div class="welcome-container" hidden>
           <div class="row welcome-window">
             <div class="col-12">
               <div class="welcome-elements">
@@ -54,7 +54,6 @@
                   type="text"
                   class="playerName"
                   onkeyup="verifyPlayerName()"
-                  autofocus
                 />
               </div>
               <button class="continue-button" disabled>
@@ -63,12 +62,14 @@
             </div>
           </div>
         </div>
-        <div class="welcome-container">
+        <div class="start-game-container" hidden>
           <div class="row welcome-window">
             <div class="col-12">
               <div class="welcome-elements">
                 <p class="h1">
-                  ¡Nice to meet you ${player_name} and CONGRATULATIONS!
+                  Nice to meet you
+                  <span class="player-name">${player_name}</span> and
+                  CONGRATULATIONS!
                 </p>
                 <br />
                 <div class="d-flex">
@@ -77,17 +78,14 @@
                     <img src="assets/items/chips.png" class="chips-ico" />
                   </p>
                 </div>
-                <p class="h1">¡Press start to charge them and start playing!</p>
+                <p class="h1">Press start to charge them and start playing!</p>
                 <br />
-                <p class="h1">ah.. First drink on the house</p>
+                <p class="h1">and hey! First drink on the house!</p>
                 <p class="h1">Good Luck!</p>
                 <button type="button" class="btn btn-warning startgame-button">
                   START GAME
                 </button>
               </div>
-              <button class="continue-button" disabled>
-                <h1>CONTINUE ></h1>
-              </button>
             </div>
           </div>
         </div>

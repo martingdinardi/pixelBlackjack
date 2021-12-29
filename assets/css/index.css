@@ -5,8 +5,7 @@
 }
 
 body {
-  /* background-color: #1e563e; */
-  background-image: url("../items/green-table.jpg");
+  background-color: black;
   font-family: "VT323", monospace;
   color: antiquewhite;
 }
@@ -33,6 +32,7 @@ body {
 }
 
 .game-table {
+  background-image: url("../items/green-table.jpg");
   /* background-color: steelblue; */
   height: calc(var(--vh, 1vh) * 100);
   /* height: 30rem; */
@@ -245,7 +245,7 @@ p {
 
 .welcome-elements {
   /* background-color: seagreen; */
-  height: 30rem;
+  height: 22rem;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
@@ -254,10 +254,15 @@ p {
   max-width: 30rem;
 }
 
-.continue-button {
+.continue-button,
+.startgame-button {
   background-color: transparent;
   border: none;
   color: antiquewhite;
+}
+
+.startgame-button {
+  animation: blink 1.7s linear infinite;
 }
 
 .continue-button:disabled {

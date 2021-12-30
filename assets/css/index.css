@@ -245,13 +245,13 @@ p {
 
 .welcome-elements {
   /* background-color: seagreen; */
-  height: 22rem;
+  height: 25rem;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
   /* text-align: center; */
   align-items: center;
-  max-width: 30rem;
+  max-width: 32rem;
 }
 
 .continue-button,

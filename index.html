@@ -54,18 +54,19 @@
                   type="text"
                   class="playerName"
                   onkeyup="verifyPlayerName()"
+                  autofocus
                 />
+                <button class="continue-button mt-4" disabled>
+                  <h1>CONTINUE ></h1>
+                </button>
               </div>
-              <button class="continue-button" disabled>
-                <h1>CONTINUE ></h1>
-              </button>
             </div>
           </div>
         </div>
         <div class="start-game-container" hidden>
           <div class="row welcome-window">
             <div class="col-12">
-              <div class="welcome-elements">
+              <div class="start-game-elements">
                 <p class="h1">
                   Nice to meet you
                   <span class="player-name">${player_name}</span> and
@@ -85,7 +86,7 @@
                 <!-- <p class="h1">Good Luck!</p> -->
               </div>
               <button type="button" class="startgame-button">
-                <h1>START GAME</h1>
+                <h1 class="mt-5">START GAME</h1>
               </button>
             </div>
           </div>

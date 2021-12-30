@@ -86,23 +86,34 @@ footer {
   margin-bottom: 0.2rem;
 }
 
-.bet-section {
+.bet-section-window {
   /* background-color: tomato; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   left: 0;
-  height: 14rem;
   margin-left: auto;
   margin-right: auto;
+  max-width: 50rem;
+  height: 100%;
   position: absolute;
   right: 0;
-  top: 30%;
+  top: 0;
   text-align: center;
+  align-items: center;
 }
 
-.bet-section img {
+.bet-section-window img {
   width: 20rem;
+}
+
+.bet-section {
+  align-items: center;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  height: 62%;
+  justify-content: space-around;
 }
 
 .match-buttons {
@@ -177,8 +188,37 @@ p {
   width: auto;
 }
 
-.bet img {
+.bet-button img {
   height: 2.5rem;
+}
+
+.bet {
+  display: flex;
+  flex-direction: column;
+  /* background-color: brown; */
+  max-width: 10rem;
+  /* height: 10rem; */
+  margin-top: 3rem;
+  margin-right: 0.4rem;
+}
+
+.bet img {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.bet-value {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.bet-value-items {
+  display: flex;
+}
+
+.new-chip {
+  margin-top: -35px;
 }
 
 .user-money {

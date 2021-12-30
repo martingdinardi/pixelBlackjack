@@ -135,27 +135,53 @@
             <img src="assets/items/hit.png" alt="" />
           </button>
         </div>
-        <div class="bet-section" hidden>
-          <div><img src="./assets/items/makeyourbet.png" /></div>
-          <h1 class="player-bet">0</h1>
-          <div class="bet-buttons">
-            <button type="button" class="btn chip fifty">
-              <img src="assets/items/fifty.png" />
-              <p>50</p>
-            </button>
-            <button type="button" class="btn chip one-hundred">
-              <img src="assets/items/onehundred.png" />
-              <p>100</p>
-            </button>
-            <button type="button" class="btn chip two-hundred">
-              <img src="assets/items/twohundred.png" />
-              <p>200</p>
+        <div class="bet-section-window" hidden>
+          <div class="bet-section">
+            <div><img src="./assets/items/makeyourbet.png" /></div>
+            <!--             <div class="bet-value">
+              <div class="bet">
+                <img src="assets/items/onehundred.png" />
+                <img src="assets/items/fifty.png" class="new-chip" />
+                <img src="assets/items/fifty.png" class="new-chip" />
+              </div>
+              <div class="bet-value-number">
+                <h1 class="player-bet">0</h1>
+              </div>
+            </div> -->
+            <div class="bet-buttons">
+              <div class="bet-value">
+                <div class="bet-value-items">
+                  <div class="bet">
+                    <!-- <img src="assets/items/onehundred.png" />
+                    <img src="assets/items/fifty.png" class="new-chip" />
+                    <img src="assets/items/fifty.png" class="new-chip" /> -->
+                  </div>
+                  <div class="bet-value-number">
+                    <p class="player-bet"></p>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="btn chip fifty">
+                <img src="assets/items/fifty.png" />
+                <p>50</p>
+              </button>
+              <button type="button" class="btn chip one-hundred">
+                <img src="assets/items/onehundred.png" />
+                <p>100</p>
+              </button>
+              <button type="button" class="btn chip two-hundred">
+                <img src="assets/items/twohundred.png" />
+                <p>200</p>
+              </button>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="btn bet-button" hidden>
+              <h1>B E T</h1>
             </button>
           </div>
         </div>
-        <button type="button" class="btn bet bet-button" hidden>
-          <img src="assets/items/bet.png" />
-        </button>
       </footer>
     </div>
     <div class="loader"></div>

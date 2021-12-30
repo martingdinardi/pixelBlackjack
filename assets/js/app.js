@@ -26,8 +26,9 @@ const start_game_container = document.querySelector(".start-game-container");
 const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
-const bet_section_front = document.querySelector(".bet-section");
+const bet_section_front = document.querySelector(".bet-section-window");
 const bet_button_front = document.querySelector(".bet-button");
+const bet_item_front = document.querySelector(".bet");
 const fiftybet_button_front = document.querySelector(".fifty");
 const onehundred_bet_button_front = document.querySelector(".one-hundred");
 const twohundred_bet_button_front = document.querySelector(".two-hundred");
@@ -66,6 +67,10 @@ let shuffle_deck = () => {
   }
 
   shuffledDeck = _.shuffle(deck);
+};
+
+const restartBet = () => {
+  bet_item_front.innerHTML = "";
 };
 
 const newMatch = () => {
@@ -107,7 +112,7 @@ const betButtonEnabled = () => {
 
 const removeBets = () => {
   playerBet = 0;
-  player_bet_front.innerHTML = `<p>${playerBet}</p>`;
+  player_bet_front.innerHTML = /* `<p>${playerBet}</p>` */ "";
   bet_button_front.setAttribute("disabled", "");
 };
 
@@ -149,6 +154,7 @@ const removePoints = () => {
 const endMatchActions = () => {
   hideCards();
   hideMatchButtons();
+  restartBet();
   removeBets();
   removePoints();
   showBetButtons();
@@ -226,7 +232,9 @@ continue_button_front.addEventListener("click", () => {
 
 fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500
-    ? ((playerBet += 50), (playerCash -= 50))
+    ? ((playerBet += 50),
+      (playerCash -= 50),
+      (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`))
     : (playerBet += 0);
   if (playerCash !== 0) {
     bet_button_front.removeAttribute("hidden");
@@ -238,7 +246,9 @@ fiftybet_button_front.addEventListener("click", () => {
 
 onehundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 100 && playerBet < 500
-    ? ((playerBet += 100), (playerCash -= 100))
+    ? ((playerBet += 100),
+      (playerCash -= 100),
+      (bet_item_front.innerHTML += `<img src="assets/items/onehundred.png" class="new-chip"/>`))
     : (playerBet += 0);
   if (playerCash !== 0) {
     bet_button_front.removeAttribute("hidden");
@@ -250,7 +260,9 @@ onehundred_bet_button_front.addEventListener("click", () => {
 
 twohundred_bet_button_front.addEventListener("click", () => {
   playerCash >= 200 && playerBet < 400
-    ? ((playerBet += 200), (playerCash -= 200))
+    ? ((playerBet += 200),
+      (playerCash -= 200),
+      (bet_item_front.innerHTML += `<img src="assets/items/twohundred.png" class="new-chip"/>`))
     : (playerBet += 0);
   if (playerCash !== 0) {
     bet_button_front.removeAttribute("hidden");

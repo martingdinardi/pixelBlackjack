@@ -188,6 +188,10 @@ p {
   width: auto;
 }
 
+.bet-button {
+  visibility: hidden;
+}
+
 .bet-button img {
   height: 2.5rem;
 }

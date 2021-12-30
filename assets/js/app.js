@@ -237,7 +237,8 @@ fiftybet_button_front.addEventListener("click", () => {
       (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`))
     : (playerBet += 0);
   if (playerCash !== 0) {
-    bet_button_front.removeAttribute("hidden");
+    /* bet_button_front.removeAttribute("hidden"); */
+    bet_button_front.style.visibility = "visible";
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
@@ -251,7 +252,8 @@ onehundred_bet_button_front.addEventListener("click", () => {
       (bet_item_front.innerHTML += `<img src="assets/items/onehundred.png" class="new-chip"/>`))
     : (playerBet += 0);
   if (playerCash !== 0) {
-    bet_button_front.removeAttribute("hidden");
+    /* bet_button_front.removeAttribute("hidden"); */
+    bet_button_front.style.visibility = "visible";
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
@@ -265,7 +267,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
       (bet_item_front.innerHTML += `<img src="assets/items/twohundred.png" class="new-chip"/>`))
     : (playerBet += 0);
   if (playerCash !== 0) {
-    bet_button_front.removeAttribute("hidden");
+    /* bet_button_front.removeAttribute("hidden"); */
+    bet_button_front.style.visibility = "visible";
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 

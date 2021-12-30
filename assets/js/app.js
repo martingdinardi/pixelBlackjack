@@ -200,7 +200,11 @@ document.addEventListener("keyup", (e) => {
     showWelcomeElements();
     player_name_window_switch = true;
     player_name_input_front.setAttribute("autofocus", "");
-  } else if (e.key == "Enter" && player_name_window_switch === true) {
+  } else if (
+    e.key == "Enter" &&
+    player_name_window_switch === true &&
+    player_name !== undefined
+  ) {
     hideWelcomeElements();
     showStartgameContainer();
     player_name_front.innerHTML = `${player_name}`;

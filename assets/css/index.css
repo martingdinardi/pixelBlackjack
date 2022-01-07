@@ -129,9 +129,9 @@ p {
   margin-bottom: 0;
 }
 
-.row {
+/* .row {
   margin: 0;
-}
+} */
 
 .navbar {
   padding: 1rem;
@@ -152,11 +152,54 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: auto;
+  top: 25rem;
+  left: 50%;
+  position: relative;
 }
 
-.player-section,
+.one-card-dealer {
+  height: 5.625rem;
+  margin-left: -3.125rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: auto;
+  /*   top: 200px;
+  position: relative; */
+}
+
+.deal1 {
+  animation-name: dealingcard;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+@keyframes dealingcard {
+  0% {
+    transform: rotate(45deg);
+    top: 0;
+    left: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    top: 25rem;
+    left: 50%;
+  }
+}
+
+.player-section {
+  /* text-align: center; */
+  /* background-color: tomato; */
+  height: 60%;
+  max-width: 50rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+}
+
 .dealer-section {
   text-align: center;
+  background-color: tomato;
 }
 
 .dealer-section {
@@ -186,6 +229,10 @@ p {
 .chip img {
   height: 3rem;
   width: auto;
+}
+
+.bet-button {
+  visibility: hidden;
 }
 
 .bet-button img {
@@ -278,7 +325,7 @@ p {
   border-right: 0;
   border-color: antiquewhite;
   border-width: 0.25rem;
-  max-width: 70%;
+  max-width: 87%;
   font-size: calc(1.375rem + 1.5vw);
   color: antiquewhite;
 }

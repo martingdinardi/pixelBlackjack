@@ -129,9 +129,9 @@ p {
   margin-bottom: 0;
 }
 
-.row {
+/* .row {
   margin: 0;
-}
+} */
 
 .navbar {
   padding: 1rem;
@@ -154,9 +154,19 @@ p {
   width: auto;
 }
 
-.player-section,
+.player-section {
+  /* text-align: center; */
+  background-color: tomato;
+  height: 60%;
+  max-width: 50rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+}
+
 .dealer-section {
   text-align: center;
+  background-color: tomato;
 }
 
 .dealer-section {

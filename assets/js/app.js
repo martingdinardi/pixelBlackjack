@@ -83,8 +83,14 @@ const newMatch = () => {
   dealer_points_front.innerHTML = `${dealerPoints}`;
   player_cards_front.innerHTML = ``;
   dealer_cards_front.innerHTML = ``;
-  take_card();
-  take_card();
+  setTimeout(() => {
+    take_card();
+  }, 1500);
+  setTimeout(() => {
+    take_card();
+  }, 3000);
+  /* take_card();
+  take_card(); */
   dealer_cards();
   dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
   showMatchButtons();
@@ -348,7 +354,10 @@ if (playerCards.length === 2 && playerPoints === 21) {
 }
 
 hit_button_front.addEventListener("click", () => {
-  take_card();
+  setTimeout(() => {
+    take_card();
+  }, 1500);
+  /* take_card(); */
 });
 
 stand_button_front.addEventListener("click", () => {

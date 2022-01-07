@@ -92,7 +92,7 @@ const newMatch = () => {
   /* take_card();
   take_card(); */
   dealer_cards();
-  dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card" />`;
+  dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`;
   showMatchButtons();
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");
@@ -204,6 +204,13 @@ const verifyPlayerName = () => {
   }
   console.log(player_name);
 };
+
+const removeDealClass = () => {
+  let cardWithDealClass = document.querySelectorAll(".deal1");
+  cardWithDealClass.forEach((card) => {
+    card.classList.remove("deal1");
+  });
+};
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -288,19 +295,28 @@ let take_card = () => {
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card" />`;
+    }.png" class="one-card deal1" />`;
+    setTimeout(() => {
+      removeDealClass();
+    }, 1050);
   } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
     playerPoints += 10;
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card" />`;
+    }.png" class="one-card deal1" />`;
+    setTimeout(() => {
+      removeDealClass();
+    }, 1050);
   } else {
     playerPoints += parseInt(card.substring(0, card.length - 1));
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card" />`;
+    }.png" class="one-card deal1" />`;
+    setTimeout(() => {
+      removeDealClass();
+    }, 1050);
   }
   if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
@@ -322,7 +338,7 @@ const dealer_cards = () => {
     dealerCards.push(card);
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
-    }.png" class="one-card" />`;
+    }.png" class="one-card-dealer" />`;
   };
   if (card[0] === "A") {
     dealerPoints += 11;

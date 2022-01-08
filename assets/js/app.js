@@ -89,10 +89,10 @@ const newMatch = () => {
   dealer_cards_front.innerHTML = ``;
   setTimeout(() => {
     take_card();
-  }, 1500);
+  }, 1100);
   setTimeout(() => {
     take_card();
-  }, 3000);
+  }, 2200);
   /* take_card();
   take_card(); */
   dealer_cards();
@@ -302,7 +302,7 @@ let take_card = () => {
     }.png" class="one-card deal1" />`;
     setTimeout(() => {
       removeDealClass();
-    }, 1050);
+    }, 800);
   } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
     playerPoints += 10;
     playerCards.push(card);

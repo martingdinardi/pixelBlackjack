@@ -39,7 +39,7 @@ p {
   background-image: url("../items/green-table.jpg");
   /* background-color: steelblue; */
   height: calc(var(--vh, 1vh) * 100);
-  /* height: 30rem; */
+  /* height: 100%; */
   margin: 0 auto;
   max-width: 50rem;
   display: flex;
@@ -129,9 +129,9 @@ p {
   margin-bottom: 0;
 }
 
-/* .row {
+.row {
   margin: 0;
-} */
+}
 
 .navbar {
   padding: 1rem;
@@ -195,6 +195,7 @@ p {
   margin: 0 auto;
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 .dealer-section {

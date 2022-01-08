@@ -272,14 +272,6 @@ p {
   display: flex;
 }
 
-.loader {
-  height: 0.8rem;
-  background-color: yellow;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
 .game-logo {
   max-width: 20rem;
   /* background-color: brown; */

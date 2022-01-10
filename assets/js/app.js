@@ -220,9 +220,9 @@ const verifyPlayerName = () => {
 };
 
 const removeDealClass = () => {
-  let cardWithDealClass = document.querySelectorAll(".deal1");
+  let cardWithDealClass = document.querySelectorAll(".dealing-player-card");
   cardWithDealClass.forEach((card) => {
-    card.classList.remove("deal1");
+    card.classList.remove("dealing-player-card");
   });
 };
 // addEventListener
@@ -261,24 +261,24 @@ fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500
     ? ((playerBet += 50),
       (playerCash -= 50),
-      (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`))
+      (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`),
+      (bet_button_front.style.visibility = "visible"))
     : (playerBet += 0);
-  if (playerCash !== 0) {
-    /* bet_button_front.removeAttribute("hidden"); */
+  /*   if (playerBet !== 0) {
     bet_button_front.style.visibility = "visible";
-  }
+  } */
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
   betButtonEnabled();
 });
 
 onehundred_bet_button_front.addEventListener("click", () => {
-  playerCash >= 100 && playerBet < 500
+  playerCash >= 100 && playerBet < 450
     ? ((playerBet += 100),
       (playerCash -= 100),
       (bet_item_front.innerHTML += `<img src="assets/items/onehundred.png" class="new-chip"/>`))
     : (playerBet += 0);
-  if (playerCash !== 0) {
+  if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
     bet_button_front.style.visibility = "visible";
   }
@@ -293,7 +293,7 @@ twohundred_bet_button_front.addEventListener("click", () => {
       (playerCash -= 200),
       (bet_item_front.innerHTML += `<img src="assets/items/twohundred.png" class="new-chip"/>`))
     : (playerBet += 0);
-  if (playerCash !== 0) {
+  if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
     bet_button_front.style.visibility = "visible";
   }
@@ -309,7 +309,7 @@ let take_card = () => {
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card deal1" />`;
+    }.png" class="one-card dealing-player-card" />`;
     setTimeout(() => {
       removeDealClass();
     }, 800);
@@ -318,7 +318,7 @@ let take_card = () => {
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card deal1" />`;
+    }.png" class="one-card dealing-player-card" />`;
     setTimeout(() => {
       removeDealClass();
     }, 1050);
@@ -327,7 +327,7 @@ let take_card = () => {
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
-    }.png" class="one-card deal1" />`;
+    }.png" class="one-card dealing-player-card" />`;
     setTimeout(() => {
       removeDealClass();
     }, 1050);

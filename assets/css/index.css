@@ -167,7 +167,7 @@ p {
   position: relative; */
 }
 
-.deal1 {
+.dealing-player-card {
   animation-name: dealingcard;
   animation-duration: 1s;
   animation-fill-mode: forwards;

@@ -7,6 +7,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 let player_name_window_switch = false;
 
 let player_name;
+const game_table_front = document.querySelector(".game-table");
 const player_name_front = document.querySelector(".player-name");
 const player_name_input_front = document.querySelector(".playerName");
 const player_section_front = document.querySelector(".player-section");
@@ -342,13 +343,16 @@ let take_card = () => {
     endMatch();
   } else if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
-  } else if (playerPoints > 21) {
+  } else if (playerPoints > 21 && playerCash > 0) {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     bet_button_front.removeAttribute("disabled");
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
     endMatch();
+  } else if (playerPoints > 21 && playerCash === 0) {
+    game_table_front.setAttribute("hidden", "");
+    player_section_front.setAttribute("hidden", "");
   }
   player_points_front.innerHTML = `${playerPoints}`;
   console.log(`player points ${playerPoints}`);

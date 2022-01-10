@@ -9,6 +9,7 @@ let player_name_window_switch = false;
 let player_name;
 const player_name_front = document.querySelector(".player-name");
 const player_name_input_front = document.querySelector(".playerName");
+const player_section_front = document.querySelector(".player-section");
 const player_cards_front = document.querySelector(".player-cards");
 const player_points_front = document.querySelector(".player-points");
 const dealer_cards_front = document.querySelector(".dealer-cards");
@@ -161,12 +162,21 @@ const removePoints = () => {
   dealer_points_front.innerHTML = ``;
 };
 
+const showGameSection = () => {
+  player_section_front.removeAttribute("hidden");
+};
+
+const hideGameSection = () => {
+  player_section_front.setAttribute("hidden", "");
+};
+
 const endMatchActions = () => {
   hideCards();
   hideMatchButtons();
   restartBet();
   removeBets();
   removePoints();
+  hideGameSection();
   showBetButtons();
 };
 
@@ -402,22 +412,26 @@ stand_button_front.addEventListener("click", () => {
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
+
     endMatch();
   } else if (dealerPoints < playerPoints) {
     player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
+
     endMatch();
   } else if (dealerPoints === playerPoints) {
     player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
+
     endMatch();
   } else if (dealerPoints > playerPoints) {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
     bet_button_front.removeAttribute("disabled");
+
     endMatch();
   }
 });
@@ -425,6 +439,8 @@ stand_button_front.addEventListener("click", () => {
 bet_button_front.addEventListener("click", () => {
   hideBetButtons();
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  /* player_section_front.removeAttribute("hidden"); */
+  showGameSection();
   newMatch();
   /* if (playerCards.length === 2 && playerPoints === 21) {
     player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;

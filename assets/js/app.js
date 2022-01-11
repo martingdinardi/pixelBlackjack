@@ -97,8 +97,14 @@ const newMatch = () => {
   }, 2200);
   /* take_card();
   take_card(); */
-  dealer_cards();
-  dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`;
+  setTimeout(() => {
+    dealer_cards();
+  }, 3300);
+  setTimeout(() => {
+    dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`;
+  }, 4400);
+  /* dealer_cards(); */
+  /* dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`; */
   showMatchButtons();
   hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled");

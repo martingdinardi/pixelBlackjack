@@ -511,7 +511,11 @@ stand_button_front.addEventListener("click", () => {
     removeSecondCardDealerClass();
   }, 800);
 
-  if ((dealerCards.length === 2) & (dealerPoints < playerPoints)) {
+  if (
+    dealerCards.length === 2 &&
+    dealerPoints < playerPoints &&
+    dealerPoints < 17
+  ) {
     for (let i = 0; i < 9; i++) {
       dealer_cards();
       if (dealerPoints >= 17) {

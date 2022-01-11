@@ -225,10 +225,14 @@ p {
 
 .dealer-section {
   /* text-align: center; */
-  background-color: tomato;
+  /* background-color: tomato; */
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  max-width: 50rem;
   height: 60%;
+  margin: auto;
 }
 
 .player-points,

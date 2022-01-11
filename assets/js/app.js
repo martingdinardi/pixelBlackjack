@@ -101,7 +101,10 @@ const newMatch = () => {
     dealer_cards();
   }, 3300);
   setTimeout(() => {
-    dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`;
+    dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer dealing-dealer-card" />`;
+    setTimeout(() => {
+      removeDealerDealClass();
+    }, 800);
   }, 4400);
   /* dealer_cards(); */
   /* dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`; */
@@ -232,6 +235,14 @@ const removeDealClass = () => {
     card.classList.remove("dealing-player-card");
   });
 };
+
+const removeDealerDealClass = () => {
+  let cardWithDealClass = document.querySelectorAll(".dealing-dealer-card");
+  cardWithDealClass.forEach((card) => {
+    card.classList.remove("dealing-dealer-card");
+  });
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -370,7 +381,10 @@ const dealer_cards = () => {
     dealerCards.push(card);
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
-    }.png" class="one-card-dealer" />`;
+    }.png" class="one-card-dealer dealing-dealer-card" />`;
+    setTimeout(() => {
+      removeDealerDealClass();
+    }, 800);
   };
   if (card[0] === "A") {
     dealerPoints += 11;

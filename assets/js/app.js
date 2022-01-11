@@ -423,7 +423,7 @@ const dealer_cards = () => {
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
     endMatch();
-  } else if (dealerPoints === playerPoints) {
+  } else if (dealerCards.length >= 2 && dealerPoints === playerPoints) {
     player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet;
@@ -511,11 +511,14 @@ stand_button_front.addEventListener("click", () => {
     removeSecondCardDealerClass();
   }, 800);
 
-  /*   setTimeout(() => {
-    do {
+  if ((dealerCards.length === 2) & (dealerPoints < playerPoints)) {
+    for (let i = 0; i < 9; i++) {
       dealer_cards();
-    } while (dealerPoints <= 16);
-  }, 3000); */
+      if (dealerPoints >= 17) {
+        break;
+      }
+    }
+  }
 });
 
 bet_button_front.addEventListener("click", () => {

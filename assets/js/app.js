@@ -426,12 +426,20 @@ stand_button_front.addEventListener("click", () => {
   hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", "");
   dealer_cards_front.removeChild(dealer_cards_front.lastElementChild);
+  const viewSecondDealerCard = () => {
+    let card = shuffledDeck.pop();
+    dealerCards.push(card);
+    dealer_cards_front.innerHTML += `<img src="assets/cards/${
+      dealerCards[dealerCards.length - 1]
+    }.png" class="one-card-dealer"/>`;
+  };
+  viewSecondDealerCard();
 
-  do {
+  /*   do {
     dealer_cards();
-  } while (dealerPoints <= 16);
+  } while (dealerPoints <= 16 && dealerCards.length == 2); */
 
-  if (dealerPoints > 21) {
+  /*   if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
@@ -457,7 +465,7 @@ stand_button_front.addEventListener("click", () => {
     bet_button_front.removeAttribute("disabled");
 
     endMatch();
-  }
+  } */
 });
 
 bet_button_front.addEventListener("click", () => {

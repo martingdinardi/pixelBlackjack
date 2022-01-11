@@ -243,6 +243,13 @@ const removeDealerDealClass = () => {
   });
 };
 
+const removeSecondCardDealerClass = () => {
+  let secondCard = document.querySelectorAll(".second-card-dealer");
+  secondCard.forEach((card) => {
+    card.classList.remove("second-card-dealer");
+  });
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -431,13 +438,21 @@ stand_button_front.addEventListener("click", () => {
     dealerCards.push(card);
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
-    }.png" class="one-card-dealer"/>`;
+    }.png" class="one-card-dealer second-card-dealer"/>`;
   };
   viewSecondDealerCard();
+  setTimeout(() => {
+    removeSecondCardDealerClass();
+  }, 800);
 
-  /*   do {
-    dealer_cards();
-  } while (dealerPoints <= 16 && dealerCards.length == 2); */
+  /* setTimeout(() => {
+    removeSecondCardDealerClass;
+  }, 1500); */
+  setTimeout(() => {
+    do {
+      dealer_cards();
+    } while (dealerPoints <= 16 && dealerCards.length == 2);
+  }, 3000);
 
   /*   if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;

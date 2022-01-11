@@ -171,6 +171,21 @@ p {
   position: relative; */
 }
 
+.second-card-dealer {
+  animation-name: second-card-dealer;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes second-card-dealer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .dealing-player-card {
   animation-name: dealingcard;
   animation-duration: 1s;

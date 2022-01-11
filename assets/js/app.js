@@ -439,8 +439,23 @@ stand_button_front.addEventListener("click", () => {
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
     }.png" class="one-card-dealer second-card-dealer"/>`;
+
+    if (card[0] === "A") {
+      dealerPoints += 11;
+      /* getCardToDealer(); */
+      console.log(dealerPoints);
+    } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
+      dealerPoints += 10;
+      /* getCardToDealer(); */
+      console.log(dealerPoints);
+    } else {
+      dealerPoints += parseInt(card.substring(0, card.length - 1));
+      /* getCardToDealer(); */
+      console.log(dealerPoints);
+    }
   };
   viewSecondDealerCard();
+
   setTimeout(() => {
     removeSecondCardDealerClass();
   }, 800);
@@ -454,7 +469,7 @@ stand_button_front.addEventListener("click", () => {
     } while (dealerPoints <= 16 && dealerCards.length == 2);
   }, 3000);
 
-  /*   if (dealerPoints > 21) {
+  if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
     bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
@@ -480,7 +495,7 @@ stand_button_front.addEventListener("click", () => {
     bet_button_front.removeAttribute("disabled");
 
     endMatch();
-  } */
+  }
 });
 
 bet_button_front.addEventListener("click", () => {

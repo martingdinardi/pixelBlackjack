@@ -163,6 +163,10 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: auto;
+  position: relative;
+  top: 17.3rem;
+  left: 50%;
+
   /*   top: 200px;
   position: relative; */
 }
@@ -187,6 +191,26 @@ p {
   }
 }
 
+.dealing-dealer-card {
+  animation-name: dealing_dealer_card;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+@keyframes dealing_dealer_card {
+  0% {
+    transform: rotate(45deg);
+    top: 0;
+    left: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    top: 17.3rem;
+    left: 50%;
+  }
+}
+
 .player-section {
   /* background-color: tomato; */
   height: 60%;
@@ -200,12 +224,11 @@ p {
 }
 
 .dealer-section {
-  text-align: center;
+  /* text-align: center; */
   background-color: tomato;
-}
-
-.dealer-section {
-  margin-bottom: 5rem;
+  position: absolute;
+  top: 0;
+  height: 60%;
 }
 
 .player-points,

@@ -512,12 +512,61 @@ stand_button_front.addEventListener("click", () => {
         dealer_cards
         
       } while (dealerPoints <= 17); */
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => {
-          if (playerPoints > dealerPoints && dealerPoints < 17) {
-            dealer_cards();
+      function jsHello(i) {
+        if (i < 0) return;
+
+        setTimeout(function () {
+          let card = shuffledDeck.pop();
+          const getCardToDealer = () => {
+            dealerCards.push(card);
+            dealer_cards_front.innerHTML += `<img src="assets/cards/${
+              dealerCards[dealerCards.length - 1]
+            }.png" class="one-card-dealer dealing-dealer-card" />`;
+            setTimeout(() => {
+              removeDealerDealClass();
+            }, 800);
+          };
+          if (card[0] === "A") {
+            dealerPoints += 11;
+            getCardToDealer();
+          } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
+            dealerPoints += 10;
+            getCardToDealer();
+          } else {
+            dealerPoints += parseInt(card.substring(0, card.length - 1));
+            getCardToDealer();
           }
-        }, 1000);
+          dealer_points_front.innerHTML = `${dealerPoints}`;
+          console.log(`dealer points ${dealerPoints}`);
+
+          if (dealerPoints >= 17 && dealerPoints < playerPoints) {
+            player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
+            bet_button_front.removeAttribute("disabled");
+            playerCash += playerBet * 2;
+            player_money_front.innerHTML = `<p>${playerCash}</p>`;
+            endMatch();
+            return;
+          } else if (dealerPoints === playerPoints) {
+            player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
+            bet_button_front.removeAttribute("disabled");
+            playerCash += playerBet;
+            player_money_front.innerHTML = `<p>${playerCash}</p>`;
+            endMatch();
+            return;
+          } else if (dealerPoints > playerPoints) {
+            player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
+            bet_button_front.removeAttribute("disabled");
+            endMatch();
+            return;
+          }
+
+          jsHello(--i);
+        }, 2000);
+      }
+
+      if (playerPoints > dealerPoints && dealerPoints <= 16) {
+        /* dealer_cards(); */
+        jsHello(9);
       }
     }
   };

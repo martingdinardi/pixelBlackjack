@@ -503,6 +503,22 @@ stand_button_front.addEventListener("click", () => {
       bet_button_front.removeAttribute("disabled");
 
       endMatch();
+    } else if (
+      dealerCards.length === 2 &&
+      dealerPoints < playerPoints &&
+      dealerPoints < 17
+    ) {
+      /* do {
+        dealer_cards
+        
+      } while (dealerPoints <= 17); */
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          if (playerPoints > dealerPoints && dealerPoints < 17) {
+            dealer_cards();
+          }
+        }, 1000);
+      }
     }
   };
   viewSecondDealerCard();
@@ -510,19 +526,6 @@ stand_button_front.addEventListener("click", () => {
   setTimeout(() => {
     removeSecondCardDealerClass();
   }, 800);
-
-  if (
-    dealerCards.length === 2 &&
-    dealerPoints < playerPoints &&
-    dealerPoints < 17
-  ) {
-    for (let i = 0; i < 9; i++) {
-      dealer_cards();
-      if (dealerPoints >= 17) {
-        break;
-      }
-    }
-  }
 });
 
 bet_button_front.addEventListener("click", () => {

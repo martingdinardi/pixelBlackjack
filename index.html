@@ -112,19 +112,13 @@
         </nav>
       </navbar>
       <section class="container game-section">
-        <div class="row">
-          <div class="col-12 dealer-section">
-            <div class="dealer-points"></div>
-            <div class="col-12 dealer-cards"></div>
-          </div>
-        </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12 player-section">
             <div class="col-12 player-cards"></div>
             <div class="player-points"></div>
-            <!-- <div class="player-bet"></div> -->
           </div>
-        </div>
+        </div> -->
+        <!-- <div class="player-bet"></div> -->
       </section>
       <footer>
         <div class="match-buttons">
@@ -184,7 +178,18 @@
         </div>
       </footer>
     </div>
-    <div class="loader"></div>
+    <div class="row dealer-section" hidden>
+      <div class="col-12">
+        <div class="dealer-points"></div>
+        <div class="col-12 dealer-cards"></div>
+      </div>
+    </div>
+    <div class="row player-section" hidden>
+      <div class="col-12">
+        <div class="col-12 player-cards"></div>
+        <div class="player-points"></div>
+      </div>
+    </div>
     <script src="assets/js/underscore.js"></script>
     <script src="assets/js/app.js"></script>
   </body>

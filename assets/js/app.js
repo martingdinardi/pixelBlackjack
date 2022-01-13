@@ -568,7 +568,7 @@ stand_button_front.addEventListener("click", () => {
             player_money_front.innerHTML = `<p>${playerCash}</p>`;
             endMatch();
             return;
-          } else if (dealerPoints < 21 && dealerPoints > playerPoints) {
+          } else if (dealerPoints <= 21 && dealerPoints > playerPoints) {
             player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
             bet_button_front.removeAttribute("disabled");
             endMatch();

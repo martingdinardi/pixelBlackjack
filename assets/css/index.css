@@ -254,11 +254,27 @@ p {
 /* .dealer-points {
 } */
 
+.player-points-container {
+  max-width: 8rem;
+  height: 3rem;
+  position: absolute;
+  top: 21rem;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  /* background-color: brown; */
+  /* text-align: right; */
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
 .player-points {
   width: 2rem;
   height: 2rem;
-  top: 15.5rem;
-  left: 60%;
+  /*   top: 15.5rem;
+  left: 60%; */
   position: relative;
   background-color: palevioletred;
   padding: -0.5rem;
@@ -269,12 +285,29 @@ p {
   display: flex;
   align-items: center;
 }
+
+.dealer-points-container {
+  max-width: 8rem;
+  height: 3rem;
+  position: absolute;
+  top: 9.8rem;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  /* background-color: brown; */
+  /* text-align: right; */
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
 .dealer-points {
   /* margin-left: -3.125rem; */
   width: 2rem;
   height: 2rem;
-  top: 12.5rem;
-  left: 60%;
+  /*   top: 12.5rem;
+  left: 60%; */
   position: relative;
   background-color: palevioletred;
   /* padding: -0.5rem; */

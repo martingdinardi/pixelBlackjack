@@ -332,6 +332,7 @@ twohundred_bet_button_front.addEventListener("click", () => {
 
 let take_card = () => {
   let card = shuffledDeck.pop();
+  player_points_front.removeAttribute("hidden");
   if (card[0] === "A") {
     playerPoints += 11;
     playerCards.push(card);
@@ -387,8 +388,10 @@ let take_card = () => {
 
 const dealer_cards = () => {
   let card = shuffledDeck.pop();
+  dealer_points_front.removeAttribute("hidden", "");
   const getCardToDealer = () => {
     dealerCards.push(card);
+    /* dealer_cards_front.removeAttribute("hidden", ""); */
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
     }.png" class="one-card-dealer dealing-dealer-card" />`;

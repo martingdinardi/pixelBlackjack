@@ -153,7 +153,7 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: auto;
-  top: 25rem;
+  top: 23rem;
   left: 50%;
   position: relative;
 }
@@ -161,11 +161,11 @@ p {
 .one-card-dealer {
   height: 5.625rem;
   margin-left: -3.125rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  /*   margin-top: 0.5rem;
+  margin-bottom: 0.5rem; */
   width: auto;
   position: relative;
-  top: 17.3rem;
+  top: 12.3rem;
   left: 50%;
 
   /*   top: 200px;
@@ -202,7 +202,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 25rem;
+    top: 23rem;
     left: 50%;
   }
 }
@@ -222,7 +222,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 17.3rem;
+    top: 12.3rem;
     left: 50%;
   }
 }
@@ -251,9 +251,40 @@ p {
   margin: auto;
 }
 
-.player-points,
+/* .dealer-points {
+} */
+
+.player-points {
+  width: 2rem;
+  height: 2rem;
+  top: 15.5rem;
+  left: 60%;
+  position: relative;
+  background-color: palevioletred;
+  padding: -0.5rem;
+  /* text-align: center; */
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
 .dealer-points {
-  margin-left: -3.125rem;
+  /* margin-left: -3.125rem; */
+  width: 2rem;
+  height: 2rem;
+  top: 12.5rem;
+  left: 60%;
+  position: relative;
+  background-color: palevioletred;
+  /* padding: -0.5rem; */
+  /* text-align: center; */
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  z-index: 3;
 }
 
 .money-amount {

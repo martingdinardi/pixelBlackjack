@@ -430,7 +430,11 @@ const dealer_cards = () => {
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
     endMatch();
-  } else if (dealerCards.length >= 2 && dealerPoints > playerPoints) {
+  } else if (
+    dealerCards.length >= 2 &&
+    dealerPoints > playerPoints &&
+    dealerPoints < 21
+  ) {
     player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
     bet_button_front.removeAttribute("disabled");
 
@@ -491,6 +495,13 @@ stand_button_front.addEventListener("click", () => {
       player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
       endMatch();
+    } else if (dealerCards.length == 2 && dealerPoints > 21) {
+      player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21</p>`;
+      bet_button_front.removeAttribute("disabled");
+      playerCash += playerBet * 2;
+      player_money_front.innerHTML = `<p>${playerCash}</p>`;
+
+      endMatch();
     } else if (dealerCards.length === 2 && dealerPoints === playerPoints) {
       player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`;
       bet_button_front.removeAttribute("disabled");
@@ -498,7 +509,11 @@ stand_button_front.addEventListener("click", () => {
       player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
       endMatch();
-    } else if (dealerCards.length === 2 && dealerPoints > playerPoints) {
+    } else if (
+      dealerCards.length === 2 &&
+      dealerPoints > playerPoints &&
+      dealerPoints < 21
+    ) {
       player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
       bet_button_front.removeAttribute("disabled");
 
@@ -553,8 +568,13 @@ stand_button_front.addEventListener("click", () => {
             player_money_front.innerHTML = `<p>${playerCash}</p>`;
             endMatch();
             return;
-          } else if (dealerPoints > playerPoints) {
+          } else if (dealerPoints < 21 && dealerPoints > playerPoints) {
             player_cards_front.innerHTML += `<p>Has perdido! El dealer formó un número mayor a ${playerPoints}</p>`;
+            bet_button_front.removeAttribute("disabled");
+            endMatch();
+            return;
+          } else if (dealerPoints > 21) {
+            player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21</p>`;
             bet_button_front.removeAttribute("disabled");
             endMatch();
             return;

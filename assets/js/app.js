@@ -196,7 +196,7 @@ const endMatchActions = () => {
 const endMatch = () => {
   setTimeout(() => {
     endMatchActions();
-  }, 3000);
+  }, 5000);
 };
 
 const hideInitialsElements = () => {
@@ -251,6 +251,25 @@ const removeSecondCardDealerClass = () => {
   secondCard.forEach((card) => {
     card.classList.remove("second-card-dealer");
   });
+};
+
+const blackjack = () => {
+  player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+  playerCash += playerBet * 2.5;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
+  bet_button_front.removeAttribute("disabled");
+};
+
+const loseMoreThanTwentyOne = () => {
+  setTimeout(() => {
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+  }, 2000);
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
+  bet_button_front.removeAttribute("disabled");
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
 
 // addEventListener
@@ -362,27 +381,31 @@ let take_card = () => {
     }, 1050);
   }
   if (playerCards.length === 2 && playerPoints === 21) {
-    player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+    /* player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
     playerCash += playerBet * 2.5;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
-    bet_button_front.removeAttribute("disabled");
+    bet_button_front.removeAttribute("disabled"); */
+    blackjack();
     endMatch();
   } else if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
   } else if (playerPoints > 21 && playerCash > 0) {
-    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+    /* player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     bet_button_front.removeAttribute("disabled");
-    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+    loseMoreThanTwentyOne();
     endMatch();
   } else if (playerPoints > 21 && playerCash === 0) {
     game_table_front.setAttribute("hidden", "");
     player_section_front.setAttribute("hidden", "");
   }
-  player_points_front.innerHTML = `${playerPoints}`;
+  setTimeout(() => {
+    player_points_front.innerHTML = `${playerPoints}`;
+  }, 500);
   console.log(`player points ${playerPoints}`);
 };
 
@@ -409,7 +432,9 @@ const dealer_cards = () => {
     dealerPoints += parseInt(card.substring(0, card.length - 1));
     getCardToDealer();
   }
-  dealer_points_front.innerHTML = `${dealerPoints}`;
+  setTimeout(() => {
+    dealer_points_front.innerHTML = `${dealerPoints}`;
+  }, 500);
   console.log(`dealer points ${dealerPoints}`);
 
   if (dealerPoints > 21) {

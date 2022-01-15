@@ -361,6 +361,19 @@ p {
   justify-content: center;
 }
 
+.bet-letter {
+  animation: bet-letter-action 1s infinite alternate;
+}
+
+@keyframes bet-letter-action {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
+}
+
 .bet {
   display: flex;
   flex-direction: column;

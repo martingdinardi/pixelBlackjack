@@ -32,6 +32,9 @@ const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section-window");
 const bet_button_front = document.querySelector(".bet-button");
 const bet_item_front = document.querySelector(".bet");
+const bet_letter_b = document.querySelector(".bet-letter-b");
+const bet_letter_e = document.querySelector(".bet-letter-e");
+const bet_letter_t = document.querySelector(".bet-letter-t");
 const fiftybet_button_front = document.querySelector(".fifty");
 const onehundred_bet_button_front = document.querySelector(".one-hundred");
 const twohundred_bet_button_front = document.querySelector(".two-hundred");
@@ -272,6 +275,19 @@ const loseMoreThanTwentyOne = () => {
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
 
+const betLetterAppears = () => {
+  bet_button_front.style.visibility = "visible";
+  setTimeout(() => {
+    bet_letter_b.classList.add("bet-letter");
+  }, 200);
+  setTimeout(() => {
+    bet_letter_e.classList.add("bet-letter");
+  }, 300);
+  setTimeout(() => {
+    bet_letter_t.classList.add("bet-letter");
+  }, 400);
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -309,7 +325,7 @@ fiftybet_button_front.addEventListener("click", () => {
     ? ((playerBet += 50),
       (playerCash -= 50),
       (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`),
-      (bet_button_front.style.visibility = "visible"))
+      betLetterAppears())
     : (playerBet += 0);
   /*   if (playerBet !== 0) {
     bet_button_front.style.visibility = "visible";
@@ -327,7 +343,8 @@ onehundred_bet_button_front.addEventListener("click", () => {
     : (playerBet += 0);
   if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
-    bet_button_front.style.visibility = "visible";
+    /* bet_button_front.style.visibility = "visible"; */
+    betLetterAppears();
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
@@ -342,7 +359,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
     : (playerBet += 0);
   if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
-    bet_button_front.style.visibility = "visible";
+    /* bet_button_front.style.visibility = "visible"; */
+    betLetterAppears();
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 

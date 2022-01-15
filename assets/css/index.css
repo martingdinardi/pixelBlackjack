@@ -342,7 +342,7 @@ p {
 
 .bet-button {
   visibility: hidden;
-  width: 2rem;
+  width: 5rem;
 }
 
 .bet-button img {
@@ -362,15 +362,15 @@ p {
 }
 
 .bet-letter {
-  animation: bet-letter-action 1s infinite alternate;
+  animation: bet-letter-action 0.7s infinite alternate;
 }
 
 @keyframes bet-letter-action {
   0% {
-    transform: translateY(-20px);
+    transform: translateY(0px);
   }
   100% {
-    transform: translateY(-40px);
+    transform: translateY(-20px);
   }
 }
 

@@ -147,6 +147,7 @@ const hideCards = () => {
 };
 
 const hideBetButtons = () => {
+  betLetterHidden();
   bet_section_front.setAttribute("hidden", "");
   bet_button_front.setAttribute("hidden", "");
 };
@@ -286,6 +287,13 @@ const betLetterAppears = () => {
   setTimeout(() => {
     bet_letter_t.classList.add("bet-letter");
   }, 400);
+};
+
+const betLetterHidden = () => {
+  bet_letter_b.classList.remove("bet-letter");
+  bet_letter_e.classList.remove("bet-letter");
+  bet_letter_t.classList.remove("bet-letter");
+  bet_button_front.style.visibility = "hidden";
 };
 
 // addEventListener

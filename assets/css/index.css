@@ -342,10 +342,23 @@ p {
 
 .bet-button {
   visibility: hidden;
+  width: 2rem;
 }
 
 .bet-button img {
-  height: 2.5rem;
+  height: 1rem;
+}
+
+.bet-button-section {
+  /* background-color: teal; */
+  width: 100%;
+  height: 5rem;
+  position: absolute;
+  /* top: 0; */
+  bottom: 0;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .bet {
@@ -459,4 +472,8 @@ p {
 
 .continue-button:disabled {
   color: rgba(250, 235, 215, 0.5);
+}
+
+.bet-button-letters {
+  display: flex;
 }

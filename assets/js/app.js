@@ -32,6 +32,9 @@ const match_messages_front = document.querySelector(".match-messages");
 const bet_section_front = document.querySelector(".bet-section-window");
 const bet_button_front = document.querySelector(".bet-button");
 const bet_item_front = document.querySelector(".bet");
+const bet_letter_b = document.querySelector(".bet-letter-b");
+const bet_letter_e = document.querySelector(".bet-letter-e");
+const bet_letter_t = document.querySelector(".bet-letter-t");
 const fiftybet_button_front = document.querySelector(".fifty");
 const onehundred_bet_button_front = document.querySelector(".one-hundred");
 const twohundred_bet_button_front = document.querySelector(".two-hundred");
@@ -144,6 +147,7 @@ const hideCards = () => {
 };
 
 const hideBetButtons = () => {
+  betLetterHidden();
   bet_section_front.setAttribute("hidden", "");
   bet_button_front.setAttribute("hidden", "");
 };
@@ -196,7 +200,7 @@ const endMatchActions = () => {
 const endMatch = () => {
   setTimeout(() => {
     endMatchActions();
-  }, 3000);
+  }, 5000);
 };
 
 const hideInitialsElements = () => {
@@ -253,6 +257,45 @@ const removeSecondCardDealerClass = () => {
   });
 };
 
+const blackjack = () => {
+  player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+  playerCash += playerBet * 2.5;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
+  bet_button_front.removeAttribute("disabled");
+};
+
+const loseMoreThanTwentyOne = () => {
+  setTimeout(() => {
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+  }, 2000);
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
+  bet_button_front.removeAttribute("disabled");
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+};
+
+const betLetterAppears = () => {
+  bet_button_front.style.visibility = "visible";
+  setTimeout(() => {
+    bet_letter_b.classList.add("bet-letter");
+  }, 200);
+  setTimeout(() => {
+    bet_letter_e.classList.add("bet-letter");
+  }, 300);
+  setTimeout(() => {
+    bet_letter_t.classList.add("bet-letter");
+  }, 400);
+};
+
+const betLetterHidden = () => {
+  bet_letter_b.classList.remove("bet-letter");
+  bet_letter_e.classList.remove("bet-letter");
+  bet_letter_t.classList.remove("bet-letter");
+  bet_button_front.style.visibility = "hidden";
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -290,7 +333,7 @@ fiftybet_button_front.addEventListener("click", () => {
     ? ((playerBet += 50),
       (playerCash -= 50),
       (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`),
-      (bet_button_front.style.visibility = "visible"))
+      betLetterAppears())
     : (playerBet += 0);
   /*   if (playerBet !== 0) {
     bet_button_front.style.visibility = "visible";
@@ -308,7 +351,8 @@ onehundred_bet_button_front.addEventListener("click", () => {
     : (playerBet += 0);
   if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
-    bet_button_front.style.visibility = "visible";
+    /* bet_button_front.style.visibility = "visible"; */
+    betLetterAppears();
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
@@ -323,7 +367,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
     : (playerBet += 0);
   if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
-    bet_button_front.style.visibility = "visible";
+    /* bet_button_front.style.visibility = "visible"; */
+    betLetterAppears();
   }
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;
 
@@ -332,6 +377,7 @@ twohundred_bet_button_front.addEventListener("click", () => {
 
 let take_card = () => {
   let card = shuffledDeck.pop();
+  player_points_front.removeAttribute("hidden");
   if (card[0] === "A") {
     playerPoints += 11;
     playerCards.push(card);
@@ -361,34 +407,40 @@ let take_card = () => {
     }, 1050);
   }
   if (playerCards.length === 2 && playerPoints === 21) {
-    player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+    /* player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
     playerCash += playerBet * 2.5;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
-    bet_button_front.removeAttribute("disabled");
+    bet_button_front.removeAttribute("disabled"); */
+    blackjack();
     endMatch();
   } else if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
   } else if (playerPoints > 21 && playerCash > 0) {
-    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+    /* player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
     hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", "");
     bet_button_front.removeAttribute("disabled");
-    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+    loseMoreThanTwentyOne();
     endMatch();
   } else if (playerPoints > 21 && playerCash === 0) {
     game_table_front.setAttribute("hidden", "");
     player_section_front.setAttribute("hidden", "");
   }
-  player_points_front.innerHTML = `${playerPoints}`;
+  setTimeout(() => {
+    player_points_front.innerHTML = `${playerPoints}`;
+  }, 500);
   console.log(`player points ${playerPoints}`);
 };
 
 const dealer_cards = () => {
   let card = shuffledDeck.pop();
+  dealer_points_front.removeAttribute("hidden", "");
   const getCardToDealer = () => {
     dealerCards.push(card);
+    /* dealer_cards_front.removeAttribute("hidden", ""); */
     dealer_cards_front.innerHTML += `<img src="assets/cards/${
       dealerCards[dealerCards.length - 1]
     }.png" class="one-card-dealer dealing-dealer-card" />`;
@@ -406,7 +458,9 @@ const dealer_cards = () => {
     dealerPoints += parseInt(card.substring(0, card.length - 1));
     getCardToDealer();
   }
-  dealer_points_front.innerHTML = `${dealerPoints}`;
+  setTimeout(() => {
+    dealer_points_front.innerHTML = `${dealerPoints}`;
+  }, 500);
   console.log(`dealer points ${dealerPoints}`);
 
   if (dealerPoints > 21) {

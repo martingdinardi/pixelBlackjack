@@ -131,7 +131,7 @@
         </div>
         <div class="bet-section-window" hidden>
           <div class="bet-section">
-            <div><img src="./assets/items/makeyourbet2.png" /></div>
+            <div><img src="./assets/items/makeyourbet.png" /></div>
             <!--             <div class="bet-value">
               <div class="bet">
                 <img src="assets/items/onehundred.png" />
@@ -170,9 +170,13 @@
               </button>
             </div>
           </div>
-          <div>
+          <div class="bet-button-section">
             <button type="button" class="btn bet-button">
-              <h1>B E T</h1>
+              <div class="bet-button-letters">
+                <img src="./assets/items/b.png" class="bet-letter-b" />
+                <img src="./assets/items/e.png" class="bet-letter-e" />
+                <img src="./assets/items/t.png" class="bet-letter-t" />
+              </div>
             </button>
           </div>
         </div>
@@ -180,14 +184,18 @@
     </div>
     <div class="row dealer-section" hidden>
       <div class="col-12">
-        <div class="dealer-points"></div>
+        <div class="dealer-points-container">
+          <div class="dealer-points" hidden></div>
+        </div>
         <div class="col-12 dealer-cards"></div>
       </div>
     </div>
     <div class="row player-section" hidden>
       <div class="col-12">
         <div class="col-12 player-cards"></div>
-        <div class="player-points"></div>
+        <div class="player-points-container">
+          <div class="player-points" hidden></div>
+        </div>
       </div>
     </div>
     <script src="assets/js/underscore.js"></script>

@@ -308,6 +308,12 @@ const betLetterHidden = () => {
   bet_button_front.style.visibility = "hidden";
 };
 
+const playerWins = () => {
+  bet_button_front.removeAttribute("disabled");
+  playerCash += playerBet * 2;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+};
+
 // addEventListener
 
 document.addEventListener("keyup", (e) => {
@@ -491,16 +497,18 @@ const dealer_cards = () => {
 
   if (dealerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21!</p>`;
-    bet_button_front.removeAttribute("disabled");
+    /* bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
-    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+    playerWins();
 
     endMatch();
   } else if (dealerPoints >= 17 && dealerPoints < playerPoints) {
     player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
-    bet_button_front.removeAttribute("disabled");
+    /* bet_button_front.removeAttribute("disabled");
     playerCash += playerBet * 2;
-    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+    playerWins();
 
     endMatch();
   } else if (dealerCards.length >= 2 && dealerPoints === playerPoints) {
@@ -570,16 +578,18 @@ stand_button_front.addEventListener("click", () => {
       dealerPoints < playerPoints
     ) {
       player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
-      bet_button_front.removeAttribute("disabled");
+      /* bet_button_front.removeAttribute("disabled");
       playerCash += playerBet * 2;
-      player_money_front.innerHTML = `<p>${playerCash}</p>`;
+      player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+      playerWins();
 
       endMatch();
     } else if (dealerCards.length == 2 && dealerPoints > 21) {
       player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21</p>`;
-      bet_button_front.removeAttribute("disabled");
+      /* bet_button_front.removeAttribute("disabled");
       playerCash += playerBet * 2;
-      player_money_front.innerHTML = `<p>${playerCash}</p>`;
+      player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+      playerWins();
 
       endMatch();
     } else if (dealerCards.length === 2 && dealerPoints === playerPoints) {
@@ -636,9 +646,10 @@ stand_button_front.addEventListener("click", () => {
 
           if (dealerPoints >= 17 && dealerPoints < playerPoints) {
             player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`;
-            bet_button_front.removeAttribute("disabled");
+            /* bet_button_front.removeAttribute("disabled");
             playerCash += playerBet * 2;
-            player_money_front.innerHTML = `<p>${playerCash}</p>`;
+            player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+            playerWins();
             endMatch();
             return;
           } else if (dealerPoints === playerPoints) {
@@ -655,7 +666,8 @@ stand_button_front.addEventListener("click", () => {
             return;
           } else if (dealerPoints > 21) {
             player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21</p>`;
-            bet_button_front.removeAttribute("disabled");
+            /* bet_button_front.removeAttribute("disabled"); */
+            playerWins();
             endMatch();
             return;
           }

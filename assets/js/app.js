@@ -104,12 +104,14 @@ const newMatch = () => {
     take_card();
   }, 1100);
   setTimeout(() => {
-    take_card();
+    /* take_card(); */
+    dealer_cards();
   }, 2200);
   /* take_card();
   take_card(); */
   setTimeout(() => {
-    dealer_cards();
+    take_card();
+    /* dealer_cards(); */
   }, 3300);
 
   setTimeout(() => {

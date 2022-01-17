@@ -74,11 +74,16 @@ let shuffle_deck = () => {
     }
   }
 
+  /*
+   */
   shuffledDeck = _.shuffle(deck);
-  /*   shuffledDeck = deck;
-  console.log(shuffledDeck);
+  /*
+  shuffledDeck = deck;
   shuffledDeck.pop();
-  shuffledDeck.pop(); */
+  shuffledDeck.pop();
+  shuffledDeck.pop();
+  console.log(shuffledDeck);
+  */
 };
 
 const restartBet = () => {
@@ -106,6 +111,7 @@ const newMatch = () => {
   setTimeout(() => {
     dealer_cards();
   }, 3300);
+
   setTimeout(() => {
     dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer dealing-dealer-card" />`;
     setTimeout(() => {
@@ -264,6 +270,8 @@ const removeSecondCardDealerClass = () => {
 const blackjack = () => {
   player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
   playerCash += playerBet * 2.5;
+  dealer_section_front.setAttribute("hidden", "");
+
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
   hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", "");
@@ -451,7 +459,7 @@ const dealer_cards = () => {
     setTimeout(() => {
       removeDealerDealClass();
     }, 800);
-    if ((dealerCards.length = 1)) {
+    if ((dealerCards.length = 1 && playerPoints != 21)) {
       setTimeout(() => {
         hit_button_front.removeAttribute("disabled");
         stand_button_front.removeAttribute("disabled");

@@ -29,6 +29,8 @@ const start_game_container = document.querySelector(".start-game-container");
 const press_start_text_front = document.querySelector(".press-start-text");
 const startgame_button_front = document.querySelector(".startgame-button");
 const match_messages_front = document.querySelector(".match-messages");
+const bet_value_front = document.querySelector(".bet-value");
+const bet_value_items_front = document.querySelector(".bet-value-items");
 const bet_section_front = document.querySelector(".bet-section-window");
 const bet_button_front = document.querySelector(".bet-button");
 const bet_item_front = document.querySelector(".bet");
@@ -188,6 +190,8 @@ const hideGameSection = () => {
 };
 
 const endMatchActions = () => {
+  bet_value_front.classList.remove("bet-value-move");
+  bet_value_items_front.classList.remove("bet-value-items-move");
   hideCards();
   hideMatchButtons();
   restartBet();
@@ -667,6 +671,8 @@ stand_button_front.addEventListener("click", () => {
 
 bet_button_front.addEventListener("click", () => {
   hideBetButtons();
+  bet_value_front.classList.add("bet-value-move");
+  bet_value_items_front.classList.add("bet-value-items-move");
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
   /* player_section_front.removeAttribute("hidden"); */
   showGameSection();

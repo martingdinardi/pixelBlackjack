@@ -92,6 +92,7 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 0.2rem;
+  height: 9rem;
 }
 
 .bet-section-window {
@@ -126,6 +127,10 @@ footer {
 
 .match-buttons {
   display: flex;
+}
+
+.match-buttons button {
+  height: 5rem;
 }
 
 .match-buttons div {

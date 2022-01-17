@@ -113,8 +113,8 @@ const newMatch = () => {
   /* dealer_cards(); */
   /* dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`; */
   showMatchButtons();
-  hit_button_front.removeAttribute("disabled");
-  stand_button_front.removeAttribute("disabled");
+  /* hit_button_front.removeAttribute("disabled");
+  stand_button_front.removeAttribute("disabled"); */
   bet_button_front.setAttribute("disabled", "");
 };
 
@@ -447,7 +447,21 @@ const dealer_cards = () => {
     setTimeout(() => {
       removeDealerDealClass();
     }, 800);
+    if ((dealerCards.length = 1)) {
+      setTimeout(() => {
+        hit_button_front.removeAttribute("disabled");
+        stand_button_front.removeAttribute("disabled");
+      }, 1500);
+    }
   };
+
+  /*   if (dealerCards.length = 1) {
+    setTimeout(() => {
+      hit_button_front.removeAttribute("disabled");
+      stand_button_front.removeAttribute("disabled");
+    }, 1500);
+  } */
+
   if (card[0] === "A") {
     dealerPoints += 11;
     getCardToDealer();
@@ -581,7 +595,7 @@ stand_button_front.addEventListener("click", () => {
         dealer_cards
         
       } while (dealerPoints <= 17); */
-      function jsHello(i) {
+      function getCardsToDealerWhenPLayerStand(i) {
         if (i < 0) return;
 
         setTimeout(function () {
@@ -634,13 +648,13 @@ stand_button_front.addEventListener("click", () => {
             return;
           }
 
-          jsHello(--i);
+          getCardsToDealerWhenPLayerStand(--i);
         }, 2000);
       }
 
       if (playerPoints > dealerPoints && dealerPoints <= 16) {
         /* dealer_cards(); */
-        jsHello(9);
+        getCardsToDealerWhenPLayerStand(9);
       }
     }
   };

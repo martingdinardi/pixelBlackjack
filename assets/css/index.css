@@ -40,8 +40,11 @@ p {
 }
 
 .game-table {
-  background-image: url("../items/green-table.jpg");
+  /* background-image: url("../items/green-table.jpg"); */
+  background-image: url("../items/table_bg.png");
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* background-color: steelblue; */
   height: calc(var(--vh, 1vh) * 100);
   /* height: 100%; */
@@ -89,6 +92,7 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 0.2rem;
+  height: 9rem;
 }
 
 .bet-section-window {
@@ -123,6 +127,10 @@ footer {
 
 .match-buttons {
   display: flex;
+}
+
+.match-buttons button {
+  height: 5rem;
 }
 
 .match-buttons div {
@@ -396,11 +404,39 @@ p {
 .bet-value {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
+  position: absolute;
+  top: 19rem;
+  right: 0;
+  left: 0;
+  max-width: 5rem;
+  margin: 0 auto;
 }
 
 .bet-value-items {
   display: flex;
+  position: relative;
+}
+
+.bet-value-move {
+  animation: bet-value-move 0.8s alternate forwards;
+}
+
+@keyframes bet-value-move {
+  100% {
+    top: 30rem;
+    /* left: 45%; */
+  }
+}
+
+.bet-value-items-move {
+  animation: bet-value-items-move 0.8s alternate forwards;
+}
+
+@keyframes bet-value-items-move {
+  100% {
+    margin-left: 12.5rem;
+  }
 }
 
 .new-chip {

@@ -581,6 +581,20 @@ hit_button_front.addEventListener("click", () => {
   /* take_card(); */
 });
 
+double_button_front.addEventListener("click", () => {
+  playerCash -= playerBet;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  playerBet += playerBet;
+  player_bet_front.innerHTML = `<p>${playerBet}</p>`;
+  doubleButtonDisabled();
+  setTimeout(() => {
+    player_cards_front.innerHTML += `<p>doblaste tu apuesta</p>`;
+  }, 1000);
+  setTimeout(() => {
+    player_cards_front.removeChild(player_cards_front.children[2]);
+  }, 3000);
+});
+
 stand_button_front.addEventListener("click", () => {
   matchButtonsDisabled();
   doubleButtonDisabled();

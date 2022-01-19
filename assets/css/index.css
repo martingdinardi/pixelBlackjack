@@ -113,7 +113,7 @@ footer {
 }
 
 .bet-section-window img {
-  width: 20rem;
+  width: 15rem;
 }
 
 .bet-section {
@@ -450,6 +450,11 @@ p {
 .game-logo {
   max-width: 20rem;
   /* background-color: brown; */
+}
+
+.goodLuckImg {
+  width: 8rem;
+  height: 6rem;
 }
 
 .press-start {

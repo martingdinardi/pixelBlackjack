@@ -42,6 +42,7 @@ const onehundred_bet_button_front = document.querySelector(".one-hundred");
 const twohundred_bet_button_front = document.querySelector(".two-hundred");
 const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
+const double_button_front = document.querySelector(".double-button");
 
 let playerCash = 500;
 let playerBet = 0;
@@ -74,16 +75,16 @@ let shuffle_deck = () => {
     }
   }
 
+  shuffledDeck = _.shuffle(deck);
   /*
    */
-  shuffledDeck = _.shuffle(deck);
   /*
   shuffledDeck = deck;
   shuffledDeck.pop();
   shuffledDeck.pop();
   shuffledDeck.pop();
   console.log(shuffledDeck);
-  */
+   */
 };
 
 const restartBet = () => {
@@ -123,6 +124,7 @@ const newMatch = () => {
   /* dealer_cards(); */
   /* dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer" />`; */
   showMatchButtons();
+  /* doubleButtonAble(); */
   /* hit_button_front.removeAttribute("disabled");
   stand_button_front.removeAttribute("disabled"); */
   bet_button_front.setAttribute("disabled", "");
@@ -130,7 +132,7 @@ const newMatch = () => {
 
 const goodLuckmessage = () => {
   setTimeout(() => {
-    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" />`;
+    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" class="goodLuckImg"/>`;
   }, 500);
   setTimeout(() => {
     match_messages_front.innerHTML = ``;
@@ -173,11 +175,31 @@ const showBetButtons = () => {
 const hideMatchButtons = () => {
   hit_button_front.setAttribute("hidden", "");
   stand_button_front.setAttribute("hidden", "");
+  double_button_front.setAttribute("hidden", "");
 };
 
 const showMatchButtons = () => {
   hit_button_front.removeAttribute("hidden");
   stand_button_front.removeAttribute("hidden");
+  double_button_front.removeAttribute("hidden");
+};
+
+const matchButtonsDisabled = () => {
+  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", "");
+};
+
+const matchButtonsAble = () => {
+  hit_button_front.removeAttribute("disabled", "");
+  stand_button_front.removeAttribute("disabled", "");
+};
+
+const doubleButtonAble = () => {
+  double_button_front.removeAttribute("disabled", "");
+};
+
+const doubleButtonDisabled = () => {
+  double_button_front.setAttribute("disabled", "");
 };
 
 const removePoints = () => {
@@ -270,13 +292,16 @@ const removeSecondCardDealerClass = () => {
 };
 
 const blackjack = () => {
-  player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
+  player_cards_front.innerHTML += `<p>blackjack!!!</p>`;
   playerCash += playerBet * 2.5;
-  dealer_section_front.setAttribute("hidden", "");
+  /* dealer_section_front.setAttribute("hidden", ""); */
+  /* dealer_cards_front.children[1].setAttribute("hidden", ""); */
 
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
-  hit_button_front.setAttribute("disabled", "");
-  stand_button_front.setAttribute("disabled", "");
+  /* matchButtonsDisabled(); */
+  /*  hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", ""); */
+
   bet_button_front.removeAttribute("disabled");
 };
 
@@ -284,8 +309,10 @@ const loseMoreThanTwentyOne = () => {
   setTimeout(() => {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
   }, 2000);
-  hit_button_front.setAttribute("disabled", "");
-  stand_button_front.setAttribute("disabled", "");
+  /* hit_button_front.setAttribute("disabled", "");
+  stand_button_front.setAttribute("disabled", ""); */
+  matchButtonsDisabled();
+  doubleButtonDisabled();
   bet_button_front.removeAttribute("disabled");
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
@@ -427,28 +454,50 @@ let take_card = () => {
     }, 1050);
   }
   if (playerCards.length === 2 && playerPoints === 21) {
-    /* player_cards_front.innerHTML += `<p>BLACKJACK!!!</p>`;
-    playerCash += playerBet * 2.5;
-    player_money_front.innerHTML = `<p>${playerCash}</p>`;
-    hit_button_front.setAttribute("disabled", "");
-    stand_button_front.setAttribute("disabled", "");
-    bet_button_front.removeAttribute("disabled"); */
     blackjack();
+
     endMatch();
-  } else if (playerPoints === 21) {
+  }
+  if (
+    (playerCards.length === 2 &&
+      playerPoints === 9 &&
+      playerBet * 2 <= playerCash + playerBet) ||
+    (playerCards.length === 2 &&
+      playerPoints === 10 &&
+      playerBet * 2 <= playerCash + playerBet) ||
+    (playerCards.length === 2 &&
+      playerPoints === 11 &&
+      playerBet * 2 <= playerCash + playerBet)
+  ) {
+    doubleButtonAble();
+  }
+  if (playerCards.length === 3) {
+    doubleButtonDisabled();
+  }
+  if (playerCards.length === 2 && playerPoints != 21) {
+    setTimeout(() => {
+      matchButtonsAble();
+    }, 1500);
+  }
+  if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
-  } else if (playerPoints > 21 && playerCash > 0) {
-    /* player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
-    hit_button_front.setAttribute("disabled", "");
-    stand_button_front.setAttribute("disabled", "");
-    bet_button_front.removeAttribute("disabled");
-    player_money_front.innerHTML = `<p>${playerCash}</p>`; */
+  }
+  if (playerPoints > 21 && playerCash > 0) {
     loseMoreThanTwentyOne();
     endMatch();
-  } else if (playerPoints > 21 && playerCash === 0) {
+  }
+
+  if (playerPoints > 21 && playerCash === 0) {
+    loseMoreThanTwentyOne();
+    endMatch();
+  }
+
+  // Aca se agrega el game over
+  /*
+    else if (playerPoints > 21 && playerCash === 0) {
     game_table_front.setAttribute("hidden", "");
     player_section_front.setAttribute("hidden", "");
-  }
+  } */
   setTimeout(() => {
     player_points_front.innerHTML = `${playerPoints}`;
   }, 500);
@@ -467,20 +516,13 @@ const dealer_cards = () => {
     setTimeout(() => {
       removeDealerDealClass();
     }, 800);
-    if ((dealerCards.length = 1 && playerPoints != 21)) {
+    /*     if ((dealerCards.length = 1 && playerPoints != 21)) {
       setTimeout(() => {
-        hit_button_front.removeAttribute("disabled");
-        stand_button_front.removeAttribute("disabled");
+        matchButtonsAble();
+        console.log("HOLA");
       }, 1500);
-    }
+    } */
   };
-
-  /*   if (dealerCards.length = 1) {
-    setTimeout(() => {
-      hit_button_front.removeAttribute("disabled");
-      stand_button_front.removeAttribute("disabled");
-    }, 1500);
-  } */
 
   if (card[0] === "A") {
     dealerPoints += 11;
@@ -539,9 +581,23 @@ hit_button_front.addEventListener("click", () => {
   /* take_card(); */
 });
 
+double_button_front.addEventListener("click", () => {
+  playerCash -= playerBet;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  playerBet += playerBet;
+  player_bet_front.innerHTML = `<p>${playerBet}</p>`;
+  doubleButtonDisabled();
+  setTimeout(() => {
+    player_cards_front.innerHTML += `<p>doblaste tu apuesta</p>`;
+  }, 1000);
+  setTimeout(() => {
+    player_cards_front.removeChild(player_cards_front.children[2]);
+  }, 3000);
+});
+
 stand_button_front.addEventListener("click", () => {
-  hit_button_front.setAttribute("disabled", "");
-  stand_button_front.setAttribute("disabled", "");
+  matchButtonsDisabled();
+  doubleButtonDisabled();
   dealer_cards_front.removeChild(dealer_cards_front.lastElementChild);
   const viewSecondDealerCard = () => {
     let card = shuffledDeck.pop();
@@ -704,15 +760,17 @@ bet_button_front.addEventListener("click", () => {
     player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
     playerCash += playerBet;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;
-    hit_button_front.setAttribute("disabled", "");
-    stand_button_front.setAttribute("disabled", "");
+    /*     hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", ""); */
+    hideMatchButtons();
     bet_button_front.removeAttribute("disabled");
     endMatch();
   }
   if (playerPoints > 21) {
     player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
-    hit_button_front.setAttribute("disabled", "");
-    stand_button_front.setAttribute("disabled", "");
+    /* hit_button_front.setAttribute("disabled", "");
+    stand_button_front.setAttribute("disabled", ""); */
+    hideMatchButtons();
     bet_button_front.removeAttribute("disabled");
     playerCash -= playerBet;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;

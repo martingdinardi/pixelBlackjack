@@ -459,9 +459,15 @@ let take_card = () => {
     endMatch();
   }
   if (
-    (playerCards.length === 2 && playerPoints === 9) ||
-    (playerCards.length === 2 && playerPoints === 10) ||
-    (playerCards.length === 2 && playerPoints === 11)
+    (playerCards.length === 2 &&
+      playerPoints === 9 &&
+      playerBet * 2 <= playerCash + playerBet) ||
+    (playerCards.length === 2 &&
+      playerPoints === 10 &&
+      playerBet * 2 <= playerCash + playerBet) ||
+    (playerCards.length === 2 &&
+      playerPoints === 11 &&
+      playerBet * 2 <= playerCash + playerBet)
   ) {
     doubleButtonAble();
   }

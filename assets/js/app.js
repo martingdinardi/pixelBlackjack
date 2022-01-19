@@ -130,7 +130,7 @@ const newMatch = () => {
 
 const goodLuckmessage = () => {
   setTimeout(() => {
-    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" />`;
+    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" class="goodLuckImg"/>`;
   }, 500);
   setTimeout(() => {
     match_messages_front.innerHTML = ``;

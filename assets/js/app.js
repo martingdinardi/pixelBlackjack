@@ -75,9 +75,9 @@ let shuffle_deck = () => {
     }
   }
 
-  shuffledDeck = _.shuffle(deck);
   /*
    */
+  shuffledDeck = _.shuffle(deck);
   /*
   shuffledDeck = deck;
   shuffledDeck.pop();
@@ -462,28 +462,31 @@ let take_card = () => {
       removeDealClass();
     }, 1050);
   }
-  if (playerCards.length === 2 && playerPoints === 21) {
+  if (player_cards_front.children.length === 2 && playerPoints === 21) {
     blackjack();
 
     endMatch();
   }
   if (
-    (playerCards.length === 2 &&
+    (player_cards_front.children.length === 2 &&
       playerPoints === 9 &&
       playerBet * 2 <= playerCash + playerBet) ||
-    (playerCards.length === 2 &&
+    (player_cards_front.children.length === 2 &&
       playerPoints === 10 &&
       playerBet * 2 <= playerCash + playerBet) ||
-    (playerCards.length === 2 &&
+    (player_cards_front.children.length === 2 &&
       playerPoints === 11 &&
       playerBet * 2 <= playerCash + playerBet)
   ) {
     doubleButtonAble();
   }
-  if (playerCards.length === 3) {
+  if (player_cards_front.children.length === 3) {
     doubleButtonDisabled();
   }
-  if (playerCards.length === 2 && playerPoints != 21) {
+  if (
+    /* playerCards.length */ player_cards_front.children.length === 2 &&
+    playerPoints != 21
+  ) {
     setTimeout(() => {
       matchButtonsAble();
     }, 1500);
@@ -519,17 +522,12 @@ let take_card = () => {
     endMatch();
   }
 
-  /*   if (playerPoints > 21 && playerCash === 0) {
+  // Aca se agrega el game over
+  if (playerPoints > 21 && playerCash === 0) {
     loseMoreThanTwentyOne();
     endMatch();
-  } */
+  }
 
-  // Aca se agrega el game over
-  /*
-    else if (playerPoints > 21 && playerCash === 0) {
-    game_table_front.setAttribute("hidden", "");
-    player_section_front.setAttribute("hidden", "");
-  } */
   setTimeout(() => {
     player_points_front.innerHTML = `${playerPoints}`;
   }, 500);
@@ -788,7 +786,7 @@ bet_button_front.addEventListener("click", () => {
   showGameSection();
   newMatch();
 
-  if (playerCards.length > 2 && playerPoints === 21) {
+  if (player_cards_front.children.length > 2 && playerPoints === 21) {
     player_cards_front.innerHTML += `<p>Has ganado! Sumaste 21!</p>`;
     playerCash += playerBet;
     player_money_front.innerHTML = `<p>${playerCash}</p>`;

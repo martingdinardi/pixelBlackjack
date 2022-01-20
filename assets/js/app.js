@@ -307,7 +307,7 @@ const blackjack = () => {
 
 const loseMoreThanTwentyOne = () => {
   setTimeout(() => {
-    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21 my friend</p>`;
   }, 2000);
   /* hit_button_front.setAttribute("disabled", "");
   stand_button_front.setAttribute("disabled", ""); */
@@ -436,7 +436,7 @@ let take_card = () => {
     }, 800);
   } else if (playerPoints >= 11 && card[0] === "A") {
     playerPoints += 1;
-    playerCards.push(card);
+    /* playerCards.push(card); */
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
     }.png" class="one-card dealing-player-card" />`;
@@ -491,15 +491,38 @@ let take_card = () => {
   if (playerPoints === 21) {
     hit_button_front.setAttribute("disabled", "");
   }
-  if (playerPoints > 21 && playerCash > 0) {
+  if (
+    (playerPoints > 21 && playerCards.includes("AT")) ||
+    (playerPoints > 21 && playerCards.includes("AC")) ||
+    (playerPoints > 21 && playerCards.includes("AD")) ||
+    (playerPoints > 21 && playerCards.includes("AP"))
+  ) {
+    console.log("good!");
+    playerPoints -= 10;
+    for (let i = 0; i < playerCards.length; i++) {
+      if (
+        playerCards[i].includes("AT") ||
+        playerCards[i].includes("AC") ||
+        playerCards[i].includes("AD") ||
+        playerCards[i].includes("AP")
+      ) {
+        playerCards.splice(i, 1);
+      }
+    }
+  } else if (
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AT")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AC")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AP")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AD"))
+  ) {
     loseMoreThanTwentyOne();
     endMatch();
   }
 
-  if (playerPoints > 21 && playerCash === 0) {
+  /*   if (playerPoints > 21 && playerCash === 0) {
     loseMoreThanTwentyOne();
     endMatch();
-  }
+  } */
 
   // Aca se agrega el game over
   /*
@@ -775,8 +798,14 @@ bet_button_front.addEventListener("click", () => {
     bet_button_front.removeAttribute("disabled");
     endMatch();
   }
-  if (playerPoints > 21) {
-    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21</p>`;
+  if (
+    /* playerPoints > 21 */
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AT")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AC")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AP")) ||
+    (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AD"))
+  ) {
+    player_cards_front.innerHTML += `<p>Has perdido, pasaste los 21 amigo</p>`;
     /* hit_button_front.setAttribute("disabled", "");
     stand_button_front.setAttribute("disabled", ""); */
     hideMatchButtons();

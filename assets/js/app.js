@@ -425,8 +425,17 @@ twohundred_bet_button_front.addEventListener("click", () => {
 let take_card = () => {
   let card = shuffledDeck.pop();
   player_points_front.removeAttribute("hidden");
-  if (card[0] === "A") {
+  if (card[0] === "A" && playerPoints < 11) {
     playerPoints += 11;
+    playerCards.push(card);
+    player_cards_front.innerHTML += `<img src="assets/cards/${
+      playerCards[playerCards.length - 1]
+    }.png" class="one-card dealing-player-card" />`;
+    setTimeout(() => {
+      removeDealClass();
+    }, 800);
+  } else if (playerPoints >= 11 && card[0] === "A") {
+    playerPoints += 1;
     playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]

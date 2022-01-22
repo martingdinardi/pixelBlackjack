@@ -28,11 +28,19 @@ p {
 
 .match-messages {
   height: 5rem;
-  width: 100vw;
-  /* background-color: indianred; */
+  max-width: 50rem;
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
-  top: 50%;
+  margin: 0 auto;
+  top: 35%;
+  left: 0;
+  right: 0;
+  z-index: 1;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .match-messages img {

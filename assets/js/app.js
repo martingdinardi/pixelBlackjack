@@ -46,6 +46,7 @@ const double_button_front = document.querySelector(".double-button");
 
 let playerCash = 500;
 let playerBet = 0;
+let asPlayerCards = [];
 let playerCards = [];
 let playerPoints = 0;
 let dealerCards = [];
@@ -481,10 +482,11 @@ let take_card = () => {
     }, 800);
   } else if (playerPoints >= 11 && card[0] === "A") {
     playerPoints += 1;
-    /* playerCards.push(card); */
+    playerCards.push(card);
     player_cards_front.innerHTML += `<img src="assets/cards/${
       playerCards[playerCards.length - 1]
     }.png" class="one-card dealing-player-card" />`;
+    playerCards.pop();
     setTimeout(() => {
       removeDealClass();
     }, 800);
@@ -557,6 +559,9 @@ let take_card = () => {
         playerCards.splice(i, 1);
       }
     }
+    //
+
+    //
   } else if (
     (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AT")) ||
     (playerPoints > 21 && playerCash > 0 && !playerCards.includes("AC")) ||

@@ -75,9 +75,9 @@ let shuffle_deck = () => {
     }
   }
 
+  shuffledDeck = _.shuffle(deck);
   /*
    */
-  shuffledDeck = _.shuffle(deck);
   /*
   shuffledDeck = deck;
   shuffledDeck.pop();
@@ -292,12 +292,20 @@ const removeSecondCardDealerClass = () => {
 };
 
 const blackjack = () => {
-  player_cards_front.innerHTML += `<p>blackjack!!!</p>`;
+  /* player_cards_front.innerHTML += `<p>blackjack!!!</p>`; */
+  setTimeout(() => {
+    match_messages_front.removeAttribute("hidden", "");
+    match_messages_front.innerHTML = `<h3>B L A C K J A C K !</h3>`;
+  }, 1700);
   playerCash += playerBet * 2.5;
-
+  matchButtonsDisabled();
+  doubleButtonDisabled();
+  bet_button_front.removeAttribute("disabled");
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 
-  bet_button_front.removeAttribute("disabled");
+  /* player_money_front.innerHTML = `<p>${playerCash}</p>`;
+
+  bet_button_front.removeAttribute("disabled"); */
 };
 
 const lose = () => {

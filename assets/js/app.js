@@ -360,6 +360,7 @@ const tie = () => {
   matchButtonsDisabled();
   doubleButtonDisabled();
   bet_button_front.removeAttribute("disabled");
+  playerCash += playerBet;
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
 

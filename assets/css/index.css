@@ -27,7 +27,7 @@ p {
 }
 
 .match-messages {
-  height: 5rem;
+  height: 10rem;
   max-width: 50rem;
   background-color: rgba(0, 0, 0, 0.65);
   position: absolute;
@@ -35,12 +35,29 @@ p {
   top: 37%;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 5;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.chipsbox-deck {
+  /* background-color: brown; */
+  position: absolute;
+  max-width: 50rem;
+  height: 5.3rem;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: ce; */
 }
 
 .match-messages img {
@@ -135,6 +152,7 @@ footer {
 
 .match-buttons {
   display: flex;
+  z-index: 30;
 }
 
 .match-buttons button {
@@ -156,15 +174,15 @@ p {
 
 .navbar {
   padding: 1rem;
-  z-index: 1;
+  z-index: 9;
 }
 
 .outside-navbar {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.78);
   position: absolute;
   width: 100%;
   height: 4rem;
-  z-index: 1;
+  z-index: 8;
 }
 
 .one-card {
@@ -173,7 +191,7 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: auto;
-  top: 23rem;
+  top: 20rem;
   left: 50%;
   position: relative;
 }
@@ -185,7 +203,7 @@ p {
   margin-bottom: 0.5rem; */
   width: auto;
   position: relative;
-  top: 12.3rem;
+  top: 10rem;
   left: 50%;
 
   /*   top: 200px;
@@ -222,7 +240,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 23rem;
+    top: 20rem;
     left: 50%;
   }
 }
@@ -242,7 +260,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 12.3rem;
+    top: 10rem;
     left: 50%;
   }
 }
@@ -278,10 +296,10 @@ p {
   max-width: 8rem;
   height: 3rem;
   position: absolute;
-  top: 21rem;
+  top: 19rem;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 14.5rem;
   margin: 0 auto;
   /* background-color: brown; */
   /* text-align: right; */
@@ -310,10 +328,10 @@ p {
   max-width: 8rem;
   height: 3rem;
   position: absolute;
-  top: 9.8rem;
+  top: 8rem;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 14.5rem;
   margin: 0 auto;
   /* background-color: brown; */
   /* text-align: right; */
@@ -414,7 +432,7 @@ p {
   justify-content: center;
   /* margin-bottom: 3rem; */
   position: absolute;
-  top: 19rem;
+  top: 40%;
   right: 0;
   left: 0;
   max-width: 5rem;
@@ -432,7 +450,7 @@ p {
 
 @keyframes bet-value-move {
   100% {
-    top: 30rem;
+    top: 27rem;
     /* left: 45%; */
   }
 }
@@ -443,7 +461,7 @@ p {
 
 @keyframes bet-value-items-move {
   100% {
-    margin-left: 12.5rem;
+    margin-left: 14.5rem;
   }
 }
 

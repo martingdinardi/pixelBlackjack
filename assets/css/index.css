@@ -29,7 +29,7 @@ p {
 .match-messages {
   height: 10rem;
   max-width: 50rem;
-  background-color: rgba(0, 0, 0, 0.65);
+  /* background-color: rgba(0, 0, 0, 0.65); */
   position: absolute;
   margin: 0 auto;
   top: 37%;
@@ -43,7 +43,22 @@ p {
   align-items: center;
 }
 
-.chipsbox-deck {
+.deck {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  max-width: 50rem;
+  height: 10rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.deck img {
+  height: 6.3rem;
+}
+
+.chipsbox-container {
   /* background-color: brown; */
   position: absolute;
   max-width: 50rem;
@@ -60,9 +75,9 @@ p {
   /* align-items: ce; */
 }
 
-.match-messages img {
+/* .match-messages img {
   height: 3rem;
-}
+} */
 
 .game-table {
   /* background-image: url("../items/green-table.jpg"); */
@@ -432,7 +447,7 @@ p {
   justify-content: center;
   /* margin-bottom: 3rem; */
   position: absolute;
-  top: 40%;
+  top: 16.2rem;
   right: 0;
   left: 0;
   max-width: 5rem;
@@ -450,7 +465,7 @@ p {
 
 @keyframes bet-value-move {
   100% {
-    top: 27rem;
+    top: 23rem;
     /* left: 45%; */
   }
 }
@@ -479,8 +494,7 @@ p {
 }
 
 .goodLuckImg {
-  width: 8rem;
-  height: 6rem;
+  width: 14rem;
 }
 
 .press-start {

@@ -134,11 +134,12 @@ const newMatch = () => {
 const goodLuckmessage = () => {
   setTimeout(() => {
     match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `<img src="./assets/items/goodluck.png" class="goodLuckImg"/>`;
+    match_messages_front.innerHTML = `<div><img src="./assets/items/goodluck.png" class="goodLuckImg"/></div>`;
   }, 500);
   setTimeout(() => {
     match_messages_front.setAttribute("hidden", "");
     match_messages_front.innerHTML = ``;
+    match_messages_front.style.backgroundColor = "rgba(0, 0, 0, 0.65)";
   }, 2500);
 };
 

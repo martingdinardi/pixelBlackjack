@@ -297,7 +297,7 @@ const blackjack = () => {
   /* player_cards_front.innerHTML += `<p>blackjack!!!</p>`; */
   setTimeout(() => {
     match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `<h3>B L A C K J A C K !</h3>`;
+    match_messages_front.innerHTML = `<img src="./assets/items/blackjack.png" class="blackjack">`;
   }, 1700);
   playerCash += playerBet * 2.5;
   matchButtonsDisabled();
@@ -314,13 +314,13 @@ const lose = () => {
   if (playerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<h3>Has perdido</h3>
+      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
       <h5>Pasaste los 21 my friend</h5>`;
     }, 1700);
   } else if (playerPoints < dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<h3>You Lose</h3>
+      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
       <h5>El dealer formó un número mayor a tus ${playerPoints}</h5>`;
     }, 1700);
   }
@@ -334,13 +334,13 @@ const won = () => {
   if (playerPoints > dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<h3>You Won</h3>
+      match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
       <h5>Tienes mas puntos que el dealer</h5>`;
     }, 1700);
   } else if (dealerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<h3>You Won</h3>
+      match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
       <h5>El dealer se pasó de los 21</h5>`;
     }, 1700);
   }
@@ -354,7 +354,7 @@ const tie = () => {
   if (playerPoints === dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<h3>Tie</h3>
+      match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
       <h5>Tú y el dealer tienen los mismos puntos</h5>`;
     }, 1700);
   }
@@ -684,10 +684,10 @@ double_button_front.addEventListener("click", () => {
     match_messages_front.removeAttribute("hidden", "");
     match_messages_front.innerHTML = `
     <h2>Doubble</h2>`;
-  }, 200);
+  }, 100);
   setTimeout(() => {
     match_messages_front.setAttribute("hidden", "");
-  }, 2300);
+  }, 1200);
 });
 
 stand_button_front.addEventListener("click", () => {

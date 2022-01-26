@@ -497,6 +497,22 @@ p {
   width: 14rem;
 }
 
+.lose {
+  width: 10rem;
+}
+
+.win {
+  width: 10rem;
+}
+
+.blackjack {
+  width: 17rem;
+}
+
+.tie {
+  width: 4rem;
+}
+
 .press-start {
   /* background-color: chocolate; */
   height: 8rem;

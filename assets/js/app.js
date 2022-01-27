@@ -532,10 +532,7 @@ let take_card = () => {
   if (player_cards_front.children.length === 3) {
     doubleButtonDisabled();
   }
-  if (
-    /* playerCards.length */ player_cards_front.children.length === 2 &&
-    playerPoints != 21
-  ) {
+  if (player_cards_front.children.length === 2 && playerPoints != 21) {
     setTimeout(() => {
       matchButtonsAble();
     }, 1500);
@@ -549,8 +546,8 @@ let take_card = () => {
     (playerPoints > 21 && playerCards.includes("AD")) ||
     (playerPoints > 21 && playerCards.includes("AP"))
   ) {
-    console.log("good!");
-    playerPoints -= 10;
+    /*     console.log("good!");
+     */ playerPoints -= 10;
     for (let i = 0; i < playerCards.length; i++) {
       if (
         playerCards[i].includes("AT") ||
@@ -793,9 +790,18 @@ stand_button_front.addEventListener("click", () => {
               removeDealerDealClass();
             }, 800);
           };
-          if (card[0] === "A") {
+
+          if (card[0] === "A" && dealerPoints < 11) {
             dealerPoints += 11;
             getCardToDealer();
+          } else if (dealerPoints >= 11 && card[0] === "A") {
+            /* if (card[0] === "A") {
+            dealerPoints += 11;
+            getCardToDealer();
+          }  */
+            dealerPoints += 1;
+            getCardToDealer();
+            dealerCards.pop();
           } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
             dealerPoints += 10;
             getCardToDealer();
@@ -807,21 +813,30 @@ stand_button_front.addEventListener("click", () => {
           console.log(`dealer points ${dealerPoints}`);
 
           if (dealerPoints >= 17 && dealerPoints < playerPoints) {
-            /* player_cards_front.innerHTML += `<p>Has ganado! Tienes un puntaje mayor al del dealer</p>`; */
-            /* bet_button_front.removeAttribute("disabled");
-            playerCash += playerBet * 2;
-            player_money_front.innerHTML = `<p>${playerCash}</p>`; */
             won();
             playerWins();
             endMatch();
             return;
+          }
+          if (
+            (dealerPoints > 21 && dealerCards.includes("AT")) ||
+            (dealerPoints > 21 && dealerCards.includes("AC")) ||
+            (dealerPoints > 21 && dealerCards.includes("AD")) ||
+            (dealerPoints > 21 && dealerCards.includes("AP"))
+          ) {
+            /*     console.log("good!");
+             */ dealerPoints -= 10;
+            for (let i = 0; i < dealerCards.length; i++) {
+              if (
+                dealerCards[i].includes("AT") ||
+                dealerCards[i].includes("AC") ||
+                dealerCards[i].includes("AD") ||
+                dealerCards[i].includes("AP")
+              ) {
+                dealerCards.splice(i, 1);
+              }
+            }
           } else if (dealerPoints === playerPoints) {
-            /* player_cards_front.innerHTML += `<p>Empate! El dealer también formó ${playerPoints} puntos</p>`; */
-            /*     match_messages_front.innerHTML = `<h3>Empate!</h3>
-    <h5>El dealer también formó ${playerPoints} puntos</h5>`;
-            bet_button_front.removeAttribute("disabled");
-            playerCash += playerBet;
-            player_money_front.innerHTML = `<p>${playerCash}</p>`; */
             tie();
             endMatch();
             return;
@@ -831,9 +846,12 @@ stand_button_front.addEventListener("click", () => {
             /* bet_button_front.removeAttribute("disabled"); */
             endMatch();
             return;
-          } else if (dealerPoints > 21) {
-            /* player_cards_front.innerHTML += `<p>Has ganado! El dealer se pasó de los 21</p>`; */
-            /* bet_button_front.removeAttribute("disabled"); */
+          } else if (
+            (dealerPoints > 21 && !dealerCards.includes("AT")) ||
+            (dealerPoints > 21 && !dealerCards.includes("AC")) ||
+            (dealerPoints > 21 && !dealerCards.includes("AP")) ||
+            (dealerPoints > 21 && !dealerCards.includes("AD"))
+          ) {
             won();
             playerWins();
             endMatch();

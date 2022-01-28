@@ -43,6 +43,7 @@ const twohundred_bet_button_front = document.querySelector(".two-hundred");
 const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
+const game_over_front = document.querySelector(".game-over");
 
 let playerCash = 500;
 let playerBet = 0;
@@ -694,7 +695,10 @@ let take_card = () => {
   // Aca se agrega el game over
   if (playerPoints > 21 && playerCash === 0) {
     lose();
-    endMatch();
+    setTimeout(() => {
+      game_over_front.classList.add("game-over-appears");
+    }, 5000);
+    /* endMatch(); */
   }
 
   setTimeout(() => {

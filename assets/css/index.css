@@ -95,6 +95,44 @@ p {
   justify-content: space-between;
 }
 
+.game-over {
+  background-color: rgba(0, 0, 0, 0.78);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+}
+
+.game-over-appears {
+  animation-name: game-over-appears;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes game-over-appears {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1000;
+    visibility: visible;
+  }
+}
+
 .game-section {
   /* background-color: tomato; */
   display: flex;

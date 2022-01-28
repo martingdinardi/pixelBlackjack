@@ -443,16 +443,16 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
         }
       }
     } else if (
-      (dealerPoints > 17 &&
+      (dealerPoints >= 17 &&
         dealerCards.includes("AT") &&
         dealerPoints < playerPoints) ||
-      (dealerPoints > 17 &&
+      (dealerPoints >= 17 &&
         dealerCards.includes("AC") &&
         dealerPoints < playerPoints) ||
-      (dealerPoints > 17 &&
+      (dealerPoints >= 17 &&
         dealerCards.includes("AD") &&
         dealerPoints < playerPoints) ||
-      (dealerPoints > 17 &&
+      (dealerPoints >= 17 &&
         dealerCards.includes("AP") &&
         dealerPoints < playerPoints)
     ) {
@@ -983,16 +983,16 @@ stand_button_front.addEventListener("click", () => {
               }
             }
           } else if (
-            (dealerPoints > 17 &&
+            (dealerPoints >= 17 &&
               dealerCards.includes("AT") &&
               dealerPoints < playerPoints) ||
-            (dealerPoints > 17 &&
+            (dealerPoints >= 17 &&
               dealerCards.includes("AC") &&
               dealerPoints < playerPoints) ||
-            (dealerPoints > 17 &&
+            (dealerPoints >= 17 &&
               dealerCards.includes("AD") &&
               dealerPoints < playerPoints) ||
-            (dealerPoints > 17 &&
+            (dealerPoints >= 17 &&
               dealerCards.includes("AP") &&
               dealerPoints < playerPoints)
           ) {
@@ -1009,7 +1009,8 @@ stand_button_front.addEventListener("click", () => {
                 dealerCards.splice(i, 1);
               }
             }
-          } else if (
+          }
+          /* else */ if (
             dealerPoints >= 17 &&
             dealerPoints < playerPoints &&
             !dealerCards.includes("AT") /* ) ||

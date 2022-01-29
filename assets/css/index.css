@@ -27,15 +27,15 @@ p {
 }
 
 .match-messages {
-  height: 5rem;
+  height: 10rem;
   max-width: 50rem;
-  background-color: rgba(0, 0, 0, 0.65);
+  /* background-color: rgba(0, 0, 0, 0.65); */
   position: absolute;
   margin: 0 auto;
   top: 37%;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 5;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -43,9 +43,41 @@ p {
   align-items: center;
 }
 
-.match-messages img {
-  height: 3rem;
+.deck {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  max-width: 50rem;
+  height: 10rem;
+  display: flex;
+  align-items: baseline;
 }
+
+.deck img {
+  height: 6.3rem;
+}
+
+.chipsbox-container {
+  /* background-color: brown; */
+  position: absolute;
+  max-width: 50rem;
+  height: 5.3rem;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: ce; */
+}
+
+/* .match-messages img {
+  height: 3rem;
+} */
 
 .game-table {
   /* background-image: url("../items/green-table.jpg"); */
@@ -61,6 +93,44 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.game-over {
+  background-color: rgba(0, 0, 0, 0.78);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+}
+
+.game-over-appears {
+  animation-name: game-over-appears;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes game-over-appears {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1000;
+    visibility: visible;
+  }
 }
 
 .game-section {
@@ -135,6 +205,7 @@ footer {
 
 .match-buttons {
   display: flex;
+  z-index: 30;
 }
 
 .match-buttons button {
@@ -156,15 +227,15 @@ p {
 
 .navbar {
   padding: 1rem;
-  z-index: 1;
+  z-index: 9;
 }
 
 .outside-navbar {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.78);
   position: absolute;
   width: 100%;
   height: 4rem;
-  z-index: 1;
+  z-index: 8;
 }
 
 .one-card {
@@ -173,7 +244,7 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   width: auto;
-  top: 23rem;
+  top: 20rem;
   left: 50%;
   position: relative;
 }
@@ -185,7 +256,7 @@ p {
   margin-bottom: 0.5rem; */
   width: auto;
   position: relative;
-  top: 12.3rem;
+  top: 10rem;
   left: 50%;
 
   /*   top: 200px;
@@ -222,7 +293,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 23rem;
+    top: 20rem;
     left: 50%;
   }
 }
@@ -242,7 +313,7 @@ p {
   }
   100% {
     transform: rotate(0deg);
-    top: 12.3rem;
+    top: 10rem;
     left: 50%;
   }
 }
@@ -278,10 +349,10 @@ p {
   max-width: 8rem;
   height: 3rem;
   position: absolute;
-  top: 21rem;
+  top: 19rem;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 14.5rem;
   margin: 0 auto;
   /* background-color: brown; */
   /* text-align: right; */
@@ -310,10 +381,10 @@ p {
   max-width: 8rem;
   height: 3rem;
   position: absolute;
-  top: 9.8rem;
+  top: 8rem;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 14.5rem;
   margin: 0 auto;
   /* background-color: brown; */
   /* text-align: right; */
@@ -414,7 +485,7 @@ p {
   justify-content: center;
   /* margin-bottom: 3rem; */
   position: absolute;
-  top: 19rem;
+  top: 16.2rem;
   right: 0;
   left: 0;
   max-width: 5rem;
@@ -432,7 +503,7 @@ p {
 
 @keyframes bet-value-move {
   100% {
-    top: 30rem;
+    top: 23rem;
     /* left: 45%; */
   }
 }
@@ -443,7 +514,7 @@ p {
 
 @keyframes bet-value-items-move {
   100% {
-    margin-left: 12.5rem;
+    margin-left: 14.5rem;
   }
 }
 
@@ -461,8 +532,23 @@ p {
 }
 
 .goodLuckImg {
-  width: 8rem;
-  height: 6rem;
+  width: 14rem;
+}
+
+.lose {
+  width: 10rem;
+}
+
+.win {
+  width: 10rem;
+}
+
+.blackjack {
+  width: 17rem;
+}
+
+.tie {
+  width: 4rem;
 }
 
 .press-start {

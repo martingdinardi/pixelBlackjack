@@ -2,6 +2,12 @@ let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty("--vh", `${vh}px`);
 
+// sounds
+
+let dealingCardSound = new Audio("./assets/media/dealingCard.mp3");
+/* dealingCardSound.load(); */
+/* dealingCardSound.play(); */
+
 // variables
 
 let player_name_window_switch = false;
@@ -118,6 +124,8 @@ const newMatch = () => {
   }, 3300);
 
   setTimeout(() => {
+    dealingCardSound.play();
+
     dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer dealing-dealer-card" />`;
     setTimeout(() => {
       removeDealerDealClass();
@@ -397,6 +405,9 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
 
   setTimeout(function () {
     let card = shuffledDeck.pop();
+    // testing sound
+    dealingCardSound.play();
+
     const getCardToDealer = () => {
       dealerCards.push(card);
       dealer_cards_front.innerHTML += `<img src="assets/cards/${
@@ -596,6 +607,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
 
 let take_card = () => {
   let card = shuffledDeck.pop();
+  dealingCardSound.play();
+
   player_points_front.removeAttribute("hidden");
   if (card[0] === "A" && playerPoints < 11) {
     playerPoints += 11;
@@ -709,6 +722,8 @@ let take_card = () => {
 
 const dealer_cards = () => {
   let card = shuffledDeck.pop();
+  dealingCardSound.play();
+
   dealer_points_front.removeAttribute("hidden", "");
   const getCardToDealer = () => {
     dealerCards.push(card);
@@ -762,7 +777,7 @@ const dealer_cards = () => {
 hit_button_front.addEventListener("click", () => {
   setTimeout(() => {
     take_card();
-  }, 1500);
+  }, 700);
   /* take_card(); */
 });
 

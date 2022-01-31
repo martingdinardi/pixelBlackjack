@@ -4,7 +4,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // sounds
 
-let dealingCardSound = new Audio("./assets/media/dealingCard.mp3");
+let dealing_card_sound = new Audio("./assets/media/dealingCard.mp3");
 /* dealingCardSound.load(); */
 /* dealingCardSound.play(); */
 
@@ -124,8 +124,8 @@ const newMatch = () => {
   }, 3300);
 
   setTimeout(() => {
-    dealingCardSound.play();
-
+    /* dealingCardSound.play(); */
+    dealingCardSound();
     dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer dealing-dealer-card" />`;
     setTimeout(() => {
       removeDealerDealClass();
@@ -400,13 +400,18 @@ const playerWins = () => {
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
 
+const dealingCardSound = () => {
+  dealing_card_sound.play();
+};
+
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   if (i < 0) return;
 
   setTimeout(function () {
     let card = shuffledDeck.pop();
     // testing sound
-    dealingCardSound.play();
+    /* dealingCardSound.play(); */
+    dealingCardSound();
 
     const getCardToDealer = () => {
       dealerCards.push(card);
@@ -607,7 +612,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
 
 let take_card = () => {
   let card = shuffledDeck.pop();
-  dealingCardSound.play();
+  /* dealingCardSound.play(); */
+  dealingCardSound();
 
   player_points_front.removeAttribute("hidden");
   if (card[0] === "A" && playerPoints < 11) {
@@ -722,7 +728,8 @@ let take_card = () => {
 
 const dealer_cards = () => {
   let card = shuffledDeck.pop();
-  dealingCardSound.play();
+  /* dealingCardSound.play(); */
+  dealingCardSound();
 
   dealer_points_front.removeAttribute("hidden", "");
   const getCardToDealer = () => {
@@ -789,8 +796,14 @@ double_button_front.addEventListener("click", () => {
   doubleButtonDisabled();
   setTimeout(() => {
     match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `
-    <h2>Doubble</h2>`;
+    match_messages_front.innerHTML = `<img src="./assets/items/doubledown.png" class="doubledown">`;
+    /*
+setTimeout(() => {
+    match_messages_front.removeAttribute("hidden", "");
+    match_messages_front.innerHTML = `<img src="./assets/items/blackjack.png" class="blackjack">`;
+  }, 1700);
+
+    */
   }, 100);
   setTimeout(() => {
     match_messages_front.setAttribute("hidden", "");
@@ -955,6 +968,7 @@ stand_button_front.addEventListener("click", () => {
 
         setTimeout(function () {
           let card = shuffledDeck.pop();
+          dealingCardSound();
           const getCardToDealer = () => {
             dealerCards.push(card);
             dealer_cards_front.innerHTML += `<img src="assets/cards/${

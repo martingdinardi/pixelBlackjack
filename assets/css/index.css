@@ -540,15 +540,19 @@ p {
 }
 
 .win {
-  width: 10rem;
+  width: 8rem;
 }
 
 .blackjack {
   width: 17rem;
 }
 
+.doubledown {
+  width: 11rem;
+}
+
 .tie {
-  width: 4rem;
+  width: 3rem;
 }
 
 .press-start {

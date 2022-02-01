@@ -320,19 +320,19 @@ const blackjack = () => {
 };
 
 const lose = () => {
-  if (playerPoints > 21) {
-    setTimeout(() => {
-      match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
-      <h5>Pasaste los 21 my friend</h5>`;
-    }, 1700);
-  } else if (playerPoints < dealerPoints) {
+  /* if (playerPoints > 21) { */
+  setTimeout(() => {
+    match_messages_front.removeAttribute("hidden", "");
+    match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+      <h5>You have lost ${playerBet} chips</h5>`;
+  }, 1700);
+  /* } else if (playerPoints < dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
-      <h5>El dealer formó un número mayor a tus ${playerPoints}</h5>`;
+      <h5>You have lost ${playerBet} chips</h5>`;
     }, 1700);
-  }
+  } */
   matchButtonsDisabled();
   doubleButtonDisabled();
   bet_button_front.removeAttribute("disabled");

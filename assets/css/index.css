@@ -587,6 +587,16 @@ p {
   justify-content: center;
 }
 
+.welcome-element-container {
+  border: 1px solid;
+  padding: 3px;
+}
+
+.welcome-window {
+  background-color: rgb(0, 0, 0, 0.7);
+  /* border: 0.8px solid #f8f7f5; */
+}
+
 .playerName {
   background-color: transparent;
   /* background-color: tomato; */
@@ -606,13 +616,29 @@ p {
 
 .welcome-elements {
   /* background-color: seagreen; */
-  height: 25rem;
+  /* height: 25rem; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   /* justify-content: space-between; */
   /* text-align: center; */
-  align-items: center;
-  max-width: 32rem;
+  /* align-items: center; */
+  max-width: 38rem;
+  border: 4px solid;
+  padding: 15px;
+}
+
+.dealer-img-container {
+  margin-top: -4rem;
+  margin-right: 2rem;
+}
+
+.dealer-img-container img {
+  width: 11rem;
+  /* margin-top: -10rem; */
+}
+
+.welcome-p-continue {
+  text-align: center;
 }
 
 .continue-button,

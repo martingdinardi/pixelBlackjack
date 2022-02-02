@@ -4,7 +4,8 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // sounds
 
-let dealingCardSound = new Audio("./assets/media/dealingCard.mp3");
+let dealing_card_sound = new Audio("./assets/media/dealingCard.mp3");
+let lobby_sound = new Audio("./assets/media/lobby.mp3");
 /* dealingCardSound.load(); */
 /* dealingCardSound.play(); */
 
@@ -50,6 +51,41 @@ const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
 const game_over_front = document.querySelector(".game-over");
+
+let welcome_p_1 = [
+  `¡Hello and welcome to BlackJack Casino!`,
+  "¡The place to test your luck and multiply your wins!",
+  "Who do we have the pleasure of talking to?",
+];
+let i = 0;
+let j = 0;
+
+const typeWriter = () => {
+  if (i < welcome_p_1.length) {
+    if (j < welcome_p_1[i].length) {
+      welcome_p_front.innerHTML += welcome_p_1[i][j];
+      console.log(`j = ${j} p[i].length = ${welcome_p_1[i].length}`);
+      j++;
+      console.log(`i = ${i}`);
+      if (j == welcome_p_1[i].length && i != 2) {
+        setTimeout(() => {
+          welcome_p_front.innerHTML = ``;
+          j = 0;
+          i++;
+        }, 1600);
+      }
+      if (i == 2) {
+        setTimeout(() => {
+          player_name_input_front.removeAttribute("hidden");
+        }, 2550);
+      }
+    }
+  }
+
+  setTimeout(typeWriter, 48);
+};
+
+let welcome_p_front = document.querySelector(".welcome-p");
 
 let playerCash = 500;
 let playerBet = 0;
@@ -124,8 +160,8 @@ const newMatch = () => {
   }, 3300);
 
   setTimeout(() => {
-    dealingCardSound.play();
-
+    /* dealingCardSound.play(); */
+    dealingCardSound();
     dealer_cards_front.innerHTML += `<img src="assets/cards/deck.png" class="one-card-dealer dealing-dealer-card" />`;
     setTimeout(() => {
       removeDealerDealClass();
@@ -320,19 +356,19 @@ const blackjack = () => {
 };
 
 const lose = () => {
-  if (playerPoints > 21) {
-    setTimeout(() => {
-      match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
-      <h5>Pasaste los 21 my friend</h5>`;
-    }, 1700);
-  } else if (playerPoints < dealerPoints) {
+  /* if (playerPoints > 21) { */
+  setTimeout(() => {
+    match_messages_front.removeAttribute("hidden", "");
+    match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+      <h5>You have lost ${playerBet} chips</h5>`;
+  }, 1700);
+  /* } else if (playerPoints < dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
-      <h5>El dealer formó un número mayor a tus ${playerPoints}</h5>`;
+      <h5>You have lost ${playerBet} chips</h5>`;
     }, 1700);
-  }
+  } */
   matchButtonsDisabled();
   doubleButtonDisabled();
   bet_button_front.removeAttribute("disabled");
@@ -400,13 +436,24 @@ const playerWins = () => {
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
 };
 
+const dealingCardSound = () => {
+  dealing_card_sound.play();
+};
+
+const lobbySound = () => {
+  lobby_sound.play();
+  lobby_sound.volume = 0.3;
+  lobby_sound.loop = true;
+};
+
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   if (i < 0) return;
 
   setTimeout(function () {
     let card = shuffledDeck.pop();
     // testing sound
-    dealingCardSound.play();
+    /* dealingCardSound.play(); */
+    dealingCardSound();
 
     const getCardToDealer = () => {
       dealerCards.push(card);
@@ -546,6 +593,11 @@ document.addEventListener("keyup", (e) => {
 });
 
 press_start_text_front.addEventListener("click", () => {
+  lobbySound();
+  /* typeWriter(); */
+  setTimeout(() => {
+    typeWriter();
+  }, 1000);
   hideInitialsElements();
   showWelcomeElements();
   player_name_window_switch = true;
@@ -607,7 +659,8 @@ twohundred_bet_button_front.addEventListener("click", () => {
 
 let take_card = () => {
   let card = shuffledDeck.pop();
-  dealingCardSound.play();
+  /* dealingCardSound.play(); */
+  dealingCardSound();
 
   player_points_front.removeAttribute("hidden");
   if (card[0] === "A" && playerPoints < 11) {
@@ -722,7 +775,8 @@ let take_card = () => {
 
 const dealer_cards = () => {
   let card = shuffledDeck.pop();
-  dealingCardSound.play();
+  /* dealingCardSound.play(); */
+  dealingCardSound();
 
   dealer_points_front.removeAttribute("hidden", "");
   const getCardToDealer = () => {
@@ -789,8 +843,14 @@ double_button_front.addEventListener("click", () => {
   doubleButtonDisabled();
   setTimeout(() => {
     match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `
-    <h2>Doubble</h2>`;
+    match_messages_front.innerHTML = `<img src="./assets/items/doubledown.png" class="doubledown">`;
+    /*
+setTimeout(() => {
+    match_messages_front.removeAttribute("hidden", "");
+    match_messages_front.innerHTML = `<img src="./assets/items/blackjack.png" class="blackjack">`;
+  }, 1700);
+
+    */
   }, 100);
   setTimeout(() => {
     match_messages_front.setAttribute("hidden", "");
@@ -955,6 +1015,7 @@ stand_button_front.addEventListener("click", () => {
 
         setTimeout(function () {
           let card = shuffledDeck.pop();
+          dealingCardSound();
           const getCardToDealer = () => {
             dealerCards.push(card);
             dealer_cards_front.innerHTML += `<img src="assets/cards/${

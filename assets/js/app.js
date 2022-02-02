@@ -5,6 +5,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 // sounds
 
 let dealing_card_sound = new Audio("./assets/media/dealingCard.mp3");
+let lobby_sound = new Audio("./assets/media/lobby.mp3");
 /* dealingCardSound.load(); */
 /* dealingCardSound.play(); */
 
@@ -50,6 +51,41 @@ const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
 const game_over_front = document.querySelector(".game-over");
+
+let welcome_p_1 = [
+  `¡Hello and welcome to BlackJack Casino!`,
+  "¡The place to test your luck and multiply your wins!",
+  "Who do we have the pleasure of talking to?",
+];
+let i = 0;
+let j = 0;
+
+const typeWriter = () => {
+  if (i < welcome_p_1.length) {
+    if (j < welcome_p_1[i].length) {
+      welcome_p_front.innerHTML += welcome_p_1[i][j];
+      console.log(`j = ${j} p[i].length = ${welcome_p_1[i].length}`);
+      j++;
+      console.log(`i = ${i}`);
+      if (j == welcome_p_1[i].length && i != 2) {
+        setTimeout(() => {
+          welcome_p_front.innerHTML = ``;
+          j = 0;
+          i++;
+        }, 1600);
+      }
+      if (i == 2) {
+        setTimeout(() => {
+          player_name_input_front.removeAttribute("hidden");
+        }, 2550);
+      }
+    }
+  }
+
+  setTimeout(typeWriter, 48);
+};
+
+let welcome_p_front = document.querySelector(".welcome-p");
 
 let playerCash = 500;
 let playerBet = 0;
@@ -404,6 +440,12 @@ const dealingCardSound = () => {
   dealing_card_sound.play();
 };
 
+const lobbySound = () => {
+  lobby_sound.play();
+  lobby_sound.volume = 0.3;
+  lobby_sound.loop = true;
+};
+
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   if (i < 0) return;
 
@@ -551,6 +593,11 @@ document.addEventListener("keyup", (e) => {
 });
 
 press_start_text_front.addEventListener("click", () => {
+  lobbySound();
+  /* typeWriter(); */
+  setTimeout(() => {
+    typeWriter();
+  }, 1000);
   hideInitialsElements();
   showWelcomeElements();
   player_name_window_switch = true;

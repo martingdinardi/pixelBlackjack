@@ -55,39 +55,33 @@
           </div>
         </div>
         <div class="welcome-container" hidden>
-          <div class="row welcome-window">
-            <div class="col-12 welcome-element-container">
-              <div class="welcome-elements">
-                <div class="dealer-img-container">
-                  <img src="assets/items/dealer.jpg" alt="" />
+          <div class="welcome-elements">
+            <div class="row welcome-window">
+              <div class="col-12 welcome-textanddealer-container">
+                <div class="welcome-textanddealer-elements">
+                  <div class="dealer-img-container">
+                    <img src="assets/items/dealer.jpg" alt="" />
+                  </div>
+                  <div class="welcome-p-text">
+                    <p class="h2 welcome-p"></p>
+                    <input
+                      type="text"
+                      class="playerName"
+                      onkeyup="verifyPlayerName()"
+                      autofocus
+                      hidden
+                    />
+                  </div>
                 </div>
-                <div class="welcome-p-continue">
-                  <!-- <img src="assets/items/dealer.jpg" alt="" /> -->
-                  <p class="h1 welcome-p">
-                    ¡Hello and welcome to BlackJack Casino!<br />
-                    <!-- ¡The place to test your luck and multiply your wins! -->
-                  </p>
-                  <!-- <p class="h1 welcome-p-2" hidden>
-                    ¡The place to test your luck and multiply your wins!
-                  </p>
-                  <br />
-                  <p class="h1 welcome-p-3" hidden>
-                    Who do we have the pleasure of talking to?
-                  </p> -->
-                  <input
-                    type="text"
-                    class="playerName"
-                    onkeyup="verifyPlayerName()"
-                    autofocus
-                    hidden
-                  />
-                  <button class="continue-button mt-4" disabled hidden>
-                    <h1>CONTINUE ></h1>
-                  </button>
-                </div>
-                <!-- <img src="assets/items/dealer.jpg" alt="" /> -->
               </div>
             </div>
+            <!-- <div class="row"> -->
+            <div class="col-12 continue-button-container">
+              <button class="continue-button mt-4" disabled>
+                <h1>CONTINUE ></h1>
+              </button>
+            </div>
+            <!-- </div> -->
           </div>
         </div>
         <div class="start-game-container" hidden>

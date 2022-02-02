@@ -587,7 +587,7 @@ p {
   justify-content: center;
 }
 
-.welcome-element-container {
+.welcome-textanddealer-container {
   border: 1px solid;
   padding: 3px;
 }
@@ -604,7 +604,7 @@ p {
   border-left: 0;
   border-right: 0;
   border-color: antiquewhite;
-  border-width: 0.25rem;
+  /* border-width: 0.25rem; */
   max-width: 87%;
   font-size: calc(1.375rem + 1.5vw);
   color: antiquewhite;
@@ -614,7 +614,7 @@ p {
   outline: none;
 }
 
-.welcome-elements {
+.welcome-textanddealer-elements {
   /* background-color: seagreen; */
   /* height: 25rem; */
   display: flex;
@@ -637,8 +637,10 @@ p {
   /* margin-top: -10rem; */
 }
 
-.welcome-p-continue {
+.welcome-p-text {
   text-align: center;
+  width: 25rem;
+  height: 10rem;
 }
 
 .continue-button,
@@ -646,6 +648,10 @@ p {
   background-color: transparent;
   border: none;
   color: antiquewhite;
+}
+
+.continue-button-container {
+  text-align: right;
 }
 
 .startgame-button {
@@ -658,4 +664,14 @@ p {
 
 .bet-button-letters {
   display: flex;
+}
+
+span {
+  animation: blinker 0.9s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

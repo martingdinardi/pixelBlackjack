@@ -6,8 +6,6 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 let dealing_card_sound = new Audio("./assets/media/dealingCard.mp3");
 let lobby_sound = new Audio("./assets/media/lobby.mp3");
-/* dealingCardSound.load(); */
-/* dealingCardSound.play(); */
 
 // variables
 
@@ -301,6 +299,7 @@ const showStartgameContainer = () => {
 };
 
 startgame_button_front.addEventListener("click", () => {
+  lobby_sound.pause();
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
@@ -605,6 +604,8 @@ press_start_text_front.addEventListener("click", () => {
 });
 
 continue_button_front.addEventListener("click", () => {
+  i = 0;
+  j = 0;
   hideWelcomeElements();
   showStartgameContainer();
   player_name_front.innerHTML = `${player_name}`;

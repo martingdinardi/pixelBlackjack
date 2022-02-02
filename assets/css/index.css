@@ -666,9 +666,9 @@ p {
   display: flex;
 }
 
-span {
+/* span {
   animation: blinker 0.9s linear infinite;
-}
+} */
 
 @keyframes blinker {
   50% {

@@ -49,22 +49,42 @@ const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
 const game_over_front = document.querySelector(".game-over");
+const continue_button_container_front = document.querySelector(
+  ".continue-button-container"
+);
+
+const verifyPlayerName = () => {
+  player_name = document.querySelector(".playerName").value;
+  if (player_name.length >= 1) {
+    continue_button_front.removeAttribute("disabled");
+  }
+  console.log(player_name);
+};
 
 let welcome_p_1 = [
   `¡Hello and welcome to BlackJack Casino!`,
   "¡The place to test your luck and multiply your wins!",
   "Who do we have the pleasure of talking to?",
 ];
+
+let welcome_p_2 = [
+  `We give you a bonus for 500 free chips!`,
+  `Press start to start to play! and hey! First drink on the house! `,
+];
+
+/* <img src="assets/items/drink.gif" class="drink-ico" /> */
+/* <img src="assets/items/fifty.png" class="chips-ico" /> */
+
 let i = 0;
 let j = 0;
+let n = 0;
+let z = 0;
 
 const typeWriter = () => {
   if (i < welcome_p_1.length) {
     if (j < welcome_p_1[i].length) {
       welcome_p_front.innerHTML += welcome_p_1[i][j];
-      console.log(`j = ${j} p[i].length = ${welcome_p_1[i].length}`);
       j++;
-      console.log(`i = ${i}`);
       if (j == welcome_p_1[i].length && i != 2) {
         setTimeout(() => {
           welcome_p_front.innerHTML = ``;
@@ -83,7 +103,33 @@ const typeWriter = () => {
   setTimeout(typeWriter, 48);
 };
 
+const typeStartGameWriter = () => {
+  if (n < welcome_p_2.length) {
+    if (z < welcome_p_2[n].length) {
+      congrat_p_front.innerHTML += welcome_p_2[n][z];
+      z++;
+      console.log(`z = ${z} and loop is in ${welcome_p_2[n][z]} and n = ${n}`);
+      if (z == welcome_p_2[n].length && n != 2) {
+        setTimeout(() => {
+          congrat_p_front.innerHTML = ``;
+          z = 0;
+          n++;
+        }, 1600);
+      }
+      if (z == 39 && n == 1) {
+        congrat_p_front.innerHTML += ` <img src="assets/items/fifty.png" class="chips-ico" />`;
+      }
+      if (z == 65 && n == 2) {
+        congrat_p_front.innerHTML += ` <img src="assets/items/drink.gif" class="drink-ico" />`;
+      }
+    }
+  }
+
+  setTimeout(typeStartGameWriter, 48);
+};
+
 let welcome_p_front = document.querySelector(".welcome-p");
+let congrat_p_front = document.querySelector(".congrat-p");
 
 let playerCash = 500;
 let playerBet = 0;
@@ -299,6 +345,7 @@ const showStartgameContainer = () => {
 };
 
 startgame_button_front.addEventListener("click", () => {
+  /* verifyPlayerName(); */
   lobby_sound.pause();
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
@@ -307,14 +354,6 @@ startgame_button_front.addEventListener("click", () => {
     bet_section_front.removeAttribute("hidden");
   }, 2800);
 });
-
-const verifyPlayerName = () => {
-  player_name = document.querySelector(".playerName").value;
-  if (player_name.length >= 1) {
-    continue_button_front.removeAttribute("disabled");
-  }
-  console.log(player_name);
-};
 
 const removeDealClass = () => {
   let cardWithDealClass = document.querySelectorAll(".dealing-player-card");
@@ -604,11 +643,19 @@ press_start_text_front.addEventListener("click", () => {
 });
 
 continue_button_front.addEventListener("click", () => {
-  i = 0;
-  j = 0;
-  hideWelcomeElements();
-  showStartgameContainer();
-  player_name_front.innerHTML = `${player_name}`;
+  welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`);
+  setTimeout(() => {
+    typeStartGameWriter();
+  }, 1000);
+  /* verifyPlayerName(); */
+  welcome_p_front.setAttribute("hidden", "");
+  player_name_input_front.setAttribute("hidden", "");
+  continue_button_front.setAttribute("hidden", "");
+  startgame_button_front.removeAttribute("hidden");
+  congrat_p_front.removeAttribute("hidden");
+
+  /* player_name_front.innerHTML = `${player_name}`; */
 });
 
 fiftybet_button_front.addEventListener("click", () => {

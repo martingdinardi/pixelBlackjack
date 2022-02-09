@@ -11,8 +11,9 @@ let bet_sound = new Audio("./assets/media/bet.mp3");
 let casinoAmbience_sound = new Audio("./assets/media/casinoAmbience.mp3");
 let pressedButton_sound = new Audio("./assets/media/pressedButton.mp3");
 let win_sound = new Audio("./assets/media/win.mp3");
-let lose_sound = new Audio("./assets/media/lose.mp3");
-let tie_sound = new Audio("./assets/media/tie.mp3");
+/* let lose_sound = new Audio("./assets/media/lose.mp3"); */
+let double_sound = new Audio("./assets/media/double.mp3");
+let songs_sound = new Audio("./assets/media/songs.mp3");
 
 // variables
 
@@ -476,7 +477,8 @@ const lose = () => {
     match_messages_front.removeAttribute("hidden", "");
     match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
       <h5>You have lost ${playerBet} chips</h5>`;
-    loseSound();
+    /*     loseSound();
+     */
   }, 1700);
   /* } else if (playerPoints < dealerPoints) {
     setTimeout(() => {
@@ -519,7 +521,8 @@ const tie = () => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
       <h5>Tú y el dealer tienen los mismos puntos</h5>`;
-      tieSound();
+      /*       tieSound();
+       */
     }, 1700);
   }
   matchButtonsDisabled();
@@ -567,13 +570,16 @@ const lobbySound = () => {
 
 const casinoAmbience = () => {
   casinoAmbience_sound.play();
-  casinoAmbience_sound.volume = 0.04;
+  casinoAmbience_sound.volume = 0.15;
   casinoAmbience_sound.loop = true;
+  songs_sound.play();
+  songs_sound.volume = 0.2;
+  songs_sound.loop = true;
 };
 
 const chipSound = () => {
   chip_sound.play();
-  chip_sound.volume = 0.08;
+  chip_sound.volume = 1;
 };
 
 const pressedButton = () => {
@@ -582,17 +588,22 @@ const pressedButton = () => {
 
 const winSound = () => {
   win_sound.play();
-  win_sound.volume = 0.1;
+  win_sound.volume = 0.3;
 };
 
-const loseSound = () => {
+/* const loseSound = () => {
   lose_sound.play();
   lose_sound.volume = 0.09;
-};
+}; */
 
-const tieSound = () => {
+/* const tieSound = () => {
   tie_sound.play();
   tie_sound.volume = 0.25;
+}; */
+
+const doubleSound = () => {
+  double_sound.play();
+  double_sound.volume = 0.5;
 };
 
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
@@ -1010,6 +1021,7 @@ hit_button_front.addEventListener("click", () => {
 
 double_button_front.addEventListener("click", () => {
   playerCash -= playerBet;
+  doubleSound();
   player_money_front.innerHTML = `<p>${playerCash}</p>`;
   playerBet += playerBet;
   player_bet_front.innerHTML = `<p>${playerBet}</p>`;

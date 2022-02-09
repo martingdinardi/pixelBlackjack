@@ -6,6 +6,13 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 let dealing_card_sound = new Audio("./assets/media/dealingCard.mp3");
 let lobby_sound = new Audio("./assets/media/lobby.mp3");
+let chip_sound = new Audio("./assets/media/chip.mp3");
+let bet_sound = new Audio("./assets/media/bet.mp3");
+let casinoAmbience_sound = new Audio("./assets/media/casinoAmbience.mp3");
+let pressedButton_sound = new Audio("./assets/media/pressedButton.mp3");
+let win_sound = new Audio("./assets/media/win.mp3");
+let lose_sound = new Audio("./assets/media/lose.mp3");
+let tie_sound = new Audio("./assets/media/tie.mp3");
 
 // variables
 
@@ -52,6 +59,19 @@ const game_over_front = document.querySelector(".game-over");
 const continue_button_container_front = document.querySelector(
   ".continue-button-container"
 );
+
+let pruebaDealerCards = () => {
+  for (let i = 0; i < dealer_cards_front.children.length; i++) {
+    if (
+      dealerCards[i] == "AT" ||
+      dealerCards[i] == "AC" ||
+      dealerCards[i] == "AD" ||
+      dealerCards[i] == "AP"
+    ) {
+      dealerCards.splice(i, 1);
+    }
+  }
+};
 
 const verifyPlayerName = () => {
   player_name = document.querySelector(".playerName").value;
@@ -163,16 +183,70 @@ let shuffle_deck = () => {
     }
   }
 
+  /* shuffledDeck = [
+    "2C",
+    "2D",
+    "2P",
+    "2T",
+    "3C",
+    "3D",
+    "3P",
+    "3T",
+    "4C",
+    "4D",
+    "4P",
+    "4T",
+    "5C",
+    "5D",
+    "5P",
+    "5T",
+    "6C",
+    "6D",
+    "6P",
+    "6T",
+    "7C",
+    "7D",
+    "7P",
+    "7T",
+    "8C",
+    "8D",
+    "8P",
+    "8T",
+    "9C",
+    "9D",
+    "9P",
+    "9T",
+    "10C",
+    "10D",
+    "10P",
+    "10T",
+    "JC",
+    "JD",
+    "JP",
+    "JT",
+    "QC",
+    "QD",
+    "QP",
+    "7T",
+    "JC",
+    "8D",
+    "10T",
+    "AT",
+    "10C",
+  ]; */
   shuffledDeck = _.shuffle(deck);
   /*
    */
   /*
-  shuffledDeck = deck;
-  shuffledDeck.pop();
-  shuffledDeck.pop();
-  shuffledDeck.pop();
-  console.log(shuffledDeck);
    */
+  /* shuffledDeck = deck; */
+
+  /*   shuffledDeck.pop();
+  shuffledDeck.pop();
+  shuffledDeck.pop();
+  shuffledDeck.pop();
+  shuffledDeck.pop(); */
+  console.log(shuffledDeck);
 };
 
 const restartBet = () => {
@@ -345,8 +419,11 @@ const showStartgameContainer = () => {
 };
 
 startgame_button_front.addEventListener("click", () => {
+  pressedButton();
   /* verifyPlayerName(); */
   lobby_sound.pause();
+  /* casinoAmbience_sound.play(); */
+  casinoAmbience();
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
@@ -399,6 +476,7 @@ const lose = () => {
     match_messages_front.removeAttribute("hidden", "");
     match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
       <h5>You have lost ${playerBet} chips</h5>`;
+    loseSound();
   }, 1700);
   /* } else if (playerPoints < dealerPoints) {
     setTimeout(() => {
@@ -419,12 +497,14 @@ const won = () => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
       <h5>Tienes mas puntos que el dealer</h5>`;
+      winSound();
     }, 1700);
   } else if (dealerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
       <h5>El dealer se pasó de los 21</h5>`;
+      winSound();
     }, 1700);
   }
   matchButtonsDisabled();
@@ -439,6 +519,7 @@ const tie = () => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
       <h5>Tú y el dealer tienen los mismos puntos</h5>`;
+      tieSound();
     }, 1700);
   }
   matchButtonsDisabled();
@@ -484,6 +565,36 @@ const lobbySound = () => {
   lobby_sound.loop = true;
 };
 
+const casinoAmbience = () => {
+  casinoAmbience_sound.play();
+  casinoAmbience_sound.volume = 0.04;
+  casinoAmbience_sound.loop = true;
+};
+
+const chipSound = () => {
+  chip_sound.play();
+  chip_sound.volume = 0.08;
+};
+
+const pressedButton = () => {
+  pressedButton_sound.play();
+};
+
+const winSound = () => {
+  win_sound.play();
+  win_sound.volume = 0.1;
+};
+
+const loseSound = () => {
+  lose_sound.play();
+  lose_sound.volume = 0.09;
+};
+
+const tieSound = () => {
+  tie_sound.play();
+  tie_sound.volume = 0.25;
+};
+
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   if (i < 0) return;
 
@@ -506,16 +617,20 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
     if (card[0] === "A" && dealerPoints < 11) {
       dealerPoints += 11;
       getCardToDealer();
+      console.log(dealerCards);
     } else if (dealerPoints >= 11 && card[0] === "A") {
       dealerPoints += 1;
       getCardToDealer();
+      console.log(dealerCards);
       dealerCards.pop();
     } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
       dealerPoints += 10;
       getCardToDealer();
+      console.log(dealerCards);
     } else {
       dealerPoints += parseInt(card.substring(0, card.length - 1));
       getCardToDealer();
+      console.log(dealerCards);
     }
     dealer_points_front.innerHTML = `${dealerPoints}`;
     console.log(`dealer points ${dealerPoints}`);
@@ -631,6 +746,7 @@ document.addEventListener("keyup", (e) => {
 });
 
 press_start_text_front.addEventListener("click", () => {
+  pressedButton();
   lobbySound();
   /* typeWriter(); */
   setTimeout(() => {
@@ -643,6 +759,7 @@ press_start_text_front.addEventListener("click", () => {
 });
 
 continue_button_front.addEventListener("click", () => {
+  pressedButton();
   welcome_p_2.unshift(`Nice to meet you ${player_name} and
   CONGRATULATIONS!`);
   setTimeout(() => {
@@ -661,6 +778,8 @@ continue_button_front.addEventListener("click", () => {
 fiftybet_button_front.addEventListener("click", () => {
   playerCash >= 50 && playerBet < 500
     ? ((playerBet += 50),
+      /* chip_sound.play(), */
+      chipSound(),
       (playerCash -= 50),
       (bet_item_front.innerHTML += `<img src="assets/items/fifty.png" class="new-chip" />`),
       betLetterAppears())
@@ -674,8 +793,11 @@ fiftybet_button_front.addEventListener("click", () => {
 });
 
 onehundred_bet_button_front.addEventListener("click", () => {
+  /* chip_sound.play(); */
   playerCash >= 100 && playerBet < 450
     ? ((playerBet += 100),
+      /* chip_sound.play(), */
+      chipSound(),
       (playerCash -= 100),
       (bet_item_front.innerHTML += `<img src="assets/items/onehundred.png" class="new-chip"/>`))
     : (playerBet += 0);
@@ -690,8 +812,10 @@ onehundred_bet_button_front.addEventListener("click", () => {
 });
 
 twohundred_bet_button_front.addEventListener("click", () => {
+  /* chip_sound.play(); */
   playerCash >= 200 && playerBet < 400
     ? ((playerBet += 200),
+      chipSound(),
       (playerCash -= 200),
       (bet_item_front.innerHTML += `<img src="assets/items/twohundred.png" class="new-chip"/>`))
     : (playerBet += 0);
@@ -851,6 +975,7 @@ const dealer_cards = () => {
     dealer_points_front.innerHTML = `${dealerPoints}`;
   }, 500);
   console.log(`dealer points ${dealerPoints}`);
+  console.log(dealerCards);
 
   if (dealerPoints > 21) {
     won();
@@ -916,17 +1041,21 @@ stand_button_front.addEventListener("click", () => {
       dealerCards[dealerCards.length - 1]
     }.png" class="one-card-dealer second-card-dealer"/>`;
 
-    if (card[0] === "A") {
+    if (card[0] === "A" && dealerPoints <= 10) {
       dealerPoints += 11;
-      /* getCardToDealer(); */
+      console.log(dealerCards);
+      console.log(dealerPoints);
+    } else if (card[0] === "A" && dealerPoints >= 11) {
+      dealerPoints += 1;
+      console.log(dealerCards);
       console.log(dealerPoints);
     } else if (card[0] === "K" || card[0] === "Q" || card[0] === "J") {
       dealerPoints += 10;
-      /* getCardToDealer(); */
+      console.log(dealerCards);
       console.log(dealerPoints);
     } else {
       dealerPoints += parseInt(card.substring(0, card.length - 1));
-      /* getCardToDealer(); */
+      console.log(dealerCards);
       console.log(dealerPoints);
     }
 
@@ -987,7 +1116,8 @@ stand_button_front.addEventListener("click", () => {
         dealerCards.includes("AD"))
     ) {
       dealerPoints -= 10;
-      for (let i = 0; i < dealer_cards_front.children.length; i++) {
+      pruebaDealerCards();
+      /*       for (let i = 0; i < dealer_cards_front.children.length; i++) {
         if (
           dealerCards[i].includes("AT") ||
           dealerCards[i].includes("AC") ||
@@ -996,11 +1126,8 @@ stand_button_front.addEventListener("click", () => {
         ) {
           dealerCards.splice(i, 1);
         }
-        // testing
-        /*  else if () {
-          
-        } */
-      }
+
+      } */
       dealer_points_front.innerHTML = `${dealerPoints}`;
       /* dealer_cards(); */
       if (playerPoints > dealerPoints && dealerPoints <= 16) {
@@ -1196,6 +1323,8 @@ stand_button_front.addEventListener("click", () => {
 });
 
 bet_button_front.addEventListener("click", () => {
+  bet_sound.volume = 0.5;
+  bet_sound.play();
   hideBetButtons();
   bet_value_front.classList.add("bet-value-move");
   bet_value_items_front.classList.add("bet-value-items-move");

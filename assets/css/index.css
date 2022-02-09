@@ -423,7 +423,7 @@ p {
 }
 
 .drink-ico {
-  height: 5rem;
+  height: 4rem;
 }
 
 .chip img {
@@ -666,12 +666,41 @@ p {
   display: flex;
 }
 
-span {
+/* span {
   animation: blinker 0.9s linear infinite;
-}
+} */
 
 @keyframes blinker {
   50% {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 808px) {
+  .welcome-textanddealer-elements {
+    flex-direction: column;
+  }
+  .continue-button-container {
+    text-align: center;
+  }
+  .dealer-img-container img {
+    width: 9rem;
+  }
+  .welcome-textanddealer-elements {
+    width: 20rem;
+  }
+  .dealer-img-container {
+    margin-right: 0;
+  }
+  .welcome-p-text {
+    width: 18rem;
+  }
+  .welcome-textanddealer-elements {
+    justify-content: space-between;
+    width: 19rem;
+    height: 20rem;
+    align-items: center;
+    text-align: center;
+    /* padding: 5px; */
   }
 }

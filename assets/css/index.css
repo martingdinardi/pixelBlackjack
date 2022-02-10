@@ -572,7 +572,7 @@ p {
 
 .welcome-container,
 .start-game-container {
-  background-image: url("../items/hall.png");
+  background-image: url("../items/hall.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

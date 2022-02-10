@@ -420,17 +420,16 @@ const showStartgameContainer = () => {
 };
 
 startgame_button_front.addEventListener("click", () => {
-  pressedButton();
-  /* verifyPlayerName(); */
+  /*   pressedButton();
   lobby_sound.pause();
-  /* casinoAmbience_sound.play(); */
   casinoAmbience();
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
   setTimeout(() => {
     bet_section_front.removeAttribute("hidden");
-  }, 2800);
+  }, 2800); */
+  startGamePressed();
 });
 
 const removeDealClass = () => {
@@ -737,26 +736,7 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   }, 2000);
 };
 
-// addEventListener
-
-document.addEventListener("keyup", (e) => {
-  if (e.key == "Enter" && player_name_window_switch === false) {
-    hideInitialsElements();
-    showWelcomeElements();
-    player_name_window_switch = true;
-    player_name_input_front.setAttribute("autofocus", "");
-  } else if (
-    e.key == "Enter" &&
-    player_name_window_switch === true &&
-    player_name !== undefined
-  ) {
-    hideWelcomeElements();
-    showStartgameContainer();
-    player_name_front.innerHTML = `${player_name}`;
-  }
-});
-
-press_start_text_front.addEventListener("click", () => {
+const pressStart = () => {
   pressedButton();
   lobbySound();
   /* typeWriter(); */
@@ -767,9 +747,10 @@ press_start_text_front.addEventListener("click", () => {
   showWelcomeElements();
   player_name_window_switch = true;
   player_name_input_front.setAttribute("autofocus", "");
-});
+};
 
-continue_button_front.addEventListener("click", () => {
+const continuePressed = () => {
+  player_name_window_switch = false;
   pressedButton();
   welcome_p_2.unshift(`Nice to meet you ${player_name} and
   CONGRATULATIONS!`);
@@ -782,8 +763,115 @@ continue_button_front.addEventListener("click", () => {
   continue_button_front.setAttribute("hidden", "");
   startgame_button_front.removeAttribute("hidden");
   congrat_p_front.removeAttribute("hidden");
+};
+
+const startGamePressed = () => {
+  pressedButton();
+  lobby_sound.pause();
+  casinoAmbience();
+  initial_window_container_front.setAttribute("hidden", "");
+  goodLuckmessage();
+  startgame_button_front.setAttribute("hidden", "");
+  setTimeout(() => {
+    bet_section_front.removeAttribute("hidden");
+  }, 2800);
+};
+
+// addEventListener
+
+document.addEventListener("keyup", (e) => {
+  if (
+    e.key == "Enter" &&
+    player_name_window_switch === false &&
+    player_name === undefined
+  ) {
+    /* hideInitialsElements();
+    showWelcomeElements();
+    player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", ""); */
+    /* pressedButton();
+    lobbySound(); */
+    /* typeWriter(); */
+    /* setTimeout(() => {
+      typeWriter();
+    }, 1000);
+    hideInitialsElements();
+    showWelcomeElements();
+    player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", ""); */
+    pressStart();
+  } else if (
+    e.key == "Enter" &&
+    player_name_window_switch === true &&
+    player_name !== undefined
+  ) {
+    /* hideWelcomeElements();
+    showStartgameContainer();
+    player_name_front.innerHTML = `${player_name}`; */
+    /* player_name_window_switch = false;
+    pressedButton();
+    welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`);
+    setTimeout(() => {
+      typeStartGameWriter();
+    }, 1000); */
+    /* verifyPlayerName(); */
+    /* welcome_p_front.setAttribute("hidden", "");
+    player_name_input_front.setAttribute("hidden", "");
+    continue_button_front.setAttribute("hidden", "");
+    startgame_button_front.removeAttribute("hidden");
+    congrat_p_front.removeAttribute("hidden"); */
+    continuePressed();
+  } else if (
+    e.key == "Enter" &&
+    player_name_window_switch === false &&
+    player_name !== undefined
+  ) {
+    /* pressedButton();
+    
+    lobby_sound.pause();
+    
+    casinoAmbience();
+    initial_window_container_front.setAttribute("hidden", "");
+    goodLuckmessage();
+    startgame_button_front.setAttribute("hidden", "");
+    setTimeout(() => {
+      bet_section_front.removeAttribute("hidden");
+    }, 2800); */
+    startGamePressed();
+  }
+});
+
+press_start_text_front.addEventListener("click", () => {
+  /* pressedButton();
+  lobbySound(); */
+  /* typeWriter(); */
+  /* setTimeout(() => {
+    typeWriter();
+  }, 1000);
+  hideInitialsElements();
+  showWelcomeElements();
+  player_name_window_switch = true;
+  player_name_input_front.setAttribute("autofocus", ""); */
+  pressStart();
+});
+
+continue_button_front.addEventListener("click", () => {
+  /* pressedButton();
+  welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`);
+  setTimeout(() => {
+    typeStartGameWriter();
+  }, 1000); */
+  /* verifyPlayerName(); */
+  /* welcome_p_front.setAttribute("hidden", "");
+  player_name_input_front.setAttribute("hidden", "");
+  continue_button_front.setAttribute("hidden", "");
+  startgame_button_front.removeAttribute("hidden");
+  congrat_p_front.removeAttribute("hidden"); */
 
   /* player_name_front.innerHTML = `${player_name}`; */
+  continuePressed();
 });
 
 fiftybet_button_front.addEventListener("click", () => {

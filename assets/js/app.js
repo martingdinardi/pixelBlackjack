@@ -763,6 +763,10 @@ const continuePressed = () => {
   continue_button_front.setAttribute("hidden", "");
   startgame_button_front.removeAttribute("hidden");
   congrat_p_front.removeAttribute("hidden");
+  setTimeout(() => {
+    startgame_button_front.classList.add("startgame-button-animation");
+    startgame_button_front.removeAttribute("disabled");
+  }, 13000);
 };
 
 const startGamePressed = () => {
@@ -825,7 +829,8 @@ document.addEventListener("keyup", (e) => {
   } else if (
     e.key == "Enter" &&
     player_name_window_switch === false &&
-    player_name !== undefined
+    player_name !== undefined &&
+    startgame_button_front.attributes.length === 1
   ) {
     /* pressedButton();
     

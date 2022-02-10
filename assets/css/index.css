@@ -654,11 +654,12 @@ p {
   text-align: right;
 }
 
-.startgame-button {
+.startgame-button-animation {
   animation: blink 1.7s linear infinite;
 }
 
-.continue-button:disabled {
+.continue-button:disabled,
+.startgame-button:disabled {
   color: rgba(250, 235, 215, 0.5);
 }
 

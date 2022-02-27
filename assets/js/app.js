@@ -497,14 +497,14 @@ const won = () => {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>Tienes mas puntos que el dealer</h5>`;
+      <h5>You have won ${playerBet} chips</h5>`;
       winSound();
     }, 1700);
   } else if (dealerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>El dealer se pasó de los 21</h5>`;
+      <h5>You have won ${playerBet} chips</h5>`;
       winSound();
     }, 1700);
   }
@@ -519,7 +519,7 @@ const tie = () => {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
-      <h5>Tú y el dealer tienen los mismos puntos</h5>`;
+      <h5>Nobody won</h5>`;
       /*       tieSound();
        */
     }, 1700);

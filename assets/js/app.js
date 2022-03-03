@@ -17,6 +17,8 @@ let songs_sound = new Audio("./assets/media/songs.mp3");
 
 // variables
 
+let len_eng = true;
+
 let player_name_window_switch = false;
 
 let player_name;
@@ -35,6 +37,9 @@ const inital_window_front = document.querySelector(".initial-window");
 const initial_window_container_front = document.querySelector(
   ".initial-window-container"
 );
+const choose_lenguage_front = document.querySelector(".choose-lenguage");
+const leng_es_front = document.querySelector(".len_es");
+const leng_en_front = document.querySelector(".len_en");
 const welcome_container = document.querySelector(".welcome-container");
 const initial_elements_front = document.querySelector(".initial-elements");
 const continue_button_front = document.querySelector(".continue-button");
@@ -58,6 +63,8 @@ const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
 const game_over_front = document.querySelector(".game-over");
+const game_over_text = document.querySelector(".game-over-text");
+const makeyourbet_front = document.querySelector(".makeyourbet");
 const continue_button_container_front = document.querySelector(
   ".continue-button-container"
 );
@@ -140,10 +147,16 @@ const typeStartGameWriter = () => {
           n++;
         }, 1600);
       }
-      if (z == 39 && n == 1) {
+      if (z == 39 && n == 1 && len_eng == true) {
         congrat_p_front.innerHTML += ` <img src="assets/items/fifty.png" class="chips-ico" />`;
       }
-      if (z == 65 && n == 2) {
+      if (z == 65 && n == 2 && len_eng == true) {
+        congrat_p_front.innerHTML += ` <img src="assets/items/drink.gif" class="drink-ico" />`;
+      }
+      if (z == 46 && n == 1 && len_eng !== true) {
+        congrat_p_front.innerHTML += ` <img src="assets/items/fifty.png" class="chips-ico" />`;
+      }
+      if (z == 77 && n == 2 && len_eng !== true) {
         congrat_p_front.innerHTML += ` <img src="assets/items/drink.gif" class="drink-ico" />`;
       }
     }
@@ -301,7 +314,9 @@ const newMatch = () => {
 const goodLuckmessage = () => {
   setTimeout(() => {
     match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `<div><img src="./assets/items/goodluck.png" class="goodLuckImg"/></div>`;
+    len_eng == true
+      ? (match_messages_front.innerHTML = `<div><img src="./assets/items/goodluck.png" class="goodLuckImg"/></div>`)
+      : (match_messages_front.innerHTML = `<div><img src="./assets/items/buenasuerte.png" class="buenasuerte"/></div>`);
   }, 500);
   setTimeout(() => {
     match_messages_front.setAttribute("hidden", "");
@@ -479,8 +494,11 @@ const lose = () => {
   if (playerCash > 0) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
-        <h5>You have lost ${playerBet} chips</h5>`;
+      len_eng == true
+        ? (match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+        <h5>You have lost ${playerBet} chips</h5>`)
+        : (match_messages_front.innerHTML = `<img src="./assets/items/hasperdido.png" class="hasperdido"><br>
+        <h5>Has perdido ${playerBet} fichas</h5>`);
       /*     loseSound();
        */
     }, 1700);
@@ -499,8 +517,11 @@ const lose = () => {
   } else {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
-        <h5>You have lost ${playerBet} chips</h5>`;
+      len_eng == true
+        ? (match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+        <h5>You have lost ${playerBet} chips</h5>`)
+        : (match_messages_front.innerHTML = `<img src="./assets/items/hasperdido.png" class="lose"><br>
+        <h5>Has perdido ${playerBet} fichas</h5>`);
       /*     loseSound();
        */
     }, 1700);
@@ -524,15 +545,21 @@ const won = () => {
   if (playerPoints > dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>You have won ${playerBet} chips</h5>`;
+      len_eng == true
+        ? (match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
+      <h5>You have won ${playerBet} chips</h5>`)
+        : (match_messages_front.innerHTML = `<img src="./assets/items/hasganado.png" class="hasganado"><br>
+      <h5>Has ganado ${playerBet} fichas!</h5>`);
       winSound();
     }, 1700);
   } else if (dealerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>You have won ${playerBet} chips</h5>`;
+      len_eng == true
+        ? (match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
+      <h5>You have won ${playerBet} chips</h5>`)
+        : (match_messages_front.innerHTML = `<img src="./assets/items/hasganado.png" class="win"><br>
+      <h5>Has ganado ${playerBet} fichas!</h5>`);
       winSound();
     }, 1700);
   }
@@ -546,8 +573,11 @@ const tie = () => {
   if (playerPoints === dealerPoints) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
-      <h5>Nobody won</h5>`;
+      len_eng == true
+        ? (match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
+      <h5>Nobody won</h5>`)
+        : (match_messages_front.innerHTML = `<img src="./assets/items/empate.png" class="empate"><br>
+      <h5>Nadie ha ganado</h5>`);
       /*       tieSound();
        */
     }, 1700);
@@ -787,6 +817,18 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
 const pressStart = () => {
   pressedButton();
   lobbySound();
+  len_eng !== true
+    ? ((continue_button_front.innerHTML = `<h1>CONTINUAR ></h1>`),
+      (welcome_p_1 = [
+        `¡Hola y mucho gusto! Es un placer recibirte en BlackJack Casino!`,
+        "¡El mejor lugar para probar tu suerte y multiplicar tus ganancias!",
+        "¿Serías tan amable de brindarnos tu nombre?",
+      ]),
+      (welcome_p_2 = [
+        `¡Has ganado nuestro bono de 500 fichas gratis!`,
+        `Pulsa Jugar para comenzar a jugar! y hey! El primer trago lo invita la casa! `,
+      ]))
+    : (continue_button_front.innerHTML = `<h1>CONTINUE ></h1>`);
   /* typeWriter(); */
   setTimeout(() => {
     typeWriter();
@@ -800,6 +842,9 @@ const pressStart = () => {
 const gameOver = () => {
   setTimeout(() => {
     game_over_front.removeAttribute("hidden");
+    len_eng == true
+      ? (game_over_text.innerHTML = `<h4>Play Again?</h4>`)
+      : (game_over_text.innerHTML = `<h4>Quieres seguir jugando?</h4>`);
     game_over_front.classList.add("game-over-appears");
     match_messages_front.setAttribute("hidden", "");
   }, 5000);
@@ -808,8 +853,11 @@ const gameOver = () => {
 const continuePressed = () => {
   player_name_window_switch = false;
   pressedButton();
-  welcome_p_2.unshift(`Nice to meet you ${player_name} and
-  CONGRATULATIONS!`);
+  len_eng == true
+    ? welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`)
+    : welcome_p_2.unshift(`Gusto en conocerte ${player_name} y
+  FELICIDADES!`);
   setTimeout(() => {
     typeStartGameWriter();
   }, 1000);
@@ -817,6 +865,9 @@ const continuePressed = () => {
   welcome_p_front.setAttribute("hidden", "");
   player_name_input_front.setAttribute("hidden", "");
   continue_button_front.setAttribute("hidden", "");
+  len_eng !== true
+    ? (startgame_button_front.innerHTML = `<h1>EMPEZAR JUEGO ></h1>`)
+    : (startgame_button_front.innerHTML = `<h1>START GAME ></h1>`);
   startgame_button_front.removeAttribute("hidden");
   congrat_p_front.removeAttribute("hidden");
   setTimeout(() => {
@@ -826,6 +877,9 @@ const continuePressed = () => {
 };
 
 const startGamePressed = () => {
+  len_eng == true
+    ? (makeyourbet_front.innerHTML = `<img src="./assets/items/makeyourbet.png" />`)
+    : (makeyourbet_front.innerHTML = `<img src="./assets/items/realizatuapuesta.png" class="realizatuapuesta" />`);
   pressedButton();
   lobby_sound.pause();
   casinoAmbience();
@@ -838,6 +892,18 @@ const startGamePressed = () => {
 };
 
 // addEventListener
+
+leng_es_front.addEventListener("click", () => {
+  pressedButton();
+  len_eng = false;
+  press_start_text_front.innerHTML = `PRESIONA START`;
+  choose_lenguage_front.setAttribute("hidden", "");
+});
+
+leng_en_front.addEventListener("click", () => {
+  pressedButton();
+  choose_lenguage_front.setAttribute("hidden", "");
+});
 
 document.addEventListener("keyup", (e) => {
   if (

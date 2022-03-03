@@ -18,6 +18,38 @@ p {
   color: antiquewhite;
 }
 
+.choose-lenguage {
+  /* background-color: black; */
+  background-image: url(../items/leng_bg.png);
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.choose-lenguage-title {
+  margin-bottom: 2rem;
+}
+
+.choose-lenguage-flags {
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flag {
+  width: 7.5rem;
+}
+
 .initial-window-container {
   width: 100vw;
   height: 100%;
@@ -211,9 +243,9 @@ footer {
   align-items: center;
 }
 
-.bet-section-window img {
+/* .bet-section-window img {
   width: 15rem;
-}
+} */
 
 .bet-section {
   align-items: center;
@@ -560,16 +592,32 @@ p {
   width: 10rem;
 }
 
+.buenasuerte {
+  width: 12rem;
+}
+
 .lose {
   width: 10rem;
+}
+
+.hasperdido {
+  width: 11rem;
 }
 
 .win {
   width: 8rem;
 }
 
+.hasganado {
+  width: 11rem;
+}
+
 .blackjack {
   width: 17rem;
+}
+
+.realizatuapuesta {
+  width: 19rem;
 }
 
 .doubledown {
@@ -578,6 +626,10 @@ p {
 
 .tie {
   width: 3rem;
+}
+
+.empate {
+  width: 6rem;
 }
 
 .press-start {

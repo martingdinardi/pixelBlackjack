@@ -53,6 +53,7 @@ const bet_letter_t = document.querySelector(".bet-letter-t");
 const fiftybet_button_front = document.querySelector(".fifty");
 const onehundred_bet_button_front = document.querySelector(".one-hundred");
 const twohundred_bet_button_front = document.querySelector(".two-hundred");
+const max_bet_button_front = document.querySelector(".maxbet");
 const hit_button_front = document.querySelector(".hit-button");
 const stand_button_front = document.querySelector(".stand-button");
 const double_button_front = document.querySelector(".double-button");
@@ -60,6 +61,8 @@ const game_over_front = document.querySelector(".game-over");
 const continue_button_container_front = document.querySelector(
   ".continue-button-container"
 );
+const yes_button_front = document.querySelector(".yes");
+const no_button_front = document.querySelector(".no");
 
 let pruebaDealerCards = () => {
   for (let i = 0; i < dealer_cards_front.children.length; i++) {
@@ -420,17 +423,16 @@ const showStartgameContainer = () => {
 };
 
 startgame_button_front.addEventListener("click", () => {
-  pressedButton();
-  /* verifyPlayerName(); */
+  /*   pressedButton();
   lobby_sound.pause();
-  /* casinoAmbience_sound.play(); */
   casinoAmbience();
   initial_window_container_front.setAttribute("hidden", "");
   goodLuckmessage();
   startgame_button_front.setAttribute("hidden", "");
   setTimeout(() => {
     bet_section_front.removeAttribute("hidden");
-  }, 2800);
+  }, 2800); */
+  startGamePressed();
 });
 
 const removeDealClass = () => {
@@ -473,24 +475,49 @@ const blackjack = () => {
 
 const lose = () => {
   /* if (playerPoints > 21) { */
-  setTimeout(() => {
-    match_messages_front.removeAttribute("hidden", "");
-    match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
-      <h5>You have lost ${playerBet} chips</h5>`;
-    /*     loseSound();
-     */
-  }, 1700);
-  /* } else if (playerPoints < dealerPoints) {
+
+  if (playerCash > 0) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
-      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
-      <h5>You have lost ${playerBet} chips</h5>`;
+      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+        <h5>You have lost ${playerBet} chips</h5>`;
+      /*     loseSound();
+       */
     }, 1700);
-  } */
-  matchButtonsDisabled();
-  doubleButtonDisabled();
-  bet_button_front.removeAttribute("disabled");
-  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    /* } else if (playerPoints < dealerPoints) {
+      setTimeout(() => {
+        match_messages_front.removeAttribute("hidden", "");
+        match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
+        <h5>You have lost ${playerBet} chips</h5>`;
+      }, 1700);
+    } */
+    matchButtonsDisabled();
+    doubleButtonDisabled();
+    bet_button_front.removeAttribute("disabled");
+    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    playerCards.splice(0, playerCards.length);
+  } else {
+    setTimeout(() => {
+      match_messages_front.removeAttribute("hidden", "");
+      match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br>
+        <h5>You have lost ${playerBet} chips</h5>`;
+      /*     loseSound();
+       */
+    }, 1700);
+    /* } else if (playerPoints < dealerPoints) {
+      setTimeout(() => {
+        match_messages_front.removeAttribute("hidden", "");
+        match_messages_front.innerHTML = `<img src="./assets/items/youlose.png" class="lose"><br> 
+        <h5>You have lost ${playerBet} chips</h5>`;
+      }, 1700);
+    } */
+    matchButtonsDisabled();
+    doubleButtonDisabled();
+    /* bet_button_front.removeAttribute("disabled"); */
+    player_money_front.innerHTML = `<p>${playerCash}</p>`;
+    playerCards.splice(0, playerCards.length);
+    gameOver();
+  }
 };
 
 const won = () => {
@@ -498,14 +525,14 @@ const won = () => {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>Tienes mas puntos que el dealer</h5>`;
+      <h5>You have won ${playerBet} chips</h5>`;
       winSound();
     }, 1700);
   } else if (dealerPoints > 21) {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/youwin.png" class="win"><br>
-      <h5>El dealer se pasó de los 21</h5>`;
+      <h5>You have won ${playerBet} chips</h5>`;
       winSound();
     }, 1700);
   }
@@ -520,7 +547,7 @@ const tie = () => {
     setTimeout(() => {
       match_messages_front.removeAttribute("hidden", "");
       match_messages_front.innerHTML = `<img src="./assets/items/tie.png" class="tie"><br>
-      <h5>Tú y el dealer tienen los mismos puntos</h5>`;
+      <h5>Nobody won</h5>`;
       /*       tieSound();
        */
     }, 1700);
@@ -604,6 +631,26 @@ const winSound = () => {
 const doubleSound = () => {
   double_sound.play();
   double_sound.volume = 0.5;
+};
+
+const playAgain = () => {
+  match_messages_front.style.backgroundColor = "transparent";
+  game_over_front.setAttribute("hidden", "");
+  playerCash = 500;
+  player_money_front.innerHTML = `<p>${playerCash}</p>`;
+  bet_value_front.classList.remove("bet-value-move");
+  bet_value_items_front.classList.remove("bet-value-items-move");
+  match_messages_front.setAttribute("hidden", "");
+  hideCards();
+  hideMatchButtons();
+  restartBet();
+  removeBets();
+  removePoints();
+  hideGameSection();
+  goodLuckmessage();
+  setTimeout(() => {
+    showBetButtons();
+  }, 3000);
 };
 
 const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
@@ -737,26 +784,7 @@ const getCardsToDealerIfDealerPointsAreLessThanPlayerPoints = (i) => {
   }, 2000);
 };
 
-// addEventListener
-
-document.addEventListener("keyup", (e) => {
-  if (e.key == "Enter" && player_name_window_switch === false) {
-    hideInitialsElements();
-    showWelcomeElements();
-    player_name_window_switch = true;
-    player_name_input_front.setAttribute("autofocus", "");
-  } else if (
-    e.key == "Enter" &&
-    player_name_window_switch === true &&
-    player_name !== undefined
-  ) {
-    hideWelcomeElements();
-    showStartgameContainer();
-    player_name_front.innerHTML = `${player_name}`;
-  }
-});
-
-press_start_text_front.addEventListener("click", () => {
+const pressStart = () => {
   pressedButton();
   lobbySound();
   /* typeWriter(); */
@@ -767,9 +795,18 @@ press_start_text_front.addEventListener("click", () => {
   showWelcomeElements();
   player_name_window_switch = true;
   player_name_input_front.setAttribute("autofocus", "");
-});
+};
 
-continue_button_front.addEventListener("click", () => {
+const gameOver = () => {
+  setTimeout(() => {
+    game_over_front.removeAttribute("hidden");
+    game_over_front.classList.add("game-over-appears");
+    match_messages_front.setAttribute("hidden", "");
+  }, 5000);
+};
+
+const continuePressed = () => {
+  player_name_window_switch = false;
   pressedButton();
   welcome_p_2.unshift(`Nice to meet you ${player_name} and
   CONGRATULATIONS!`);
@@ -782,8 +819,125 @@ continue_button_front.addEventListener("click", () => {
   continue_button_front.setAttribute("hidden", "");
   startgame_button_front.removeAttribute("hidden");
   congrat_p_front.removeAttribute("hidden");
+  setTimeout(() => {
+    startgame_button_front.classList.add("startgame-button-animation");
+    startgame_button_front.removeAttribute("disabled");
+  }, 13000);
+};
+
+const startGamePressed = () => {
+  pressedButton();
+  lobby_sound.pause();
+  casinoAmbience();
+  initial_window_container_front.setAttribute("hidden", "");
+  goodLuckmessage();
+  startgame_button_front.setAttribute("hidden", "");
+  setTimeout(() => {
+    bet_section_front.removeAttribute("hidden");
+  }, 2800);
+};
+
+// addEventListener
+
+document.addEventListener("keyup", (e) => {
+  if (
+    e.key == "Enter" &&
+    player_name_window_switch === false &&
+    player_name === undefined
+  ) {
+    /* hideInitialsElements();
+    showWelcomeElements();
+    player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", ""); */
+    /* pressedButton();
+    lobbySound(); */
+    /* typeWriter(); */
+    /* setTimeout(() => {
+      typeWriter();
+    }, 1000);
+    hideInitialsElements();
+    showWelcomeElements();
+    player_name_window_switch = true;
+    player_name_input_front.setAttribute("autofocus", ""); */
+    pressStart();
+  } else if (
+    e.key == "Enter" &&
+    player_name_window_switch === true &&
+    player_name !== undefined
+  ) {
+    /* hideWelcomeElements();
+    showStartgameContainer();
+    player_name_front.innerHTML = `${player_name}`; */
+    /* player_name_window_switch = false;
+    pressedButton();
+    welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`);
+    setTimeout(() => {
+      typeStartGameWriter();
+    }, 1000); */
+    /* verifyPlayerName(); */
+    /* welcome_p_front.setAttribute("hidden", "");
+    player_name_input_front.setAttribute("hidden", "");
+    continue_button_front.setAttribute("hidden", "");
+    startgame_button_front.removeAttribute("hidden");
+    congrat_p_front.removeAttribute("hidden"); */
+    continuePressed();
+  } else if (
+    e.key == "Enter" &&
+    player_name_window_switch === false &&
+    player_name !== undefined &&
+    startgame_button_front.attributes.length === 1
+  ) {
+    /* pressedButton();
+    
+    lobby_sound.pause();
+    
+    casinoAmbience();
+    initial_window_container_front.setAttribute("hidden", "");
+    goodLuckmessage();
+    startgame_button_front.setAttribute("hidden", "");
+    setTimeout(() => {
+      bet_section_front.removeAttribute("hidden");
+    }, 2800); */
+    startGamePressed();
+  }
+});
+
+yes_button_front.addEventListener("click", () => {
+  /*   testRestart(); */
+  playAgain();
+});
+
+press_start_text_front.addEventListener("click", () => {
+  /* pressedButton();
+  lobbySound(); */
+  /* typeWriter(); */
+  /* setTimeout(() => {
+    typeWriter();
+  }, 1000);
+  hideInitialsElements();
+  showWelcomeElements();
+  player_name_window_switch = true;
+  player_name_input_front.setAttribute("autofocus", ""); */
+  pressStart();
+});
+
+continue_button_front.addEventListener("click", () => {
+  /* pressedButton();
+  welcome_p_2.unshift(`Nice to meet you ${player_name} and
+  CONGRATULATIONS!`);
+  setTimeout(() => {
+    typeStartGameWriter();
+  }, 1000); */
+  /* verifyPlayerName(); */
+  /* welcome_p_front.setAttribute("hidden", "");
+  player_name_input_front.setAttribute("hidden", "");
+  continue_button_front.setAttribute("hidden", "");
+  startgame_button_front.removeAttribute("hidden");
+  congrat_p_front.removeAttribute("hidden"); */
 
   /* player_name_front.innerHTML = `${player_name}`; */
+  continuePressed();
 });
 
 fiftybet_button_front.addEventListener("click", () => {
@@ -830,6 +984,59 @@ twohundred_bet_button_front.addEventListener("click", () => {
       (playerCash -= 200),
       (bet_item_front.innerHTML += `<img src="assets/items/twohundred.png" class="new-chip"/>`))
     : (playerBet += 0);
+  if (playerBet !== 0) {
+    /* bet_button_front.removeAttribute("hidden"); */
+    /* bet_button_front.style.visibility = "visible"; */
+    betLetterAppears();
+  }
+  player_bet_front.innerHTML = `<p>${playerBet}</p>`;
+
+  betButtonEnabled();
+});
+
+max_bet_button_front.addEventListener("click", () => {
+  if (playerBet == 0 && playerCash <= 500 && playerCash !== 0) {
+    playerBet += playerCash;
+    playerCash -= playerCash;
+    chipSound();
+    bet_item_front.innerHTML += `<img src="assets/items/maxbet.png" class="new-chip"/>`;
+  } else if (
+    playerBet > 0 &&
+    playerBet + playerCash <= 500 &&
+    playerBet !== 500 &&
+    playerCash !== 0
+  ) {
+    playerBet += playerCash;
+    playerCash -= playerCash;
+    chipSound();
+    bet_item_front.innerHTML += `<img src="assets/items/maxbet.png" class="new-chip"/>`;
+  } else if (playerBet > 0 && playerCash > 500 && playerBet !== 500) {
+    let amount = 500 - playerBet; //// 400
+    if (playerBet + amount >= 500) {
+      playerCash -= amount;
+      playerBet += amount;
+    }
+    chipSound();
+    bet_item_front.innerHTML += `<img src="assets/items/maxbet.png" class="new-chip"/>`;
+  } else if (
+    playerBet > 0 &&
+    playerCash <= 500 &&
+    playerBet !== 500 &&
+    playerCash !== 0
+  ) {
+    let amount = 500 - playerBet; //// 400
+    if (playerBet + amount <= 500) {
+      playerBet += amount;
+      playerCash -= amount;
+    }
+    chipSound();
+    bet_item_front.innerHTML += `<img src="assets/items/maxbet.png" class="new-chip"/>`;
+  } else if (playerBet == 0 && playerCash > 500 && playerBet !== 500) {
+    playerBet += 500;
+    playerCash -= 500;
+    chipSound();
+    bet_item_front.innerHTML += `<img src="assets/items/maxbet.png" class="new-chip"/>`;
+  }
   if (playerBet !== 0) {
     /* bet_button_front.removeAttribute("hidden"); */
     /* bet_button_front.style.visibility = "visible"; */
@@ -944,10 +1151,7 @@ let take_card = () => {
   // Aca se agrega el game over
   if (playerPoints > 21 && playerCash === 0) {
     lose();
-    setTimeout(() => {
-      game_over_front.classList.add("game-over-appears");
-    }, 5000);
-    /* endMatch(); */
+    /* gameOver(); */
   }
 
   setTimeout(() => {

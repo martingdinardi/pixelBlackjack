@@ -96,7 +96,7 @@ p {
 }
 
 .game-over {
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(0, 0, 0, 0.92);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -119,6 +119,27 @@ p {
   animation-name: game-over-appears;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+}
+
+.game-over-text {
+  text-align: center;
+  height: 2.9rem;
+}
+
+.game-over-title {
+  height: 5rem;
+}
+
+.yes-no {
+  text-align: center;
+}
+
+.yes-no img {
+  cursor: pointer;
+}
+
+.yes {
+  margin-right: 1rem;
 }
 
 @keyframes game-over-appears {
@@ -422,6 +443,10 @@ p {
   margin-right: 0.5rem;
 }
 
+.money-flying {
+  height: 4rem;
+}
+
 .drink-ico {
   height: 4rem;
 }
@@ -532,7 +557,7 @@ p {
 }
 
 .goodLuckImg {
-  width: 14rem;
+  width: 10rem;
 }
 
 .lose {
@@ -572,7 +597,7 @@ p {
 
 .welcome-container,
 .start-game-container {
-  background-image: url("../items/hall.png");
+  background-image: url("../items/hall.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -654,16 +679,25 @@ p {
   text-align: right;
 }
 
-.startgame-button {
+.startgame-button-animation {
   animation: blink 1.7s linear infinite;
 }
 
-.continue-button:disabled {
+.continue-button:disabled,
+.startgame-button:disabled {
   color: rgba(250, 235, 215, 0.5);
 }
 
 .bet-button-letters {
   display: flex;
+}
+
+.game-over-message {
+  /* background-color: teal; */
+  max-width: 50rem;
+  position: absolute;
+  margin: 0 auto;
+  height: 10rem;
 }
 
 /* span {
@@ -702,5 +736,8 @@ p {
     align-items: center;
     text-align: center;
     /* padding: 5px; */
+  }
+  .goodLuckImg {
+    width: 11rem;
   }
 }

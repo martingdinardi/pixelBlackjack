@@ -24,7 +24,21 @@
   </head>
   <body>
     <div class="game-over">
-      <a href="google.com">GOOOGLE</a>
+      <div class="game-over-message">
+        <div class="game-over-message-elements">
+          <div class="game-over-title">
+            <img src="./assets/items/gameOver.png" alt="" />
+            <img src="./assets/items/moneyflying.gif" class="money-flying" />
+          </div>
+          <div class="game-over-text">
+            <h4>Play Again?</h4>
+          </div>
+          <div class="yes-no">
+            <img src="./assets/items/yes.png" class="yes" />
+            <img src="./assets/items/no.png" class="no" />
+          </div>
+        </div>
+      </div>
     </div>
     <div class="deck">
       <div>
@@ -145,13 +159,31 @@
       </section>
       <footer>
         <div class="match-buttons">
-          <button type="button" class="btn stand-button" disabled hidden>
+          <button
+            type="button"
+            class="btn stand-button"
+            disabled
+            hidden
+            style="box-shadow: none"
+          >
             <img src="assets/items/stand.png" alt="" />
           </button>
-          <button type="button" class="btn hit-button" disabled hidden>
+          <button
+            type="button"
+            class="btn hit-button"
+            disabled
+            hidden
+            style="box-shadow: none"
+          >
             <img src="assets/items/hit.png" alt="" />
           </button>
-          <button type="button" class="btn double-button" disabled hidden>
+          <button
+            type="button"
+            class="btn double-button"
+            disabled
+            hidden
+            style="box-shadow: none"
+          >
             <img src="assets/items/double.png" alt="" />
           </button>
         </div>
@@ -178,17 +210,37 @@
                 </div>
               </div> -->
 
-              <button type="button" class="btn chip fifty">
+              <button
+                type="button"
+                class="btn chip fifty"
+                style="box-shadow: none"
+              >
                 <img src="assets/items/fifty.png" />
                 <p>50</p>
               </button>
-              <button type="button" class="btn chip one-hundred">
+              <button
+                type="button"
+                class="btn chip one-hundred"
+                style="box-shadow: none"
+              >
                 <img src="assets/items/onehundred.png" />
                 <p>100</p>
               </button>
-              <button type="button" class="btn chip two-hundred">
+              <button
+                type="button"
+                class="btn chip two-hundred"
+                style="box-shadow: none"
+              >
                 <img src="assets/items/twohundred.png" />
                 <p>200</p>
+              </button>
+              <button
+                type="button"
+                class="btn chip maxbet"
+                style="box-shadow: none"
+              >
+                <img src="assets/items/maxbet.png" />
+                <p>MAX</p>
               </button>
             </div>
           </div>

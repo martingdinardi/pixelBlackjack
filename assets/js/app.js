@@ -37,7 +37,11 @@ const inital_window_front = document.querySelector(".initial-window");
 const initial_window_container_front = document.querySelector(
   ".initial-window-container"
 );
-const choose_lenguage_front = document.querySelector(".choose-lenguage");
+const choose_lenguage_front = document.querySelector(".loader-choose-lenguage");
+const choose_lenguage_elements_front = document.querySelector(
+  ".choose-lenguage-elements"
+);
+const loader_front = document.querySelector(".loader");
 const leng_es_front = document.querySelector(".len_es");
 const leng_en_front = document.querySelector(".len_en");
 const welcome_container = document.querySelector(".welcome-container");
@@ -897,12 +901,14 @@ leng_es_front.addEventListener("click", () => {
   pressedButton();
   len_eng = false;
   press_start_text_front.innerHTML = `PRESIONA START`;
-  choose_lenguage_front.setAttribute("hidden", "");
+  choose_lenguage_elements_front.setAttribute("hidden", "");
+  loader_front.removeAttribute("hidden");
 });
 
 leng_en_front.addEventListener("click", () => {
   pressedButton();
-  choose_lenguage_front.setAttribute("hidden", "");
+  choose_lenguage_elements_front.setAttribute("hidden", "");
+  loader_front.removeAttribute("hidden");
 });
 
 document.addEventListener("keyup", (e) => {

@@ -18,7 +18,7 @@ p {
   color: antiquewhite;
 }
 
-.choose-lenguage {
+.loader-choose-lenguage {
   /* background-color: black; */
   background-image: url(../items/leng_bg.png);
   height: 100%;
@@ -35,11 +35,16 @@ p {
   flex-direction: column;
 }
 
-.choose-lenguage-title {
+.choose-lenguage-elements,
+.loader {
+  text-align: center;
+}
+
+.loader-choose-lenguage-title {
   margin-bottom: 2rem;
 }
 
-.choose-lenguage-flags {
+.loader-choose-lenguage-flags {
   height: 12rem;
   display: flex;
   flex-direction: column;

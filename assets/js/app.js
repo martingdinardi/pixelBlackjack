@@ -963,11 +963,11 @@ const startGamePressed = () => {
 
 leng_es_front.addEventListener("click", () => {
   pressedButton();
+  resourcesLoader();
   len_eng = false;
   press_start_text_front.innerHTML = `PRESIONA START`;
   choose_lenguage_elements_front.setAttribute("hidden", "");
   loader_front.removeAttribute("hidden");
-  resourcesLoader();
 });
 
 leng_en_front.addEventListener("click", () => {

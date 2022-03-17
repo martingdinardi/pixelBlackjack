@@ -75,6 +75,70 @@ const continue_button_container_front = document.querySelector(
 const yes_button_front = document.querySelector(".yes");
 const no_button_front = document.querySelector(".no");
 
+const resourcesLoader = () => {
+  let img1 = new Image();
+  img1.src = "./assets/items/b.png";
+  let img2 = new Image();
+  img2.src = "./assets/items/blackjack.png";
+  let img3 = new Image();
+  img3.src = "./assets/items/blackjack_title.png";
+  let img4 = new Image();
+  img4.src = "./assets/items/buenasuerte.png";
+  let img5 = new Image();
+  img5.src = "./assets/items/chipsbox.jpg";
+  let img6 = new Image();
+  img6.src = "./assets/items/dealer.jpg";
+  let img7 = new Image();
+  img7.src = "./assets/items/deck.png";
+  let img8 = new Image();
+  img8.src = "./assets/items/double.png";
+  let img9 = new Image();
+  img9.src = "./assets/items/doubledown.png";
+  let img10 = new Image();
+  img10.src = "./assets/items/drink.gif";
+  let img11 = new Image();
+  img11.src = "./assets/items/e.png";
+  let img12 = new Image();
+  img12.src = "./assets/items/empate.png";
+  let img13 = new Image();
+  img13.src = "./assets/items/fifty.png";
+  let img14 = new Image();
+  img14.src = "./assets/items/gamelogo.png";
+  let img15 = new Image();
+  img15.src = "./assets/items/gameOver.png";
+  let img17 = new Image();
+  img17.src = "./assets/items/table_bg.png";
+  let img18 = new Image();
+  img18.src = "./assets/items/hall.jpg";
+  let img19 = new Image();
+  img19.src = "./assets/items/hasganado.png";
+  let img20 = new Image();
+  img20.src = "./assets/items/hasperdido.png";
+  let img21 = new Image();
+  img21.src = "./assets/items/hit.png";
+  let img22 = new Image();
+  img22.src = "./assets/items/maxbet.png";
+  let img23 = new Image();
+  img23.src = "./assets/items/money.png";
+  let img24 = new Image();
+  img24.src = "./assets/items/moneyflying.gif";
+  let img25 = new Image();
+  img25.src = "./assets/items/no.png";
+  let img26 = new Image();
+  img26.src = "./assets/items/onehundred.png";
+  let img27 = new Image();
+  img27.src = "./assets/items/realizatuapuesta.png";
+  let img29 = new Image();
+  img29.src = "./assets/items/stand.png";
+  let img30 = new Image();
+  img30.src = "./assets/items/t.png";
+  let img31 = new Image();
+  img31.src = "./assets/items/twohundred.png";
+  let img32 = new Image();
+  img32.src = "./assets/items/yes.png";
+  choose_lenguage_front.setAttribute("hidden", "");
+};
+
 let pruebaDealerCards = () => {
   for (let i = 0; i < dealer_cards_front.children.length; i++) {
     if (
@@ -903,6 +967,7 @@ leng_es_front.addEventListener("click", () => {
   press_start_text_front.innerHTML = `PRESIONA START`;
   choose_lenguage_elements_front.setAttribute("hidden", "");
   loader_front.removeAttribute("hidden");
+  resourcesLoader();
 });
 
 leng_en_front.addEventListener("click", () => {

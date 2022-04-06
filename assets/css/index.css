@@ -18,7 +18,7 @@ p {
   color: antiquewhite;
 }
 
-.loader-choose-lenguage {
+.choose-lenguage {
   /* background-color: black; */
   background-image: url(../items/leng_bg.png);
   height: 100%;
@@ -35,16 +35,15 @@ p {
   flex-direction: column;
 }
 
-.choose-lenguage-elements,
-.loader {
+.choose-lenguage-elements {
   text-align: center;
 }
 
-.loader-choose-lenguage-title {
+.choose-lenguage-title {
   margin-bottom: 2rem;
 }
 
-.loader-choose-lenguage-flags {
+.choose-lenguage-flags {
   height: 12rem;
   display: flex;
   flex-direction: column;
@@ -89,6 +88,8 @@ p {
   height: 10rem;
   display: flex;
   align-items: baseline;
+  margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 .deck img {
@@ -796,5 +797,9 @@ p {
   }
   .goodLuckImg {
     width: 11rem;
+  }
+
+  .deck{
+    margin-left: -3rem;
   }
 }

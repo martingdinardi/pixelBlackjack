@@ -23,12 +23,35 @@
     <title>Pixel Blackjack 21 - lets play !</title>
   </head>
   <body>
-    <div class="loader-choose-lenguage">
+    <div class="finish-game" hidden>
+      <div class="finish-game-elements" style="height: 16rem">
+        <h3>Are you sure you want to exit the game?</h3>
+        <br />
+        <div style="display: flex; justify-content: center">
+          <h3 class="h-end-game" style="margin-right: 0.5rem"></h3>
+          <img src="assets/items/money.png" class="money-ico" />
+        </div>
+
+        <div
+          class="yes-no"
+          style="
+            height: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <img src="./assets/items/yes.png" class="end-game-yes" />
+          <img src="./assets/items/no.png" class="no end-game-no" />
+        </div>
+      </div>
+    </div>
+    <div class="choose-lenguage">
       <div class="choose-lenguage-elements">
-        <div class="loader-choose-lenguage-title">
+        <div class="choose-lenguage-title">
           <h1>Choose your lenguage</h1>
         </div>
-        <div class="loader-choose-lenguage-flags">
+        <div class="choose-lenguage-flags">
           <div class="leng_es">
             <button class="len_es" style="box-shadow: none">
               <img src="./assets/items/es_flag.png" class="flag" />
@@ -41,12 +64,12 @@
           </div>
         </div>
       </div>
-      <div class="loader" hidden>
+      <!--       <div class="loader" hidden>
         <div class="loader-choose-lenguage-title">
           <h1>Loading resources</h1>
         </div>
         <img src="./assets/items/loader.png" alt="" />
-      </div>
+      </div> -->
     </div>
     <div class="game-over">
       <div class="game-over-message">
@@ -169,7 +192,7 @@
               <img src="assets/items/fifty.png" class="chips-ico" />
               <div class="money-amount"></div>
             </div>
-            <img src="assets/items/money.png" class="money-ico" />
+            <img src="assets/items/money.png" class="money-endgame-ico" />
           </div>
         </nav>
       </navbar>

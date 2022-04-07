@@ -18,7 +18,7 @@ p {
   color: antiquewhite;
 }
 
-.loader-choose-lenguage {
+.choose-lenguage {
   /* background-color: black; */
   background-image: url(../items/leng_bg.png);
   height: 100%;
@@ -35,16 +35,15 @@ p {
   flex-direction: column;
 }
 
-.choose-lenguage-elements,
-.loader {
+.choose-lenguage-elements {
   text-align: center;
 }
 
-.loader-choose-lenguage-title {
+.choose-lenguage-title {
   margin-bottom: 2rem;
 }
 
-.loader-choose-lenguage-flags {
+.choose-lenguage-flags {
   height: 12rem;
   display: flex;
   flex-direction: column;
@@ -89,6 +88,8 @@ p {
   height: 10rem;
   display: flex;
   align-items: baseline;
+  margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 .deck img {
@@ -152,6 +153,30 @@ p {
   visibility: hidden;
 }
 
+.finish-game{
+  background-color: rgba(0, 0, 0, 0.92);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.finish-game-elements{
+    width: 18rem;
+    text-align: center;
+}
+
 .game-over-appears {
   animation-name: game-over-appears;
   animation-duration: 2s;
@@ -175,7 +200,8 @@ p {
   cursor: pointer;
 }
 
-.yes {
+.yes,
+.end-game-yes {
   margin-right: 1rem;
 }
 
@@ -475,9 +501,15 @@ p {
 }
 
 .money-ico,
-.chips-ico {
+.chips-ico,
+.money-endgame-ico {
   height: 2.2rem;
   margin-right: 0.5rem;
+}
+
+.money-ico,
+.money-endgame-ico{
+  cursor: pointer;
 }
 
 .money-flying {
@@ -796,5 +828,9 @@ p {
   }
   .goodLuckImg {
     width: 11rem;
+  }
+
+  .deck{
+    margin-left: -3rem;
   }
 }

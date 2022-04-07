@@ -37,11 +37,11 @@ const inital_window_front = document.querySelector(".initial-window");
 const initial_window_container_front = document.querySelector(
   ".initial-window-container"
 );
-const choose_lenguage_front = document.querySelector(".loader-choose-lenguage");
+const choose_lenguage_front = document.querySelector(".choose-lenguage");
 const choose_lenguage_elements_front = document.querySelector(
   ".choose-lenguage-elements"
 );
-const loader_front = document.querySelector(".loader");
+/* const loader_front = document.querySelector(".loader"); */
 const leng_es_front = document.querySelector(".len_es");
 const leng_en_front = document.querySelector(".len_en");
 const welcome_container = document.querySelector(".welcome-container");
@@ -72,72 +72,11 @@ const makeyourbet_front = document.querySelector(".makeyourbet");
 const continue_button_container_front = document.querySelector(
   ".continue-button-container"
 );
+const finish_game_container = document.querySelector(".finish-game");
+const finish_game_elements = document.querySelector(".finish-game-elements");
 const yes_button_front = document.querySelector(".yes");
 const no_button_front = document.querySelector(".no");
-
-const resourcesLoader = () => {
-  let img1 = new Image();
-  img1.src = "./assets/items/b.png";
-  let img2 = new Image();
-  img2.src = "./assets/items/blackjack.png";
-  let img3 = new Image();
-  img3.src = "./assets/items/blackjack_title.png";
-  let img4 = new Image();
-  img4.src = "./assets/items/buenasuerte.png";
-  let img5 = new Image();
-  img5.src = "./assets/items/chipsbox.jpg";
-  let img6 = new Image();
-  img6.src = "./assets/items/dealer.jpg";
-  let img7 = new Image();
-  img7.src = "./assets/items/deck.png";
-  let img8 = new Image();
-  img8.src = "./assets/items/double.png";
-  let img9 = new Image();
-  img9.src = "./assets/items/doubledown.png";
-  let img10 = new Image();
-  img10.src = "./assets/items/drink.gif";
-  let img11 = new Image();
-  img11.src = "./assets/items/e.png";
-  let img12 = new Image();
-  img12.src = "./assets/items/empate.png";
-  let img13 = new Image();
-  img13.src = "./assets/items/fifty.png";
-  let img14 = new Image();
-  img14.src = "./assets/items/gamelogo.png";
-  let img15 = new Image();
-  img15.src = "./assets/items/gameOver.png";
-  let img17 = new Image();
-  img17.src = "./assets/items/table_bg.png";
-  let img18 = new Image();
-  img18.src = "./assets/items/hall.jpg";
-  let img19 = new Image();
-  img19.src = "./assets/items/hasganado.png";
-  let img20 = new Image();
-  img20.src = "./assets/items/hasperdido.png";
-  let img21 = new Image();
-  img21.src = "./assets/items/hit.png";
-  let img22 = new Image();
-  img22.src = "./assets/items/maxbet.png";
-  let img23 = new Image();
-  img23.src = "./assets/items/money.png";
-  let img24 = new Image();
-  img24.src = "./assets/items/moneyflying.gif";
-  let img25 = new Image();
-  img25.src = "./assets/items/no.png";
-  let img26 = new Image();
-  img26.src = "./assets/items/onehundred.png";
-  let img27 = new Image();
-  img27.src = "./assets/items/realizatuapuesta.png";
-  let img29 = new Image();
-  img29.src = "./assets/items/stand.png";
-  let img30 = new Image();
-  img30.src = "./assets/items/t.png";
-  let img31 = new Image();
-  img31.src = "./assets/items/twohundred.png";
-  let img32 = new Image();
-  img32.src = "./assets/items/yes.png";
-  choose_lenguage_front.setAttribute("hidden", "");
-};
+const finish_game_front_button = document.querySelector(".money-endgame-ico");
 
 let pruebaDealerCards = () => {
   for (let i = 0; i < dealer_cards_front.children.length; i++) {
@@ -537,6 +476,60 @@ const removeSecondCardDealerClass = () => {
   secondCard.forEach((card) => {
     card.classList.remove("second-card-dealer");
   });
+};
+
+const showFinishgameContainer = () => {
+  finish_game_container.removeAttribute("hidden");
+  const h_end_game = document.querySelector(".h-end-game");
+  len_eng == true
+    ? (h_end_game.innerHTML = `
+      You'll earn ${playerCash}
+    `)
+    : (finish_game_elements.innerHTML = `<h3>¿Quieres abandonar el juego?</h3><br> 
+    <div style="display: flex;justify-content: center;">
+    
+    <h3 style="margin-right: 0.5rem;">Te llevarás ${playerCash}</h3>
+    <img src="assets/items/money.png" class="money-ico" />
+    
+    </div>
+    
+    <div class="yes-no" style="height: 5rem;display: flex;justify-content: center;align-items: center;">
+            <img src="./assets/items/si.png" class="end-game-yes" />
+            <img src="./assets/items/no.png" class="no end-game-no" />
+          </div>
+    
+    `);
+  const end_game_no = document.querySelector(".end-game-no");
+
+  end_game_no.addEventListener("click", () => {
+    pressedButton();
+    finish_game_container.setAttribute("hidden", "");
+    /* console.log("asdsa"); */
+  });
+
+  const end_game_yes = document.querySelector(".end-game-yes");
+
+  end_game_yes.addEventListener("click", () => {
+    pressedButton();
+    len_eng == true
+      ? (finish_game_elements.innerHTML = `
+      <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/thanks-for-playing.png">  
+      </div>
+      `)
+      : (finish_game_elements.innerHTML = `
+      <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/gracias-por-jugar.png">
+      </div>
+    
+      `);
+    /* console.log("first"); */
+  });
+  /* }); */
 };
 
 const blackjack = () => {
@@ -961,19 +954,23 @@ const startGamePressed = () => {
 
 // addEventListener
 
+finish_game_front_button.addEventListener("click", () => {
+  pressedButton();
+  showFinishgameContainer();
+});
+
 leng_es_front.addEventListener("click", () => {
   pressedButton();
-  resourcesLoader();
   len_eng = false;
   press_start_text_front.innerHTML = `PRESIONA START`;
-  choose_lenguage_elements_front.setAttribute("hidden", "");
-  loader_front.removeAttribute("hidden");
+  choose_lenguage_front.setAttribute("hidden", "");
+  /* loader_front.removeAttribute("hidden"); */
 });
 
 leng_en_front.addEventListener("click", () => {
   pressedButton();
-  choose_lenguage_elements_front.setAttribute("hidden", "");
-  loader_front.removeAttribute("hidden");
+  choose_lenguage_front.setAttribute("hidden", "");
+  /* loader_front.removeAttribute("hidden"); */
 });
 
 document.addEventListener("keyup", (e) => {

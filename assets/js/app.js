@@ -494,7 +494,7 @@ const showFinishgameContainer = () => {
     </div>
     
     <div class="yes-no" style="height: 5rem;display: flex;justify-content: center;align-items: center;">
-            <img src="./assets/items/si.png" class="yes end-game-yes" />
+            <img src="./assets/items/si.png" class="end-game-yes" />
             <img src="./assets/items/no.png" class="no end-game-no" />
           </div>
     
@@ -506,6 +506,30 @@ const showFinishgameContainer = () => {
     finish_game_container.setAttribute("hidden", "");
     /* console.log("asdsa"); */
   });
+
+  const end_game_yes = document.querySelector(".end-game-yes");
+
+  end_game_yes.addEventListener("click", () => {
+    pressedButton();
+    len_eng == true
+      ? (finish_game_elements.innerHTML = `
+      <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/thanks-for-playing.png">  
+      </div>
+      `)
+      : (finish_game_elements.innerHTML = `
+      <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/gracias-por-jugar.png">
+      </div>
+    
+      `);
+    /* console.log("first"); */
+  });
+  /* }); */
 };
 
 const blackjack = () => {

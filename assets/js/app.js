@@ -909,6 +909,24 @@ const gameOver = () => {
     game_over_front.classList.add("game-over-appears");
     match_messages_front.setAttribute("hidden", "");
   }, 5000);
+  no_button_front.addEventListener("click", () => {
+    const elements = document.querySelector(".game-over-message-elements");
+    len_eng == true
+      ? (elements.innerHTML = `
+    <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/thanks-for-playing.png">  
+      </div>
+    `)
+      : (elements.innerHTML = `
+    <div style="display: flex;flex-direction: column;align-items: center;">
+      <img src="assets/items/dealer.jpg" style="margin-bottom: 1rem;
+      width: 10rem;">
+      <img src="./assets/items/gracias-por-jugar.png">  
+      </div>
+    `);
+  });
 };
 
 const continuePressed = () => {

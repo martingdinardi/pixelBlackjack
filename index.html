@@ -23,6 +23,45 @@
     <title>Pixel Blackjack 21 - lets play !</title>
   </head>
   <body>
+    <div class="how-to-play">
+      <div class="how-to-play-elements">
+        <div class="how-to-play-elements-title"><h1>How to play?</h1></div>
+        <h5>
+          Each participant attempts to beat the dealer by getting a count as
+          close to 21 as possible, without going over 21.<br />
+          If your initial hand is equal to 21, it is called a “blackjack” and
+          you automatically win 3:2
+        </h5>
+        <div class="how-to-play-elements-card-values">
+          <h2>Cards values</h2>
+        </div>
+        <div class="k-q-j">
+          <div>
+            <img src="assets/cards/JP.png" class="how-to-play-one-card" />
+            <img src="assets/cards/QP.png" class="how-to-play-one-card" />
+            <img src="assets/cards/KP.png" class="how-to-play-one-card" />
+          </div>
+          <h3 style="margin-left: 0.5em">- 10</h3>
+        </div>
+        <div class="as" style="display: flex; align-items: center">
+          <div style="width: 3.9rem">
+            <img src="assets/cards/AP.png" class="how-to-play-one-card" />
+          </div>
+          <h3 style="margin-left: 0.5em">- 1 or 11</h3>
+        </div>
+        <div class="2-up-to-10" style="display: flex; align-items: center">
+          <div>
+            <h5 class="cards-2upto10">
+              Cards 2 up to 10 are the same value as their number.
+            </h5>
+          </div>
+        </div>
+        <h2>Buttons</h2>
+        <img src="assets/items/stand.png" alt="" />
+        <img src="assets/items/hit.png" alt="" />
+        <img src="assets/items/double.png" alt="" />
+      </div>
+    </div>
     <div class="finish-game" hidden>
       <div class="finish-game-elements" style="height: 16rem">
         <h3>Are you sure you want to exit the game?</h3>
@@ -42,7 +81,7 @@
           "
         >
           <img src="./assets/items/yes.png" class="end-game-yes" />
-          <img src="./assets/items/no.png" class="no end-game-no" />
+          <img src="./assets/items/no.png" class="end-game-no" />
         </div>
       </div>
     </div>
@@ -192,7 +231,16 @@
               <img src="assets/items/fifty.png" class="chips-ico" />
               <div class="money-amount"></div>
             </div>
-            <img src="assets/items/money.png" class="money-endgame-ico" />
+            <div
+              class="
+            "
+            >
+              <img src="assets/items/money.png" class="money-endgame-ico" />
+              <img
+                src="assets/items/rules.png"
+                style="width: 2.3rem; margin-left: 1rem; cursor: pointer"
+              />
+            </div>
           </div>
         </nav>
       </navbar>

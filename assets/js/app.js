@@ -72,8 +72,11 @@ const makeyourbet_front = document.querySelector(".makeyourbet");
 const continue_button_container_front = document.querySelector(
   ".continue-button-container"
 );
+const finish_game_container = document.querySelector(".finish-game");
+const finish_game_elements = document.querySelector(".finish-game-elements");
 const yes_button_front = document.querySelector(".yes");
 const no_button_front = document.querySelector(".no");
+const finish_game_front_button = document.querySelector(".money-endgame-ico");
 
 let pruebaDealerCards = () => {
   for (let i = 0; i < dealer_cards_front.children.length; i++) {
@@ -472,6 +475,36 @@ const removeSecondCardDealerClass = () => {
   let secondCard = document.querySelectorAll(".second-card-dealer");
   secondCard.forEach((card) => {
     card.classList.remove("second-card-dealer");
+  });
+};
+
+const showFinishgameContainer = () => {
+  finish_game_container.removeAttribute("hidden");
+  const h_end_game = document.querySelector(".h-end-game");
+  len_eng == true
+    ? (h_end_game.innerHTML = `
+      You'll earn ${playerCash}
+    `)
+    : (finish_game_elements.innerHTML = `<h3>¿Quieres abandonar el juego?</h3><br> 
+    <div style="display: flex;justify-content: center;">
+    
+    <h3 style="margin-right: 0.5rem;">Te llevarás ${playerCash}</h3>
+    <img src="assets/items/money.png" class="money-ico" />
+    
+    </div>
+    
+    <div class="yes-no" style="height: 5rem;display: flex;justify-content: center;align-items: center;">
+            <img src="./assets/items/si.png" class="yes end-game-yes" />
+            <img src="./assets/items/no.png" class="no end-game-no" />
+          </div>
+    
+    `);
+  const end_game_no = document.querySelector(".end-game-no");
+
+  end_game_no.addEventListener("click", () => {
+    pressedButton();
+    finish_game_container.setAttribute("hidden", "");
+    /* console.log("asdsa"); */
   });
 };
 
@@ -896,6 +929,11 @@ const startGamePressed = () => {
 };
 
 // addEventListener
+
+finish_game_front_button.addEventListener("click", () => {
+  pressedButton();
+  showFinishgameContainer();
+});
 
 leng_es_front.addEventListener("click", () => {
   pressedButton();

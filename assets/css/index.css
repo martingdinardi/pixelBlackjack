@@ -896,4 +896,8 @@ p {
   .how-to-play-buttons {
     width: 15rem;
 }
+
+.htp-title{
+  display: none;
+}
 }

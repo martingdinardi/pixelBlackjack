@@ -18,6 +18,24 @@ p {
   color: antiquewhite;
 }
 
+.htp-x-container{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.htp-x{
+  display: flex;
+    /* background: blueviolet; */
+    width: 64%;
+    justify-content: space-between;
+}
+
+.htp-x-ico{
+  width: auto;
+    height: 1.5rem;
+    /* margin-top: 0.5rem; */
+}
+
 .choose-lenguage {
   /* background-color: black; */
   background-image: url(../items/leng_bg.png);
@@ -88,8 +106,8 @@ p {
   height: 10rem;
   display: flex;
   align-items: baseline;
-  margin-top: 1rem;
-    margin-left: 1rem;
+  /* margin-top: 1rem;
+  margin-left: 1rem; */
 }
 
 .deck img {
@@ -175,6 +193,45 @@ p {
 .finish-game-elements{
     width: 18rem;
     text-align: center;
+}
+
+.how-to-play{
+  /* background-color: brown; */
+  background-color: rgba(0, 0, 0, 0.92);
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 50rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.how-to-play-elements{
+  width: auto;
+  text-align: center;
+}
+
+.how-to-play-buttons {
+  display: flex;
+    align-items: center;
+    width: 30rem;
+    text-align: justify;
+}
+
+.htp-hit,
+.htp-stand,
+.htp-double{
+  margin-left: 1rem;
+}
+
+.objetive{
+  width: 30rem;
+    text-align: justify;
 }
 
 .game-over-appears {
@@ -331,6 +388,19 @@ p {
   top: 20rem;
   left: 50%;
   position: relative;
+}
+
+.how-to-play-one-card{
+  height: 4.4rem;
+  /* margin-left: -3.125rem; */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.k-q-j{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .one-card-dealer {
@@ -702,7 +772,7 @@ p {
 }
 
 .welcome-textanddealer-container {
-  border: 1px solid;
+  /* border: 1px solid; */
   padding: 3px;
 }
 
@@ -737,7 +807,7 @@ p {
   /* text-align: center; */
   /* align-items: center; */
   max-width: 38rem;
-  border: 4px solid;
+  /* border: 4px solid; */
   padding: 15px;
 }
 
@@ -786,7 +856,7 @@ p {
   max-width: 50rem;
   position: absolute;
   margin: 0 auto;
-  height: 10rem;
+  /* height: 10rem; */
 }
 
 /* span {
@@ -833,4 +903,26 @@ p {
   .deck{
     margin-left: -3rem;
   }
+
+/*   .how-to-play{
+    align-items: center;  
+  }  */
+
+  .how-to-play-elements{
+    height: auto;  
+  } 
+  .objetive{
+    max-width: 21rem;
+  }
+
+  .how-to-play-buttons {
+    width: 21rem;
+}
+
+/* .htp-title{
+  display: none;
+} */
+.htp-p{
+  font-size: 0.8rem;
+}
 }

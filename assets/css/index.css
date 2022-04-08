@@ -884,4 +884,16 @@ p {
   .deck{
     margin-left: -3rem;
   }
+
+  .how-to-play{
+    display: block;
+  }
+
+  .objetive{
+    max-width: 24rem;
+  }
+
+  .how-to-play-buttons {
+    width: 25rem;
+}
 }

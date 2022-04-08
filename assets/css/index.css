@@ -900,4 +900,7 @@ p {
 .htp-title{
   display: none;
 }
+.htp-p{
+  font-size: 0.5rem;
+}
 }

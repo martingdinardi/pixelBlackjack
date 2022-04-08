@@ -153,8 +153,7 @@ p {
   visibility: hidden;
 }
 
-.finish-game,
-.how-to-play{
+.finish-game{
   background-color: rgba(0, 0, 0, 0.92);
   background-position: center;
   background-repeat: no-repeat;
@@ -176,6 +175,44 @@ p {
 .finish-game-elements{
     width: 18rem;
     text-align: center;
+}
+
+.how-to-play{
+  /* background-color: brown; */
+  background-color: rgba(0, 0, 0, 0.92);
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 50rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.how-to-play-elements{
+  width: auto;
+  text-align: center;
+}
+
+.how-to-play-buttons {
+  display: flex;
+    align-items: center;
+    width: 30rem;
+    text-align: justify;
+}
+
+.htp-hit,
+.htp-stand,
+.htp-double{
+  margin-left: 1rem;
+}
+
+.objetive{
+  width: 30rem;
+    text-align: justify;
 }
 
 .game-over-appears {
@@ -344,11 +381,7 @@ p {
 .k-q-j{
   display: flex;
   align-items: center;
-}
-
-.how-to-play-elements{
-  width: 35rem;
-
+  /* justify-content: center; */
 }
 
 .one-card-dealer {

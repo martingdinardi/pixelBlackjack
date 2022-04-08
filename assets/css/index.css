@@ -190,6 +190,7 @@ p {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  align-items: center;
 }
 
 .how-to-play-elements{
@@ -885,10 +886,13 @@ p {
     margin-left: -3rem;
   }
 
-  .how-to-play{
+/*   .how-to-play{
     align-items: center;  
-  } 
+  }  */
 
+  .how-to-play-elements{
+    height: auto;  
+  } 
   .objetive{
     max-width: 21rem;
   }

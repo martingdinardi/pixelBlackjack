@@ -885,9 +885,9 @@ p {
     margin-left: -3rem;
   }
 
-/*   .how-to-play{
-    display: block;
-  } */
+  .how-to-play{
+    align-items: center;  
+  } 
 
   .objetive{
     max-width: 21rem;

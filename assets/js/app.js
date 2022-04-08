@@ -79,6 +79,7 @@ const no_button_front = document.querySelector(".no");
 const finish_game_front_button = document.querySelector(".money-endgame-ico");
 const rules_front_button = document.querySelector(".rules-ico");
 const how_to_play_button = document.querySelector(".how-to-play");
+const htp_x_button = document.querySelector(".htp-x-ico");
 
 let pruebaDealerCards = () => {
   for (let i = 0; i < dealer_cards_front.children.length; i++) {
@@ -982,6 +983,11 @@ finish_game_front_button.addEventListener("click", () => {
 rules_front_button.addEventListener("click", () => {
   pressedButton();
   how_to_play_button.removeAttribute("hidden");
+});
+
+htp_x_button.addEventListener("click", () => {
+  pressedButton();
+  how_to_play_button.setAttribute("hidden", "");
 });
 
 leng_es_front.addEventListener("click", () => {

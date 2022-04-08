@@ -982,6 +982,27 @@ finish_game_front_button.addEventListener("click", () => {
 
 rules_front_button.addEventListener("click", () => {
   pressedButton();
+  if (len_eng == false) {
+    const title = document.querySelector(".htp-title");
+    title.innerHTML = `¿Como jugar?`;
+    const htp_p = document.querySelector(".htp-objetive");
+    htp_p.innerHTML = `Debes intentar vencer al dealer obteniendo un puntaje lo más cerca 
+  posible de 21, sin pasarte <br />
+  Si tu mano inicial es 21 has hecho un “blackjack” y
+  automáticamente multiplicas tu apuesta 3:2`;
+    const htp_card_values = document.querySelector(".htp-card-values");
+    htp_card_values.innerHTML = `Valor de las cartas`;
+    const two_to_ten = document.querySelector(".two-to-ten");
+    two_to_ten.innerHTML = `Del 2 al 10 las cartas valen su número`;
+    const htp_buttons_title = document.querySelector(".htp-buttons-title");
+    htp_buttons_title.innerHTML = `Botones`;
+    const htp_hit = document.querySelector(".htp-hit");
+    htp_hit.innerHTML = `Puedes pedir todas las cartas que quieras hasta que el total sume 21 o más. Si tienes la suma de 21 ya no puedes pedir.`;
+    const htp_stand = document.querySelector(".htp-stand");
+    htp_stand.innerHTML = `Plantarte con tu puntaje y terminar tu turno`;
+    const htp_double = document.querySelector(".htp-double");
+    htp_double.innerHTML = `Puedes doblar tu apuesta si tus 2 cartas iniciales suman 9, 100 u 11`;
+  }
   how_to_play_button.removeAttribute("hidden");
 });
 
